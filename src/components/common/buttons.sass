@@ -1,0 +1,92 @@
+.button
+	appearance: none
+	background-color: var(--color-control)
+	border-radius: var(--border-radius)
+	border: none
+	margin: 0
+	font-size: 12px
+	line-height: 16px
+	color: white
+	cursor: pointer
+	padding: 6px 16px
+	border: 2px solid transparent
+	transition: background-color linear .5s, color linear .5s, border-color linear .5s
+	display: inline-block
+	word-break: normal
+	&:hover
+		background-color: var(--color-control-hover)
+	&:active
+		background-color: var(--color-control-active)
+	&_large
+		padding: 12px 24px
+	&[disabled]
+		cursor: default
+		opacity: .5
+	&_theme
+		&-gray
+			background-color: var(--color-control-theme-gray)
+			color: var(--color-control-theme-gray-text)
+			&:hover
+				background-color: var(--color-control-theme-gray-hover)
+			&:active
+				background-color: var(--color-control-theme-gray-active)
+			&[disabled]
+				cursor: auto
+				opacity: .5
+				background-color: var(--color-control-theme-gray)
+		&-white
+			&_border
+				background-color: transparent
+				border-color: var(--color-text-secondary)
+				&:hover, &:active
+					background-color: inherit
+					border-color: var(--color-text-primary)
+		&-dark
+			background-color: var(--color-black)
+		&-light
+			background-color: var(--color-white)
+		&-brand
+			min-width: 154px
+			display: flex
+			justify-content: center
+			&_apple
+				&:hover, &:active
+					background-color: var(--color-gray)
+			&_google
+				&:hover, &:active
+					background-color: #f8f8f8
+		&-green
+			background-color: var(--color-green)
+		&-orange
+			background-color: var(--color-orange)
+		&-external
+			&:hover
+				background-color: var(--color-white)
+				color: var(--color-dark)
+				border-color: var(--color-text-primary)
+	&.state
+		&-load
+			position: relative
+			&::before
+				content: ''
+				top: 0
+				left: 0
+				right: 0
+				bottom: 0
+				position: absolute
+				background-image: url(../images/select-pattern.svg)
+				background-repeat: repeat-y
+				animation: btnLoad .5s linear infinite
+
+@keyframes btnLoad
+	from
+		background-position-y: 0
+	to
+		background-position-y: 25px
+
+// Mobile
+
+@media screen and (max-width: 600px)
+	.button
+		&_large
+			padding: 10px 16px

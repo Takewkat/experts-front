@@ -1,0 +1,88 @@
+.module.module_page(data-route="user:ads")
+	include profile-tabs.pug
+	.module.module_regular.profile
+		.module__content
+			.profile__data.data
+				.profile__header.profile__header_merge Рекламные материалы
+				.profile__body.body
+					.body__row.row
+						.row__content
+							.profile__caption
+								.profile__text Вы можете давать ссылку(и) как на главную страницу сайта(ов) на котором(ых) вы являетесь экспертом:
+								.copy-link(data-copy)
+									.copy-link__icon
+										include ../../../public/images/copy-icon.svg
+									.copy-link__text https://22e.ru/?pid=1
+					.body__row.body__row_section.row
+						.row__content
+							.row__title Сайты-витрины, доступные для продвижения
+					.body__row.row
+						.row__content
+							.sort-table
+								.sort-table__wrapper
+									table.sort-table__container
+										thead.sort-table__head
+											tr.sort-table__row
+												th.sort-table__cell
+													span Адрес сайта
+												th.sort-table__cell
+													span Слоган
+										tbody.sort-table__body
+											tr.sort-table__row
+												td.sort-table__cell https://22e.ru?pid=1
+												td.sort-table__cell Выбери свой путь самопознания!
+											tr.sort-table__row
+												td.sort-table__cell https://44a.ru?pid=1
+												td.sort-table__cell Выбирай свободу в изучении новых языков!
+							.profile__caption
+								.profile__text Также доступно использование utm-меток, т.е. вы можете в произвольном порядке в ссылку добавлять get-параметры utm_source, utm_medium, utm_campaign, utm_term и utm_content для отслеживания эффективности различных источников трафика и проведения A/B тестов
+					.body__row.body__row_section.row
+						.row__content
+							p.row__title Виджет
+					form(action="#", method="post", data-ad-widget).body__row.row
+						.row__content
+							.ad-widget
+								.ad-widget-preview
+									.ad-widget-preview__cover
+										img(src="images/card-image.png")
+									.ad-widget-preview__status.cards__label(data-status="online") Онлайн
+									.ad-widget-preview__description(data-title="") Наш астролог сейчас онлайн. <br> Успейте задать вопрос
+								.ad-widget-fields
+									.field.field_wide
+										label.field__label Заголовок
+											textarea(placeholder="Наш астролог сейчас онлайн").field__textarea#title
+									.field.field_wide
+										label.field__label Ширина
+											input(placeholder="350").field__input#width
+									.row__text Укажите ширину виджета в пикселях. Высота подстроится автоматически
+									.field.field_wide
+										label.field__label Домен
+											.field.field_wide.field_select.select.state-selected(data-select-choice="host")
+												.field__input(data-select-output="44a.ru") 44a.ru
+												input(type="hidden", name="type", data-select-output)
+												.field__icon
+													include ../../../public/images/carret-icon.svg
+												.select__items
+													.select__item(data-option="44a.ru") 44a.ru
+													.select__item(data-option="22e.ru") 22e.ru
+									.field.field_wide
+										label.field__label Расположение
+											.field.field_wide.field_select.select.state-selected(data-select-choice="position")
+												.field__input(data-select-output="bl") внизу слева
+												input(type="hidden", name="type", data-select-output)
+												.field__icon
+													include ../../../public/images/carret-icon.svg
+												.select__items
+													.select__item(data-option="bl") внизу слева
+													.select__item(data-option="br") внизу справа
+													.select__item(data-option="tl") сверху слева
+													.select__item(data-option="tr") сверху справа
+									.field.field_wide(data-link)
+										label.field__label Код для вставки (внутри тега head)
+											.profile__caption
+												.copy-link(data-copy)
+													.copy-link__icon
+														include ../../../public/images/copy-icon.svg
+													.copy-link__text(data-link-url) https://service.domain
+													input(type="hidden", name="link")
+									input(type="submit", value="Сохранить виджет").button.button_large

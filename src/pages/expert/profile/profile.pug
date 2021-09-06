@@ -1,0 +1,24 @@
+.module.module_page(data-route="user:index")
+	include ./profile-tabs.pug
+	.module.module_regular.profile
+		.module__content
+			form(action="https://drewsher.ru/preview/api/index.php?res=success", method="post").profile__data.data
+				.profile__header.profile__header_merge Публичные данные
+				.profile__body.body
+					.body__row.row
+						.row__content
+							.profile__caption
+								p.profile__text На этом месте будет ваше основное рабочее место. <br> Но показать его пока не можем, так как ваш аккаунт еще не проверен администрацией сервиса. Если вы корректно ввели все данные о себе, это произойдет в течение нескольких часов.
+					.body__row.row
+						.row__content
+							.profile__caption
+								p.profile__text Перейдите в раздел <strong>«Профиль эксперта»</strong> и введите все необходимые данные.
+								a(href="#").profile__button.button.button_large Перейти
+					.body__row.row
+						.row__content
+							.profile__caption
+								p.profile__text
+									| Если у вас возникнут какие-либо вопросы, пожалуйста, обращайтесь в
+									|
+									a(href="#").row__link суппорт
+									| .

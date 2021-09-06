@@ -1,0 +1,487 @@
+.content
+	&__title
+		font-size: 34px
+		font-weight: 500
+		margin-bottom: 32px
+		color: var(--color-text-primary)
+	&__header
+		font-size: 24px
+		font-weight: 700
+		margin-bottom: 32px
+	&__text
+		font-size: 18px
+		color: var(--color-text-secondary)
+		max-width: 850px
+		&:not(:nth-last-of-type(1))
+			margin-bottom: 16px
+		~ .content
+			&__quote,
+			&__bullet,
+			&__order,
+			&__button
+				margin: 24px 0 0 0
+				&:not(:last-child)
+					margin: calc(24px - 16px) 0 24px
+			&__list,
+			&__table
+				margin-top: 24px
+		&_strong
+			color: var(--color-text-primary)
+			font-weight: 500
+			margin-bottom: 32px
+			+ .content
+				&__bullet,
+				&__order
+					margin-top: 0
+	&__button
+		align-self: flex-start
+	&__table
+		display: flex
+		flex-direction: column
+		max-width: 838px
+		overflow-x: scroll
+		border-radius: var(--border-radius)
+		border: 1px solid var(--color-text-secondary)
+		font-size: 18px
+		font-family: 'Museo'
+		background-color: var(--color-fill-secondary)
+		.table
+			&__head,
+			&__body,
+			&__row
+				display: flex
+			&__item
+				width: 200px
+			&__head
+				background-color: var(--color-accent)
+				.table__item
+					background-color: var(--color-accent)
+					padding: 24px 0 24px 24px
+					font-weight: 500
+					color: var(--color-content-table-header-text)
+			&__row
+				flex-basis: 100%
+			&__body
+				flex-wrap: wrap
+				.table
+					&__row
+						border-top: 1px solid var(--color-text-secondary)
+					&__item
+						padding: 15px 0 15px 24px
+						background-color: var(--color-fill-secondary)
+						color: var(--color-text-secondary)
+		&_wide
+			.table__item
+				flex-basis: 25%
+	&__columns
+		display: flex
+		justify-content: space-between
+		.column
+			&__text
+				flex-grow: 1
+				.content__text
+					max-width: 770px
+			&__images
+				+ .column__text
+					margin-left: 20px
+				.image
+					&__item
+						&:not(:last-child)
+							margin-bottom: 20px
+						img
+							max-width: 100%
+	&__rating
+		.rating
+			&__stars
+				display: flex
+			&__star
+				width: 13px
+				height: 13px
+				svg
+					width: 100%
+					height: 100%
+				&:not(:last-child)
+					margin-right: 6px
+	&__link
+		font: 700 14px 'Museo'
+		color: var(--color-text-primary)
+		transition: color .5s linear
+		text-decoration: underline
+		&:hover
+			text-decoration: none
+		&_selected
+			font: 18px 'Root UI'
+			text-decoration: none
+			color: var(--color-link)
+			&:hover
+				color: var(--color-link-hover)
+
+		&_backward
+			align-self: flex-start
+			display: flex
+			align-items: center
+
+			a
+				padding-left: 24px
+				transform: translateX(-24px)
+
+			svg
+				width: 16px
+				height: 16px
+
+				margin-right: 8px
+
+				path
+					transition: fill linear .5s
+					fill: var(--color-link)
+
+			&:hover
+				svg
+					path
+						fill: var(--color-link-hover)
+
+	&__quote
+		padding: 24px
+		background-color: var(--color-fill-secondary)
+		color: var(--color-text-primary)
+		font-size: 18px
+		border-radius: var(--border-radius)
+		display: flex
+		.quote
+			&__icon
+				border-right: 2px solid var(--color-fill-primary)
+				padding-right: 23px
+				margin-right: 23px
+				circle
+					fill: var(--color-fill-primary)
+	&__bullet,
+	&__order
+		font-size: 18px
+		color: var(--color-text-secondary)
+		.list__item
+			cursor: auto
+			&:not(:last-child)
+				margin-bottom: 16px
+	&__order
+		padding-left: 40px
+		.content
+			&__bullet
+				margin: 24px 0
+	&__bullet
+		list-style: none
+		.list
+			&__item
+				position: relative
+				padding-left: calc(32px + 7px)
+				&::before
+					content: ''
+					position: absolute
+					top: 0
+					bottom: 0
+					left: 16px
+					margin: auto
+					width: 7px
+					height: 7px
+					border-radius: 50%
+					background-color: var(--color-text-secondary)
+	&__list
+		.list
+			&__items
+				display: flex
+				flex-wrap: wrap
+				margin-bottom: -1.7543859649%
+			&__item
+				flex-basis: 23.5%
+				margin-bottom: 2%
+				cursor: pointer
+				&:not(:nth-child(4n))
+					margin-right: 2%
+				&:hover
+					.list__title
+						color: var(--color-text-primary)
+						&_overlay
+							color: var(--color-white)
+					.list__button_play
+						background: var(--color-accent)
+			&__cover
+				position: relative
+				width: 100%
+				height: 11.71875vw
+				max-height: 170px
+				margin-bottom: 8px
+			&__button,
+			&__image,
+			&__time
+				position: absolute
+			&__image
+				width: 100%
+				height: 100%
+				img
+					width: 100%
+					height: 100%
+					border-radius: var(--border-radius)
+					object-fit: cover
+			&__button
+				&_play
+					background: var(--color-text-secondary)
+					top: 0
+					bottom: 0
+					left: 0
+					right: 0
+					width: 40px
+					height: 40px
+					border-radius: var(--border-radius)
+					margin: auto
+					&::after
+						background: url(../images/play.svg) 0 0/cover
+						content: ''
+						position: absolute
+						top: 0
+						left: 0
+						right: 0
+						bottom: 0
+						width: 70%
+						height: 70%
+						margin: auto
+			&__time
+				font-size: 12px
+				font-weight: 700
+				right: 15px
+				bottom: 10px
+				color: #fff
+			&__title,
+			&__view
+				padding: 0 24px 0 8px
+			&__title
+				transition: color .5s linear
+				font-size: 14px
+				margin-bottom: 8px
+				color: var(--color-text-secondary)
+				&_overlay
+					font-weight: 500
+					position: absolute
+					bottom: 0
+					margin: 16px
+					color: var(--color-white)
+			&__view
+				font-size: 12px
+				color: var(--color-text-secondary)
+	&__nav
+		display: flex
+		justify-content: space-between
+		.nav
+			&__text
+				color: white
+				margin-bottom: 5px
+			&__icon
+				width: 24px
+				height: 24px
+				transform-origin: center
+				svg
+					width: 100%
+					height: 100%
+					path
+						fill: white
+			&__wrapper
+				width: 100%
+			&__control
+				display: flex
+				align-items: center
+				width: 50%
+				.nav__icon
+					flex-shrink: 0
+					path
+						fill: var(--color-default)
+				&_prev
+					text-align: left
+					.nav
+						&__wrapper
+							margin-left: 16px
+						&__icon
+							transform: rotate(90deg)
+				&_next
+					margin-left: auto
+					text-align: right
+					.nav
+						&__wrapper
+							margin-right: 16px
+						&__icon
+							transform: rotate(-90deg)
+	&__load
+		display: flex
+		align-items: center
+		margin: 48px auto 0
+		border: 1px solid var(--color-text-primary)
+		color: var(--color-text-primary)
+		border-radius: var(--border-radius)
+		padding: 8px 24px
+		font-size: 12px
+		transition: border-color linear .5s, background-color linear .5s
+		&:hover
+			border-color: var(--color-text-primary)
+		&:active
+			background: var(--color-nav)
+			border-color: var(--color-nav)
+		.load
+			&__items
+				margin-left: 8px
+				display: flex
+				&[data-loaded=true]
+					.load__item
+						&::before
+							animation: load 2s linear infinite 0s
+						&:nth-child(1)::before
+							animation-delay: 0s
+						&:nth-child(2)::before
+							animation-delay: .3s
+						&:nth-child(3)::before
+							animation-delay: .6s
+			&__item
+				position: relative
+				width: 2px
+				height: 2px
+				&:not(:last-child)
+					margin-right: 2px
+				&::before
+					background: var(--color-text-primary)
+					content: ''
+					position: absolute
+					top: 2px
+					width: 100%
+					height: 100%
+					border-radius: var(--border-radius)
+
+	> *:last-child,
+		margin-bottom: unset
+
+
+.content-expand
+	&__target
+		overflow-y: hidden
+		transition: height ease-in-out 300ms
+	&__trigger
+	&__wrapper
+		padding: 0 0 16px
+
+[data-load]
+	.state
+		&-load, &-loaded
+			display: flex
+			flex-direction: column
+		&-load
+			transition: opacity linear .5s
+		&-loaded
+			opacity: 0
+		&-wait
+			display: none
+			@media screen and (max-width: 600px)
+				display: block
+[data-loaded]
+	&.state-hidden
+		display: none
+
+@keyframes load
+	0%
+		transform: translateY(0)
+	25%
+		transform: translateY(-2px)
+	50%
+		transform: translateY(0)
+	75%
+		transform: translateY(-2px)
+	100%
+		transform: translateY(0)
+
+// Tablet
+
+@media screen and (max-width:1025px)
+	.content
+		&__list
+			.list
+				&__item
+					flex-basis: 32%
+					&:not(:nth-child(4n))
+						margin-right: unset
+					&:not(:nth-child(3n))
+						margin-right: 2%
+				&__cover
+					height: 15vw
+
+// Mobile
+
+@media screen and (max-width: 600px)
+	.content
+		&__title
+			font-size: 34px
+			margin-bottom: 24px
+		&__header
+			font-size: 24px
+			margin-bottom: 24px
+		&__text, &__link
+			font-size: 18px
+		&__text_strong
+			margin-bottom: 24px
+		&__quote
+			font-size: 18px
+			padding: 16px
+			.quote
+				&__icon
+					display: none
+		&__order, &__bullet
+			font-size: 18px
+			.list__item
+				&:not(:last-child)
+					margin-bottom: 8px
+		&__columns
+			flex-direction: column
+			.column
+				&__images
+					order: -1
+						margin-bottom: 16px
+					+ .column__text
+						margin-left: unset
+		&__list
+			.list
+				&__items
+					flex-wrap: nowrap
+					overflow-x: scroll
+				&__cover
+					height: 39.0625vw
+				&__item
+					flex: 0 0 auto
+					width: 70.3125vw
+					&:not(:nth-child(4n))
+						margin-right: unset
+					&:not(:nth-child(-n+4))
+						margin-top: unset
+					&:not(:last-child)
+						margin-right: 2.5vw
+				&__title
+					font-size: 4.375vw
+					&_overlay
+						margin: 2.5vw
+						font-size: 3.75vw
+				&__time,
+				&__views
+					font-size: 3.75vw
+		&__load
+			display: none
+		&__table
+			overflow-x: scroll
+			font-size: 14px
+			.table
+				&__item
+					flex-basis: 120px
+					width: 120px
+				&__head
+					.table__item
+						padding: 16px
+				&__body
+					.table
+						&__item
+							border: none
+							font-size: 12px
+							padding: 12px 16px
+							.rating__stars
+								margin-left: auto
+				&__row

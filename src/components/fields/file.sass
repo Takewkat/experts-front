@@ -1,0 +1,111 @@
+.file
+	&__image, &__field
+		display: none
+		&.state
+			&-active, &-load, &-error
+				display: block
+	&__image
+		display: none
+		width: 342px
+		height: 192px
+		position: relative
+		&.state-load, &.state-error
+			&::after
+				content: ''
+				position: absolute
+				z-index: 1
+				top: 0
+				left: 0
+				right: 0
+				bottom: 0
+				border-radius: var(--border-radius)
+		&.state-load
+			&::after
+				background-color: var(--color-load)
+				animation: loadFile 1.5s infinite ease
+		&.state-error
+			&::after
+				background-color: var(--color-load)
+			&::before
+				content: ''
+				position: absolute
+				top: 0
+				left: 0
+				right: 0
+				bottom: 0
+				z-index: 2
+				margin: auto
+				width: 24px
+				height: 24px
+				background-image: url(./../images/load-error-icon.svg)
+				background-repeat: no-repeat
+	&__source
+		position: relative
+		z-index: 1
+		width: 100%
+		height: 100%
+		img, video
+			width: 100%
+			height: 100%
+		img
+			object-fit: cover
+		video
+			object-fit: contain
+			background-color: black
+	&__cover
+		position: absolute
+		z-index: 0
+		width: 100%
+		height: 100%
+		overflow: hidden
+		img
+			width: 100%
+			height: 100%
+			object-fit: cover
+			filter: blur(10px)
+	&__action
+		position: absolute
+		z-index: 1
+		right: 8px
+		cursor: pointer
+		&[data-action="change"]
+			top: 8px
+		&[data-action="remove"]
+			bottom: 8px
+		svg
+			display: block
+	&__image_small
+		width: 97px
+		height: 97px
+		background-color: var(--color-fill-primary)
+		border-radius: 50%
+		margin: 10px 0
+		position: relative
+		&.state-load, &.state-error
+			&::after
+				border-radius: 50%
+		.file__cover
+			display: none
+		img
+			border-radius: 50%
+		.file__action
+			right: -20px
+			&[data-action="change"]
+				top: -10px
+			&[data-action="remove"]
+				bottom: -10px
+
+@keyframes loadFile
+	0%
+		background-color: var(--color-load)
+	50%
+		background-color: var(--color-load-process)
+	100%
+		background-color: var(--color-load)
+
+@media screen and (max-width: 600px)
+	.file
+		&__image
+			&:not(.file__image_small)
+				width: 75vw
+				height: 42vw

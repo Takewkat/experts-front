@@ -1,0 +1,28 @@
+<mjml>
+  <mj-head>
+    <mj-include path="./components/styles.mjml.css" type="css" css-inline="inline">
+		<mj-include path="./components/fonts.mjml.css" type="css">
+  </mj-head>
+  <mj-body background-color="%style.silver%">
+
+    <mj-include path="./components/header.mjml">
+
+    <mj-section background-color="%style.white%">
+      <mj-column>
+
+        <mj-include path="./components/greeting.mjml">
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="18px" color="%style.text%">Вы или кто-то другой указали этот e-mail для авторизации на сайте <a href="%href%" style="color:%style.links%">%hostname%</a>. Если это были не Вы, просто проигнорируйте письмо.</mj-text>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="18px" font-weight="500" color="%style.text%">Чтобы подтвердить вход, перейдите по <a href="%url%" style="color:%style.links%">ссылке</a></mj-text>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="18px" color="%style.text%">Или введите на сайте этот код: <b>%code%</b></mj-text>
+
+        <mj-include path="./components/code-expire.mjml">
+
+        <mj-include path="./components/footer.mjml">
+
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

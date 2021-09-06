@@ -1,0 +1,47 @@
+/* show/hide */
+
+.show-tablet,
+.show-mobile
+  display: none
+.show-desktop
+  display: flex
+.hide-desktop
+  display: none
+
+@media screen and (max-width: 800px)
+  .show-desktop,
+  .show-tablet
+    display: none
+  .show-mobile
+    display: flex
+  .hide-mobile
+    display: none
+
+@media screen and (min-width: 801px) and (max-width: 1024px)
+  .show-desktop,
+  .show-mobile
+    display: none
+  .show-tablet,
+    display: flex
+  .hide-tablet
+    display: none
+
+/* grid highlight */
+
+.grid-border
+  position: relative
+
+  &::before
+    content: ''
+
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    pointer-events: none
+
+    border: 1px solid rgba(tomato, .5)
+
+.grid-bg
+  background-color: rgba(tomato, .5)

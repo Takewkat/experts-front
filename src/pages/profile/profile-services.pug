@@ -1,0 +1,99 @@
+.module.module_page(data-route="profile:services")
+	.module.module_regular.profile
+		.module__content
+			.profile__info.info
+				.info__wrapper
+					.profile__header Публичные данные
+					.profile__body.body
+						.profile__avatar.avatar
+							.avatar__image(data-avatar)
+								img(src="images/userpic.jpg")
+							.avatar__wrapper
+								.avatar__label Имя
+								.avatar__title Ivan25
+						.profile__text Информация, которую вы укажете в этом разделе, <br> публичная. Она видна другим пользователям.
+				include ./profile-navs.pug
+			.profile__data.data
+				.profile__header.meta
+					.meta__title Список услуг
+				.profile__body.body
+					.body__row.row
+						.row__content
+							.sort-table
+								.sort-table__wrapper
+									table.sort-table__container
+										thead.sort-table__head
+											tr.sort-table__row
+												th.sort-table__cell.sort-table__cell_medium
+													span Услуга
+												th.sort-table__cell
+													span Эксперт
+												th.sort-table__cell
+													span Дата
+												th.sort-table__cell
+													span Цена
+												th.sort-table__cell
+													span Статус
+												th.sort-table__cell
+													span Управление
+										tbody.sort-table__body
+											tr.sort-table__row
+												td.sort-table__cell.sort-table__cell_medium
+													a(href="").row__link Lorem ipsum dolor sit amet, consectetur adipisicing elit
+												td.sort-table__cell %username%
+												td.sort-table__cell 2021.01.21
+												td.sort-table__cell 100 ₽
+												td.sort-table__cell
+													.sort-table__icon
+														include ../../public/images/table-error-icon.svg
+												td.sort-table__cell
+													a(href="#").sort-table__icon
+														include ../../public/images/table-accept-icon.svg
+													a(href="#").sort-table__icon
+														include ../../public/images/table-decline-icon.svg
+					.body__row.body__row_section.row
+						.row__content.content
+							h2.content__title Ваша информация
+					.body__row.body__row_section.row
+						.row__title Описание
+					.body__row.row
+						.row__content
+							| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur repellendus autem incidunt, magnam voluptatum. Enim sapiente consectetur ducimus error, illum?
+					.body__row.body__row_section.row
+						.row__title Графическая информация
+					.body__row.row.files.files_static
+						.row__content
+							.files__list.state-active
+								.files__item.file.file_static
+									.files__image
+										.file__image.state-active
+											.file__source
+												img(src="images/card-image.png")
+											a(href="#", download, data-action="remove").file__action
+												button.button Скачать
+									.files__content
+										.files__title Heading
+										.files__description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi distinctio aspernatur voluptas dignissimos reiciendis animi dolor, illum ipsa cum voluptates, corrupti eligendi nobis facere nemo non esse molestiae numquam adipisci
+					.body__row.body__row_section.row
+						.row__content.content
+							h2.content__title Информация от эксперта
+					.body__row.body__row_section.row
+						.row__title Описание
+					.body__row.row
+						.row__content
+							| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur repellendus autem incidunt, magnam voluptatum. Enim sapiente consectetur ducimus error, illum?
+					.body__row.body__row_section.row
+						.row__title Графическая информация
+					.body__row.row.files.files_static
+						.row__content
+							.files__list.state-active
+								.files__item.file.file_static
+									.files__image
+										.file__image.state-active
+											.file__source
+												img(src="images/card-image.png")
+											a(href="#", download, data-action="remove").file__action
+												button.button Скачать
+									.files__content
+										.files__title Heading
+										.files__description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi distinctio aspernatur voluptas dignissimos reiciendis animi dolor, illum ipsa cum voluptates

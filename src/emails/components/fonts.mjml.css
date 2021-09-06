@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'PT';
+  font-weight: normal;
+  src: url(%fonts%/PT_Root_UI_Regular.ttf);
+}
+
+@font-face {
+  font-family: 'PT';
+  font-weight: 500;
+  src: url(%fonts%/PT_Root_UI_Medium.ttf);
+}

@@ -1,0 +1,333 @@
+[id*="modal"]
+	&:not(.modal_fake)
+		display: none
+
+.fancybox
+	&-bg
+		opacity: 0
+		background-color: var(--overlay)
+	&-content
+		padding: 0
+		background-color: transparent
+		transform: translateX(20px)
+		width: calc(565px + 40px)
+		max-width: 100%
+	&-close-small
+		padding: 0
+		opacity: 1
+		background-image: url(../images/close.svg)
+		width: 20px
+		height: 20px
+		svg
+			display: none
+
+.modal
+	padding-right: 40px
+	&__wrapper
+		background-color: var(--color-fill-primary)
+	&__caption
+		padding: 40px 25px
+		font-size: 18px
+		.caption
+			&__header
+				font-family: 'Museo'
+				font-weight: 500
+				color: var(--color-text-primary)
+				margin-bottom: 25px
+			&__text
+				color: var(--color-text-secondary)
+				max-width: 850px
+	&-alert
+		text-align: center
+		&__content
+			padding: 40px 20px
+		&__header
+			font: 500 18px 'Museo'
+			background: var(--color-accent)
+			padding: 20px 0
+			border-radius: var(--border-radius) var(--border-radius) 0 0
+			color: var(--color-white)
+		+ .modal__content
+			border-radius: 0 0 var(--border-radius) var(--border-radius)
+		&__link
+			font-size: 14px
+			font-weight: bold
+			color: var(--color-link)
+			padding-left: 5px
+			text-decoration: underline
+			&:hover
+				text-decoration: none
+		&__text
+			font-size: 18px
+			&_coin
+				display: inline-flex
+				align-items: baseline
+
+				color: var(--color-gold)
+		&__policy
+			margin-top: 40px
+			font-size: 12px
+			color: var(--color-text-secondary)
+			padding: 16px 0
+			border-top: 1px solid var(--color-gray)
+			a
+				text-decoration: underline
+				&:hover
+					text-decoration: none
+		&__button, &__form
+			margin-top: 32px
+		&__form
+			display: inline-flex
+			flex-wrap: wrap
+			justify-content: center
+	&-photo
+		width: calc(768px + 40px)
+		.slick
+			&-track
+				transform: unset
+			&-prev
+				left: 0
+			&-next
+				right: 0
+			&-prev, &-next
+				background-color: var(--overlay-mirror)
+				width: 55px
+				&::before
+					content: ''
+					position: absolute
+					left: 0
+					right: 0
+					top: 0
+					bottom: 0
+					margin: auto
+					width: 13px
+					height: 24px
+
+		&.state-preview
+			width: 90%
+			.modal-photo
+				&__image
+					height: 90vh
+					cursor: zoom-out
+
+		&__image
+			width: 100%
+			height: 450px
+			display: flex
+			justify-content: center
+			align-items: center
+			position: relative
+			overflow: hidden
+			cursor: zoom-in
+			img
+				max-height: 100%
+		&__cover
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			z-index: -1
+			filter: blur(15px)
+			transform: scale(1.5)
+			img
+				width: 100%
+				height: 100%
+				object-fit: cover
+	&-video
+		width: calc(1140px + 40px)
+		.modal__wrapper
+			display: flex
+			flex-wrap: wrap
+		&__content
+			display: flex
+			width: 100%
+			height: 460px
+		&__player
+			flex-basis: 72%
+			video
+				width: 100%
+				height: 100%
+				display: block
+				object-fit: cover
+		&__items
+			flex-basis: 28%
+			position: relative
+			overflow-y: hidden
+			&::after
+				content: ''
+				position: absolute
+				left: 0
+				right: 0
+				height: 22px
+				box-shadow: var(--shadow)
+				z-index: 0
+			.content
+				&__list
+					height: 100%
+					overflow-y: scroll
+					position: relative
+					z-index: 1
+					.list
+						&__items
+							flex-direction: column
+							padding: 16px 16px 0
+							box-sizing: border-box
+						&__item
+							width: 100%
+							max-width: 100%
+							margin-right: 0
+							display: flex
+							padding: 4px
+							border-radius: var(--border-radius)
+							cursor: pointer
+							&:not(:last-child)
+								margin-bottom: 8px
+							&_active
+								background: var(--color-accent)
+								div
+									color: var(--color-white)
+							&:hover
+								div
+									color: var(--color-white)
+								&:not(.list__item_active)
+									background-color: var(--color-fill-secondary)
+									div
+										color: var(--color-text-primary)
+						&__cover
+							flex: 135px 0 0
+							height: 75px
+							margin-bottom: 0
+						&__title
+							font-size: 12px
+						&__view
+							font-size: 11px
+						&__meta
+
+.modal_fake
+	width: 90%
+	max-width: 500px
+	margin: auto
+	padding-right: 0
+	.modal
+		&-alert
+			&__header
+				position: relative
+				padding: 16px 0
+			&__content
+				border-radius: var(--border-radius)
+				background-color: var(--color-fill-secondary)
+				margin-top: -2px
+				padding: 40px 0
+			&__icon
+				margin-bottom: 16px
+				svg
+					margin: auto
+			&__text
+				padding: 0 35px
+				line-height: 1.5
+			&__policy
+				padding: 16px 20px
+				font-size: 12px
+				margin-bottom: -40px
+			&__form
+				flex-direction: column
+				.field
+					margin-right: 0
+					&__error
+						line-height: 12px
+			&__button
+				align-self: center
+			&__code
+				flex-basis: 100%
+				display: flex
+				flex-direction: column
+				justify-content: center
+				align-items: center
+				.code
+					display: flex
+					margin-bottom: 15px
+					&__item
+						width: 40px
+						height: 40px
+						color: var(--color-fill-primary)
+						font-size: 18px
+						font-weight: bold
+						text-align: center
+						border-radius: var(--border-radius)
+						border: 1px solid transparent
+						&:focus
+							border-color: var(--color-accent-hover)
+						&:not(:last-child)
+							margin-right: 16px
+					&__link
+						padding: 0
+					&__error
+						font-size: 12px
+						line-height: 18.2px
+						display: none
+						color: var(--color-error)
+				&.state
+					&-error
+						.code
+							&__error
+								display: block
+							&__link,
+							&__timer
+								display: none
+					&-resend
+						.code
+							&__link
+								color: var(--color-text-secondary)
+								text-decoration: none
+								cursor: wait
+
+// Tablet
+
+@media screen and (max-width: 1025px)
+	.fancybox
+		&-content
+			transform: translateX(0)
+	.modal
+		padding-right: 0
+		padding-top: 40px
+
+// Mobile
+
+@media screen and (max-width: 600px)
+	.modal
+		&__caption
+			.caption
+				&__header
+				&__text
+					br
+						display: none
+		&-photo
+			&__image
+				height: 200px
+				&::before,
+				&::after
+					content: unset
+		&-video
+			&__player
+				flex-basis: 100%
+			&__items
+				display: none
+			&__content
+				height: auto
+		&-alert
+			&__header,
+			&__text
+			&__header
+				font-size: 14px
+			&__text
+				font-size: 12px
+			&__policy
+				font-size: 9px
+			&__form
+				margin-top: 16px
+			&__link
+				font-family: inherit
+
+
+

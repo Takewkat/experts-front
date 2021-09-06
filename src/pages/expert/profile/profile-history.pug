@@ -1,0 +1,64 @@
+.module.module_page(data-route="user:history")
+	include ./profile-tabs.pug
+	.module.module_regular.profile
+		.module__content
+			.profile__data.data
+				.profile__header.profile__header_merge История консультаций
+				.profile__body.body
+					.body__row.row
+						.row__content
+							.sort-table
+								.sort-table__wrapper
+									table.sort-table__container
+										thead.sort-table__head
+											tr.sort-table__row
+												th.sort-table__cell
+													span ID
+												th.sort-table__cell
+													span Клиент
+												th.sort-table__cell
+													span Дата начала
+												th.sort-table__cell
+													span Дата окончания
+												th.sort-table__cell
+										tbody.sort-table__body
+											tr.sort-table__row
+												td.sort-table__cell 012
+												td.sort-table__cell GeorgyM
+												td.sort-table__cell 10 ноября 2020 11:28
+												td.sort-table__cell 10 ноября 2020 11:28
+												td.sort-table__cell
+													a(href="#").row__link Просмотр
+											tr.sort-table__row
+												td.sort-table__cell 013
+												td.sort-table__cell argentum_client
+												td.sort-table__cell 26 сентября 2020 15:25
+												td.sort-table__cell 26 сентября 2020 15:26
+												td.sort-table__cell
+													a(href="#").row__link Просмотр
+
+	.module.module_regular.profile
+		.module__content
+			.profile__data.data
+				.profile__header.profile__header_merge Просмотр видео
+				.profile__body.body
+					.body__row.row
+						.row__content
+							.video-preview
+								.video-preview__items
+									.video-preview__item
+										.video-preview__title Эксперт
+										video(src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4", poster="https://frankeivind.net/blogg/wp-content/2013/12/big_buck_bunny-620x348.jpg").video-preview__player
+									.video-preview__item
+										.video-preview__title Клиент
+										video(src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4", poster="https://frankeivind.net/blogg/wp-content/2013/12/big_buck_bunny-620x348.jpg").video-preview__player
+								.video-preview__controls
+									.video-preview__control.video-preview__button
+										include ../../../public/images/video-play-icon.svg
+									.video-preview__control.video-preview__button
+										include ../../../public/images/video-pause-icon.svg
+									.video-preview__control.video-preview__range.range(data-in="var(--color-accent)", data-out="var(--color-silver)")
+										.range__item
+											input(type="range", value="0", min="0", max="100", step="1").range__field
+										.range__bg
+									.video-preview__time 00:00:05 / 00:01:25

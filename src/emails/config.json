@@ -1,0 +1,42 @@
+[
+  {
+    "hosts": [
+      "https://dev.44a.ru",
+      "https://test.44a.ru",
+      "https://44a.ru"
+    ],
+    "images": "images",
+    "fonts": "fonts",
+    "publicPath": "",
+    "type": "showcase",
+    "styles":
+    {
+      "accent": "#EB922A",
+      "white": "white",
+      "silver": "#E5E5E5",
+      "divider": "#EBEDF2",
+      "text": "#67666E",
+      "links": "#1477E6"
+    }
+  },
+  {
+    "hosts": [
+      "https://dev.22e.ru",
+      "https://test.22e.ru",
+      "https://22e.ru"
+    ],
+    "images": "images",
+    "fonts": "fonts",
+    "publicPath": "",
+    "type": "expert",
+    "styles":
+    {
+      "accent": "#4E3FA7",
+      "white": "white",
+      "silver": "#E5E5E5",
+      "divider": "#EBEDF2",
+      "text": "#67666E",
+      "links": "#1477E6"
+    }
+  }
+]

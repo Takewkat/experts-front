@@ -1,0 +1,598 @@
+.popover.popover_modal(data-popover)
+	.popover__items
+		.popover__close(data-close)
+			include ../../public/images/popover-close.svg
+
+		.popover__item(data-target="review-create", data-url="https://dev.44a.ru/expert/save-review")
+			.popover__alert(data-alert)
+			.popover__header Оставить отзыв
+			textarea(placeholder="Напишите текст отзыва", data-field).popover__field.popover__field_large
+			.popover__table.table
+				.table__row
+					.table__cell.table__title Оцените работу эксперта
+					.table__cell.table__info.table__info_right.info
+						.rating
+							.rating__stars(data-rating)
+								.rating__star
+									svg
+										use(xlink:href="images/rate.svg#empty")
+								.rating__star
+									svg
+										use(xlink:href="images/rate.svg#empty")
+								.rating__star
+									svg
+										use(xlink:href="images/rate.svg#empty")
+								.rating__star
+									svg
+										use(xlink:href="images/rate.svg#empty")
+								.rating__star
+									svg
+										use(xlink:href="images/rate.svg#empty")
+				.table__row
+					.table__cell.table__title Видимость имени
+					.table__cell.table__info.table__info_right.info
+						.field.field_checkbox.checkbox
+							label.checkbox__label
+								input(type="checkbox", data-private)
+								.checkbox__field
+								| Анонимно
+			.popover__action.action
+				.action__button.button.button_large(data-trigger="review-create:success") Отправить
+
+		.popover__item(data-target="review-success")
+			.popover__alert(data-alert)
+			.popover__icon
+				include ../../public/images/popover-success.svg
+			.popover__header Спасибо за отзыв!
+			.popover__text Очень скоро он появится в профиле эксперта. Ждем вас снова!
+
+		.popover__item(data-target="photo")
+			.popover-photo
+				.popover-photo__list
+					.popover-photo__item
+						.popover-photo__image
+							.popover-photo__cover
+								img(src="images/photo-item.jpg")
+							img(src="images/photo-item.jpg").popover-photo__source
+						.popover-photo__text 1
+					.popover-photo__item
+						.popover-photo__image
+							.popover-photo__cover
+								img(src="images/photo-item.jpg")
+							img(src="images/photo-item_large.jpg").popover-photo__source
+						.popover-photo__text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores placeat tempore facilis necessitatibus, doloribus nesciunt alias quo quibusdam ipsam quod.
+					.popover-photo__item
+						.popover-photo__image
+							.popover-photo__cover
+								img(src="images/photo-item.jpg")
+							img(src="images/photo-item_large.jpg").popover-photo__source
+						.popover-photo__text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores placeat tempore facilis necessitatibus, doloribus nesciunt alias quo quibusdam ipsam quod.
+					.popover-photo__item
+						.popover-photo__image
+							.popover-photo__cover
+								img(src="images/photo-item.jpg")
+							img(src="images/photo-item_large.jpg").popover-photo__source
+						.popover-photo__text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores placeat tempore facilis necessitatibus, doloribus nesciunt alias quo quibusdam ipsam quod.
+
+
+.module.module_page(data-route="content")
+	.module__content
+
+		.module.breadcrumbs.breadcrumbs_shrink.content
+			a(href="#").breadcrumbs__item.content__link.content__link_selected Английский язык
+			.breadcrumbs__icon
+				include ../../public/images/breadcrumbs-carret-icon.svg
+			span.breadcrumbs__item Носители
+
+		.module.module_regular.module_shrink.content
+
+			a(data-fancybox="alert", href="#modal-alert-money").content__button.button Недостаточно средств
+			br
+			a(data-fancybox="alert", href="#modal-alert-expert").content__button.button Эксперт не отвечает
+
+			.module.modal.modal-alert#modal-alert-money
+				.modal__wrapper
+					.modal-alert__header Недостаточно средств
+					.modal-alert__content
+						.modal-alert__text
+							| На вашем счету недостаточно
+							span.modal-alert__text_coin
+								include ../../public/images/coin-icon.svg
+								|  (коинов)
+							br
+							| Приобретите необходимое количество с хорошей скидкой
+						a(href="#").modal-alert__button.button.button_large Пополнить счет
+
+			.module.modal.modal-alert#modal-alert-expert
+				.modal__wrapper
+					.modal-alert__header Эксперт не отвечает
+					.modal-alert__content
+						.modal-alert__text В данный момент эксперт не отвечает на ваш запрос начала индивидуальной консультации. Попробуйте еще раз. Если так и не получится соединиться, то система  вернет вам средства за оплаченную консультацию и небольшой бонус в 10% за неудобства.”
+
+		.module.module_regular.content
+			.content__review.review(data-review="1", data-url="https://dev.44a.ru/expert/more-reviews")
+				.review__header
+					h2.review__title.content__header Отзывы
+					a(href="#", data-trigger="review-create").review__link Оставить отзыв
+				.review__items(data-masonry, data-items)
+					.review__item(data-model)
+						.review__meta
+							.review__author(data-name) Олег
+							.review__date(data-date) 12.12.2020
+						.review__content(data-text) Спасибо вам огромное! Мир вам! Да, это моя карта, я очень сильный и мудрый.
+					.review__item
+						.review__meta
+							.review__author Олег
+							.review__date 12.12.2020
+						.review__content Спасибо вам огромное! Мир вам! Да, это моя карта, я очень сильный и мудрый.
+					.review__item
+						.review__meta
+							.review__author Виктория
+							.review__date 25.12.2020
+						.review__content Умница, красавица, все точно описала, как всегда.
+					.review__item
+						.review__meta
+							.review__author Олег
+							.review__date 12.12.2020
+						.review__content Как и договаривались - пишу вам какая вы классная, чтобы, когда вы вставали по утрам, то читали и улыбались!! :-) Замечательная, добрая, светлая, с таким вкусным интеллигентным юмором - в кайф даже просто сидеть и слушать. Умница, выковыривает из ситуации самое главное, "читает между строк". По-моему лучший эксперт на сайте.
+					.review__item
+						.review__meta
+							.review__author Виктория
+							.review__date 25.12.2020
+						.review__content Восхитительная! Легкая, с чувством юмора, профессиональная очень, но не грузит, не нагнетает и не давит, очень позитивная. Нереально приятно было общаться, такая Светлана Лобода с колодой таро! Короче, понравилась очень, буду еще обращаться.
+					.review__item
+						.review__meta
+							.review__author Олег
+							.review__date 12.12.2020
+						.review__content Как и договаривались - пишу вам какая вы классная, чтобы, когда вы вставали по утрам, то читали...
+				.review__pagination.pagination(data-pagination="2")
+					.pagination__item(data-control="start")
+						include ../../public/images/pagination-arrow-extend.svg
+					.pagination__item(data-control="prev")
+						include ../../public/images/pagination-arrow.svg
+					.pagination__pages(data-pages)
+						.pagination__item.state-active(data-nav="1")
+						.pagination__item(data-nav="2")
+					.pagination__item.state-active(data-control="next")
+						include ../../public/images/pagination-arrow.svg
+					.pagination__item.state-active(data-control="end")
+						include ../../public/images/pagination-arrow-extend.svg
+
+		.module.module_regular.module_shrink.content
+			h1.content__title Консультация экстрасенса бесплатно
+			p.content__text
+				| Вы можете задать вопрос экстрасенсам бесплатно (письменно) и получить ответы, советы, рекомендации. Ясновидящие, Гадалки, Тарологи, Астрологи дают ответы только на вопросы с описанием конкретной ситуации из вашей жизни с полными данными. Фотография (не публикуется в общем доступе) даст
+				|
+				a(href="#").content__link.content__link_selected больше информации
+				|
+				| и поможет экспертам ответить более точно и детально.
+			p.content__text
+				| Внимание! Бесплатный вопрос экстрасенсам может быть проигнорирован, если ваш вопрос не является четким, без пояснения ситуации. Инфомация должна быть
+				|
+				a(href="#").content__link.content__link_selected указана
+				|
+				| на грамотном русском языке
+			a(href="#").content__button.button.button_theme-external Ссылка на документ
+			a(href="#").content__button.button.button_theme-external.button_theme-green Ссылка на таблицу
+			a(href="#").content__button.button.button_theme-external.button_theme-orange Ссылка на презентацию
+			.content__quote.quote
+				.quote__icon
+					include ../../public/images/quote-icon.svg
+				.quote__text Внимание! Бесплатный вопрос экстрасенсам может быть проигнорирован, если ваш вопрос не является четким, без пояснения ситуации. Инфомация должна быть указана на грамотном русском языке
+			p.content__text Внимание! Бесплатный вопрос экстрасенсам может быть проигнорирован, если ваш вопрос не является четким, без пояснения ситуации. Инфомация должна быть указана на грамотном русском языке
+			.content__quote.quote
+				.quote__icon
+					include ../../public/images/quote-icon.svg
+				.quote__text Внимание! Бесплатный вопрос экстрасенсам может быть проигнорирован, если ваш вопрос не является четким, без пояснения ситуации. Инфомация должна быть указана на грамотном русском языке
+
+		.module.module_regular.module_shrink.content
+			.content__quote.quote
+				.quote__icon
+					include ../../public/images/quote-icon.svg
+				.quote__text Внимание! Бесплатный вопрос экстрасенсам может быть проигнорирован, если ваш вопрос не является четким, без пояснения ситуации. Инфомация должна быть указана на грамотном русском языке
+
+		.module.module_regular.moule_shrink.content
+			h2.content__header Новые вопросы экстрасенсам
+			ul.content__bullet.list
+				li.list__item Верен ли мне мой мужчина?
+				li.list__item Вероятен ли благополучный брак?
+				li.list__item Какие ждут отношения в дальнейшем?
+				li.list__item Сложный выбор
+
+		.module.module_regular.module_shrink.content
+			h2.content__header Как пополнить счет
+			p.content__text Пополнить свой счет или оплатить консультацию эксперта на сайте Magistika.com очень просто, и это займет у вас всего пару минут!
+			ul.content__bullet.list
+				li.list__item Верен ли мне мой мужчина?
+				li.list__item Вероятен ли благополучный брак?
+				li.list__item Какие ждут отношения в дальнейшем?
+				li.list__item Сложный выбор
+			p.content__text Выберите услугу и нажмите оплатить или зайдите в свой Личный кабинет нажмите на ссылку "пополнить счет" в верхнем правом углу экрана или кликнинте на ваш баланс
+
+		.module.module_regular.module_shrink.content
+			h3.content__text.content__text_strong Как пополнить счет
+			ol.content__order.list
+				li.list__item Пополнить свой счет или оплатить консультацию эксперта на сайте Magistika.com очень просто, и это займет у вас всего пару минут!
+					ul.content__bullet.list
+						li.list__item Банковской картой VISA MASTERCARD MAESTRO (Все страны)
+						li.list__item С баланса мобильного телефона через sms только для России (Мегафон, Билайн, МТС)
+						li.list__item Олата через элекстронный кошелек яндекс деньги
+						li.list__item Пополнить с помощью QIWI кошелька (после оплаты, пожалуйста свяжитесь с поддержкой)
+				li.list__item Выберите услугу и нажмите оплатить или зайдите в свой Личный кабинет нажмите на ссылку "пополнить счет" в верхнем правом углу экрана или кликнинте на ваш баланс
+					ul.content__bullet.list
+						li.list__item После перехода на страницу для оплаты введите желаемую сумму.
+						li.list__item Выберете удобный способ для оплаты услуги или пополнения счета.
+						li.list__item После оплаты, сумма отобразится в течении 1 минуты на вашем счету.
+						li.list__item В случае проблем с оплатой просим вас связаться с поддержкой клиентов на сайте
+				li.list__item В случае проблем с оплатой (задержкой платежа) просим вас связаться с поддержкой клиентов на нашем сайте (вкладка справа сбоку) или через обратную связь на странице в разделе "контакты"
+
+		.module.module_regular.module_shrink.content
+			h3.content__text.content__text_strong Как пополнить счет
+			p.content__text Пополнить свой счет или оплатить консультацию эксперта на сайте Magistika.com очень просто, и это займет у вас всего пару минут!
+			ol.content__order.list
+				li.list__item Банковской картой VISA MASTERCARD MAESTRO (Все страны)
+				li.list__item С баланса мобильного телефона через sms только для России (Мегафон, Билайн, МТС)
+				li.list__item Олата через элекстронный кошелек яндекс деньги
+				li.list__item Пополнить с помощью QIWI кошелька (после оплаты, пожалуйста свяжитесь с поддержкой)
+
+		.module.module_regular.module_shrink.content
+			h2.content__title Консультация экстрасенса бесплатно
+			p.content__text Вы можете задать вопрос экстрасенсам бесплатно (письменно) и получить ответы, советы, рекомендации. Ясновидящие, Гадалки, Тарологи, Астрологи дают ответы только на вопросы с описанием конкретной ситуации из вашей жизни с полными данными.
+			.content__table.table
+				.table__head
+					.table__row
+						.table__item Эксперты
+						.table__item Опыт
+						.table__item Стоимость
+				.table__body
+					.table__row
+						.table__item Линда Бэру
+						.table__item 20 лет
+						.table__item 49 рублей/мин.
+					.table__row
+						.table__item Линда Бэру
+						.table__item 20 лет
+						.table__item 49 рублей/мин.
+			.content__table.table
+				.table__head
+					.table__row
+						.table__item Эксперты
+						.table__item Стоимость
+				.table__body
+					.table__row
+						.table__item Линда Бэру
+						.table__item 49 рублей/мин.
+					.table__row
+						.table__item Линда Бэру
+						.table__item 49 рублей/мин.
+
+		.module.module_regular.content
+			.content__table.table
+				.table__head
+					.table__row
+						.table__item Эксперты
+						.table__item Опыт
+						.table__item Стоимость
+						.table__item Рейтинг
+				.table__body
+					.table__row
+						.table__item Линда Бэру
+						.table__item 20 лет
+						.table__item 49 рублей/мин.
+						.table__item.content__rating.rating
+							.rating__stars
+								.rating__star
+									svg
+										use(xlink:href="images/rate.svg#full")
+								.rating__star
+									svg
+										use(xlink:href="images/rate.svg#full")
+								.rating__star
+									svg
+										use(xlink:href="images/rate.svg#full")
+								.rating__star
+									svg
+										use(xlink:href="images/rate.svg#full")
+								.rating__star
+									svg
+										use(xlink:href="images/rate.svg#half")
+					.table__row
+						.table__item Линда Бэру
+						.table__item 20 лет
+						.table__item 49 рублей/мин.
+						.table__item.content__rating.rating
+							.rating__stars
+								.rating__star
+									svg
+										use(xlink:href="images/rate.svg#full")
+								.rating__star
+									svg
+										use(xlink:href="images/rate.svg#full")
+								.rating__star
+									svg
+										use(xlink:href="images/rate.svg#full")
+								.rating__star
+									svg
+										use(xlink:href="images/rate.svg#full")
+								.rating__star
+									svg
+										use(xlink:href="images/rate.svg#half")
+
+		.module.module_regular.content
+			h3.content__title Консультация экстрасенса бесплатно
+			.content__columns.column
+				.column__text
+					p.content__text Вы можете задать вопрос экстрасенсам бесплатно (письменно) и получить ответы, советы, рекомендации. Ясновидящие, Гадалки, Тарологи, Астрологи дают ответы только на вопросы с описанием конкретной ситуации из вашей жизни с полными данными. Фотография(не публикуется в общем доступе) даст больше информации и поможет экспертам ответить более точно и детально.
+					p.content__text Внимание! Бесплатный вопрос экстрасенсам может быть проигнорирован, если ваш вопрос не является четким, без пояснения ситуации. Инфомация должна быть указана на грамотном русском языке
+					p.content__text Вы можете задать вопрос экстрасенсам бесплатно (письменно) и получить ответы, советы, рекомендации. Ясновидящие, Гадалки, Тарологи, Астрологи дают ответы только на вопросы с описанием конкретной ситуации из вашей жизни с полными данными.
+				.column__images.image
+					.image__item
+						img(src="images/content-image-01.png")
+					.image__item
+						img(src="images/content-image-02.png")
+
+		.module.module_regular.content
+			.content__columns.column
+				.column__images.image
+					.image__item
+						img(src="images/content-image-01.png")
+					.image__item
+						img(src="images/content-image-02.png")
+				.column__text
+					h3.content__title Консультация экстрасенса бесплатно
+					p.content__text Вы можете задать вопрос экстрасенсам бесплатно (письменно) и получить ответы, советы, рекомендации. Ясновидящие, Гадалки, Тарологи, Астрологи дают ответы только на вопросы с описанием конкретной ситуации из вашей жизни с полными данными. Фотография(не публикуется в общем доступе) даст больше информации и поможет экспертам ответить более точно и детально.
+					p.content__text Внимание! Бесплатный вопрос экстрасенсам может быть проигнорирован, если ваш вопрос не является четким, без пояснения ситуации. Инфомация должна быть указана на грамотном русском языке
+					p.content__text Вы можете задать вопрос экстрасенсам бесплатно (письменно) и получить ответы, советы, рекомендации. Ясновидящие, Гадалки, Тарологи, Астрологи дают ответы только на вопросы с описанием конкретной ситуации из вашей жизни с полными данными.
+
+		.module.module_regular.content
+			h3.content__title Консультация экстрасенса бесплатно
+			p.content__text Вы можете задать вопрос экстрасенсам бесплатно (письменно) и получить ответы, советы, рекомендации. Ясновидящие, Гадалки, Тарологи, Астрологи дают ответы только на вопросы с описанием конкретной ситуации из вашей жизни с полными данными. Фотография(не публикуется в общем доступе) даст больше информации и поможет экспертам ответить более точно и детально.
+
+		.module.module_regular.expert
+			.expert__info.info
+				.info__avatar
+					img(src="images/expert.png")
+				.info__meta
+					.info__title Софья Геннадьевна
+					.info__cost
+						span.info__cost_price 56
+						span.info__cost_coin
+							include ../../public/images/coin-icon.svg
+						span.info__cost_time /мин
+			.expert__rating.rating
+				.rating__title Рейтинг эксперта
+				.rating__stars
+					.rating__star
+						svg
+							use(xlink:href="images/rate.svg#full")
+					.rating__star
+						svg
+							use(xlink:href="images/rate.svg#full")
+					.rating__star
+						svg
+							use(xlink:href="images/rate.svg#full")
+					.rating__star
+						svg
+							use(xlink:href="images/rate.svg#full")
+					.rating__star
+						svg
+							use(xlink:href="images/rate.svg#half")
+				.rating__average (4.5)
+
+		.module.module_regular.content
+			.content__header Кратко об эксперте
+			.content__text Опыт успешной практики 20 лет. В своей работе я использую различные колоды карт Таро, Большую колоду Ленорман, Симболон, Манара, 78 дверей.
+
+		.module.module_regular.content
+			.content__header Видео
+			.content__list.list
+				.list__items
+					.list__item(data-fancybox="video", data-src="#modal-video", data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://www.html5rocks.com/en/tutorials/video/basics/devstories.mp4","title": "1Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+						.list__cover
+							.list__image
+								img(src="images/video-item.jpg")
+							.list__time 3:40
+							.list__button.list__button_play
+						.list__title Ощущение счастья просто необходимо каждому из нас...
+						.list__view 12 просмотров
+					.list__item(data-fancybox="video", data-src="#modal-video", data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://www.html5rocks.com/en/tutorials/video/basics/devstories.mp4","title": "2Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+						.list__cover
+							.list__image
+								img(src="images/video-item.jpg")
+							.list__time 3:40
+							.list__button.list__button_play
+						.list__title Ощущение счастья просто необходимо каждому из нас...
+						.list__view 12 просмотров
+					.list__item(data-fancybox="video", data-src="#modal-video", data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://www.html5rocks.com/en/tutorials/video/basics/devstories.mp4","title": "3Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+						.list__cover
+							.list__image
+								img(src="images/video-item.jpg")
+							.list__time 3:40
+							.list__button.list__button_play
+						.list__title Ощущение счастья просто необходимо каждому из нас...
+						.list__view 12 просмотров
+					.list__item(data-fancybox="video", data-src="#modal-video", data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://www.html5rocks.com/en/tutorials/video/basics/devstories.mp4","title": "4Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+						.list__cover
+							.list__image
+								img(src="images/video-item.jpg")
+							.list__time 3:40
+							.list__button.list__button_play
+						.list__title Ощущение счастья просто необходимо каждому из нас...
+						.list__view 12 просмотров
+			a(href="#").content__load.load Показать еще
+				.load__items(data-loaded="true")
+					.load__item
+					.load__item
+					.load__item
+
+		.module.module_regular.content
+			.content__header Об эксперте
+			.content__text Дипломированный экстрасенс, Таролог, Прогрессор Космоэнергетики, Мастер свечной магии, Мастер Рейки Иггдрасиль, Маг. Имею посвящения в Зороастризм, нео-шаманизм. Оказываю профессиональную помощь в решении непростых жизненных ситуаций.
+			.content__text Дистанционно и по фото провожу сеансы диагностики и снятия негативных воздействий. Также диагностика энергетического и физического здоровья, внутренних блоков человека. Избавление от негативных и некротических привязок. Успешно помогаю в коррекции различных ситуаций, взаимоотношений. Открываю жизненные дороги. Восстанавливаю и активирую денежный поток. Дам подсказку, совет от Ангелов Света и Духов природы.
+			.content-expand(data-expand)
+				.content-expand__target(data-expand-target)
+					.content-expand__wrapper
+						.content__text Дистанционно и по фото провожу сеансы диагностики и снятия негативных воздействий. Также диагностика энергетического и физического здоровья, внутренних блоков человека. Избавление от негативных и некротических привязок. Успешно помогаю в коррекции различных ситуаций, взаимоотношений. Открываю жизненные дороги. Восстанавливаю и активирую денежный поток. Дам подсказку, совет от Ангелов Света и Духов природы.
+						.content__text Дистанционно и по фото провожу сеансы диагностики и снятия негативных воздействий. Также диагностика энергетического и физического здоровья, внутренних блоков человека. Избавление от негативных и некротических привязок. Успешно помогаю в коррекции различных ситуаций, взаимоотношений. Открываю жизненные дороги. Восстанавливаю и активирую денежный поток. Дам подсказку, совет от Ангелов Света и Духов природы.
+				a(href="#", data-expand-trigger).content__link.content-expand__trigger Читать полностью
+
+		.module.module_regular.content
+			.content__header Фото
+			.content__list.list
+				.list__items
+					.list__item(data-trigger="photo:0")
+						.list__cover
+							.list__image
+								img(src="images/photo-item.jpg")
+							.list__title.list__title_overlay Ощущение счастья просто необходимо каждому из нас...
+					.list__item(data-trigger="photo:1")
+						.list__cover
+							.list__image
+								img(src="images/photo-item.jpg")
+							.list__title.list__title_overlay Ощущение счастья просто необходимо каждому из нас...
+					.list__item(data-trigger="photo:2")
+						.list__cover
+							.list__image
+								img(src="images/photo-item.jpg")
+							.list__title.list__title_overlay Ощущение счастья просто необходимо каждому из нас...
+					.list__item(data-trigger="photo:3")
+						.list__cover
+							.list__image
+								img(src="images/photo-item.jpg")
+							.list__title.list__title_overlay Ощущение счастья просто необходимо каждому из нас...
+			a(href="#").content__load.load Показать еще
+				.load__items(data-loaded="true")
+					.load__item
+					.load__item
+					.load__item
+
+		.module.module_regular.content
+			.content__header Практики
+			.content__text
+				|
+				a(href="#").content__link.content__link_selected Биоэнергеты,
+				|
+				|
+				a(href="#").content__link.content__link_selected Гадалки,
+				|
+				|
+				a(href="#").content__link.content__link_selected Гадание на будущее,
+				|
+				|
+				a(href="#").content__link.content__link_selected Гадание на измену,
+				|
+				|
+				a(href="#").content__link.content__link_selected Гадание на имя,
+				|
+				|
+				a(href="#").content__link.content__link_selected Гадание на картах,
+				|
+				|
+				a(href="#").content__link.content__link_selected Гадание на кофейной гуще,
+				|
+				|
+				a(href="#").content__link.content__link_selected Гадание на любовь,
+				|
+				|
+				a(href="#").content__link.content__link_selected Гадание на мужа,
+				|
+				|
+				a(href="#").content__link.content__link_selected Гадание на отношения,
+				|
+				|
+				a(href="#").content__link.content__link_selected Гадание на парня,
+				|
+				|
+				a(href="#").content__link.content__link_selected Гадание на работу,
+				|
+				|
+				a(href="#").content__link.content__link_selected Гадание на рунах,
+				|
+				|
+				a(href="#").content__link.content__link_selected Гадание на семью,
+				|
+				|
+				a(href="#").content__link.content__link_selected Карта рождения,
+				|
+				|
+				a(href="#").content__link.content__link_selected Карта судьбы,
+				|
+				|
+				a(href="#").content__link.content__link_selected Космоэнергеты,
+				|
+				|
+				a(href="#").content__link.content__link_selected Медиумы,
+				|
+				|
+				a(href="#").content__link.content__link_selected Советы гадалки,
+				|
+				|
+				a(href="#").content__link.content__link_selected Эзотерики,
+				|
+				|
+				a(href="#").content__link.content__link_selected Экстрасенсорика,
+				|
+				|
+				a(href="#").content__link.content__link_selected Экстрасенсы
+|
+
+.module.modal.modal-video#modal-video
+	.modal__wrapper
+		.modal-video__content
+			.modal-video__player
+				video(controls="controls")
+					source(type="video/mp4")
+			.modal-video__items
+				.content__list.list
+					.list__items
+						.list__item(data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://www.html5rocks.com/en/tutorials/video/basics/devstories.mp4","title": "1Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+							.list__cover
+								.list__image
+									img(src="images/video-item.jpg")
+								.list__time 3:40
+							.list__meta
+								.list__title Ощущение счастья просто необходимо каждому из нас...
+								.list__view 12 просмотров
+						.list__item(data-video='{"poster":"http://media.w3.org/2010/05/sintel/poster.png","source": "http://media.w3.org/2010/05/sintel/trailer.mp4","title": "2Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+							.list__cover
+								.list__image
+									img(src="images/video-item.jpg")
+								.list__time 3:40
+							.list__meta
+								.list__title Ощущение счастья просто необходимо каждому из нас...
+								.list__view 12 просмотров
+						.list__item(data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://www.html5rocks.com/en/tutorials/video/basics/devstories.mp4","title": "3Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+							.list__cover
+								.list__image
+									img(src="images/video-item.jpg")
+								.list__time 3:40
+							.list__meta
+								.list__title Ощущение счастья просто необходимо каждому из нас...
+								.list__view 12 просмотров
+						.list__item(data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://www.html5rocks.com/en/tutorials/video/basics/devstories.mp4","title": "4Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+							.list__cover
+								.list__image
+									img(src="images/video-item.jpg")
+								.list__time 3:40
+							.list__meta
+								.list__title Ощущение счастья просто необходимо каждому из нас...
+								.list__view 12 просмотров
+						.list__item(data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://www.html5rocks.com/en/tutorials/video/basics/devstories.mp4","title": "5Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+							.list__cover
+								.list__image
+									img(src="images/video-item.jpg")
+								.list__time 3:40
+							.list__meta
+								.list__title Ощущение счастья просто необходимо каждому из нас...
+								.list__view 12 просмотров
+						.list__item(data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://www.html5rocks.com/en/tutorials/video/basics/devstories.mp4","title": "6Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+							.list__cover
+								.list__image
+									img(src="images/video-item.jpg")
+								.list__time 3:40
+							.list__meta
+								.list__title Ощущение счастья просто необходимо каждому из нас...
+								.list__view 12 просмотров
+		.modal__caption.caption
+			.caption__header
+			.caption__text

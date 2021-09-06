@@ -1,0 +1,72 @@
+.profile
+	&-cards
+		display: flex
+		flex-direction: column
+		align-items: flex-end
+		position: relative
+		@media (max-width: 600px)
+			margin: 0 -24px
+		&__wrapper
+			width: 100%
+			display: flex
+			align-items: center
+			margin-bottom: 16px
+			padding: 0 24px
+		&__error
+			font-size: 12px
+			color: var(--color-error)
+			&.state-hidden
+				display: none
+		&__list
+			width: 100%
+		&__link
+			margin-left: auto
+			&:hover
+				text-decoration: underline
+	&-card
+		display: flex
+		align-items: center
+		flex-basis: 100%
+		background-color: var(--color-profile-cards-secondary)
+		padding: 24px
+		border-radius: var(--border-radius)
+		@media (max-width: 600px)
+			flex-wrap: wrap
+		&.state-selected
+			background-image: url('./../images/card-cover.png')
+			background-size: cover
+			background-color: var(--color-profile-cards-primary)
+		&:not(:last-child)
+			margin-bottom: 8px
+			@media (max-width: 600px)
+				margin-bottom: 16px
+		&__image
+			margin-right: 23px
+			display: flex
+			align-items: center
+		&__info
+			margin-right: auto
+			flex-grow: 1
+			flex-shrink: 0
+			color: var(--color-primary)
+			@media (max-width: 600px)
+				line-height: 1
+			.info
+				&__title
+					font-size: 18px
+					margin-bottom: 2px
+				&__meta
+					font-size: 12px
+					span
+						margin-left: 8px
+						&.state-hidden
+							display: none
+						a
+							font-size: inherit
+		&__action
+			@media (max-width: 600px)
+				margin-top: 16px
+				flex-basis: 100%
+		&__button
+			@media (max-width: 600px)
+				font-size: 16px

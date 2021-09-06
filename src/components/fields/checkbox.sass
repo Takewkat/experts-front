@@ -1,0 +1,23 @@
+.checkbox
+	width: auto
+	input
+		display: none
+		&:checked
+			~ .checkbox__field
+				background-color: var(--color-control)
+				border-color: var(--color-control)
+				background-image: url(../images/ok.svg)
+				background-repeat: no-repeat
+				background-position: center
+	&__field, &__label, input
+		cursor: pointer
+	&__field
+		flex-shrink: 0
+		width: 16px
+		height: 16px
+		border-radius: var(--border-radius)
+		border: 1px solid #5F666D
+		margin-right: 8px
+	&__label
+		display: inline-flex
+		align-items: center

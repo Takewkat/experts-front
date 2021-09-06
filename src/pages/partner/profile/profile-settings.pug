@@ -1,0 +1,146 @@
+.popover.popover_shadow.popover_modal(data-popover)
+	.popover__items
+		.popover__close(data-close)
+			include ../../../public/images/popover-close.svg
+		.popover__item(data-target="remove-file")
+			.popover__alert(data-alert)
+			.popover__header Удалить файл
+			.popover__text.popover__text_small Вы уверены, что хотите удалить файл?
+			.popover__action.action
+				.action__button.button.button_large.button_theme-gray(data-trigger="remove-file:cancel") Нет
+				.action__button.button.button_large(data-trigger="remove-file:submit") Удалить
+		.popover__item(data-target="remove-files")
+			.popover__alert(data-alert)
+			.popover__header Удалить файлы
+			.popover__text.popover__text_small Вы уверены, что хотите удалить выбранные файлы?
+			.popover__action.action
+				.action__button.button.button_large.button_theme-gray(data-trigger="remove-files:cancel") Нет
+				.action__button.button.button_large(data-trigger="remove-files:submit") Удалить
+
+.module.module_page(data-route="user:profile")
+	include profile-tabs.pug
+	.module.module_regular.profile
+		.module__content
+			form(action="https://drewsher.ru/preview/api/index.php?res=success", method="post").profile__data.data
+				.profile__header.profile__header_merge Публичные данные
+				.profile__body.body
+					.body__row.body__row_section.row
+						.row__label
+						.row__content
+							.row__title Личная информация
+					.body__row.row.file
+						.row__label Аватар
+						.row__content
+							.row__error.row__error_line(data-error)
+								span Ошибка при загрузке
+								a(href="#", data-action="change") Повторить
+								a(href="#", data-action="remove") Удалить
+							.file__field
+								.content__wrapper.content__wrapper_file
+									.field.field_wide
+										input(type="file", name="cover", data-type="cover" data-url="https://dev.22e.ru/users/upload-image", accept=".jpg, .jpeg, .png")
+										input(type="text", placeholder="Файл не выбран", readonly, data-action="upload").field__input
+									.button.button_large(data-action="upload") Выберите файл
+							.file__image.file__image_small.state-active
+								.file__cover
+								.file__source(data-avatar)
+									img(src="images/userpic.jpg")
+								.file__action(data-action="change")
+									include ../../../public/images/avatar-change-icon.svg
+								.file__action(data-action="remove", data-url="https://dev.22e.ru/users/delete-file")
+									include ../../../public/images/avatar-remove-icon.svg
+					.body__row.row
+						.row__label Имя
+						.row__content
+							.field.field_wide
+								input(type="text", name="firstName", placeholder="Введите имя").field__input
+								.field__match.match.state-visible
+									.match__header К сожалению, логин занят
+									.match__text Попробуйте изменить его или выберите один из свободных
+									.match__items
+										.match__item ivan25
+										.match__item ivan21
+										.match__item levinivan25
+										.match__item levin.ivan25
+										.match__item livlevin
+							.row__text Ваше имя будет видно всем участникам системы - в публичных чатах, при личной переписке и в индивидуальных консультациях. Если беспокоитесь о своей приватности, задавайте нейтральное значение, которое не сможет ее нарушить.
+					.body__row.row
+						.row__label Источники трафика
+						.row__content
+							.field.field_wide
+								textarea(name="firstName", placeholder="Укажите источник трафика").field__textarea
+					.body__row.body__row_section.row
+						.row__label
+						.row__content
+							.row__title Контактная информация
+					.body__row.row(data-approve)
+						.row__label Email
+						.row__content.state-active(data-state="enter", data-action="https://dev.22e.ru/auth/send-code")
+							.row__error(data-error)
+							.content__wrapper.content__wrapper_group
+								.field.field_wide
+									input(type="email", name="email", placeholder="Введите почту").field__input
+								.button.button_large Подтвердить
+							.row__text Для использования сервиса, укажите свой email
+						.row__content(data-state="code", data-action="https://dev.22e.ru/auth/profile-check-code")
+							.row__error(data-error)
+							.content__wrapper.content__wrapper_group
+								.field.field_wide
+									input(type="email", name="email", readonly).field__input
+								.field.field_wide
+									input(type="text", name="email-approve-code", placeholder="Код подтверждения").field__input
+								.button.button_large Ok
+							.row__text
+								| Мы выслали на ваш e-mail:
+								span(data-text)
+								| код подтверждения, введите в поле для привязки
+								a(href="#", data-resend)
+									| Повторить
+									span(data-timer)
+						.row__content(data-state="approved")
+							.content__wrapper
+								.field.field_wide
+									input(type="email", name="email", readonly).field__input
+								.row__status
+									include ../../../public/images/approved.svg
+							.row__text
+								| Для смены обратитесь в
+								a(href="#").row__link саппорт
+					.body__row.row(data-approve)
+						.row__label Телефон
+						.row__content.state-active(data-state="enter", data-action="https://dev.22e.ru/auth/send-code")
+							.row__error(data-error)
+							.content__wrapper.content__wrapper_group
+								.field.field_wide
+									input(type="tel", name="phone", placeholder="Введите телефон").field__input
+								.button.button_large Подтвердить
+							.row__text Для использования сервиса, укажите свой телефон
+						.row__content(data-state="code", data-action="https://dev.22e.ru/auth/profile-check-code")
+							.row__error(data-error)
+							.content__wrapper.content__wrapper_group
+								.field.field_wide
+									input(type="tel", name="phone", readonly).field__input
+								.field.field_wide
+									input(type="text", name="phone-approve-code", placeholder="Код подтверждения").field__input
+								.button.button_large Ok
+							.row__text
+								| Мы выслали на ваш телефон:
+								span(data-text)
+								| код подтверждения, введите в поле для привязки
+								a(href="#", data-resend)
+									| Повторить
+									span(data-timer)
+						.row__content(data-state="approved")
+							.content__wrapper
+								.field.field_wide
+									input(type="tel", name="phone", readonly).field__input
+								.row__status
+									include ../../../public/images/approved.svg
+							.row__text
+								| Для смены обратитесь в
+								a(href="#").row__link саппорт
+					.body__row.body__row_footer
+						.body__row.row
+							.row__content
+								.content__wrapper.content__wrapper_buttons
+									input(type="submit", value="Сохранить").button.button_large

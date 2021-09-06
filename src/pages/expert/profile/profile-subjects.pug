@@ -1,0 +1,296 @@
+.popover.popover_shadow.popover_modal(data-popover)
+	.popover__items
+		.popover__close(data-close)
+			include ../../../public/images/popover-close.svg
+		.popover__item(data-target="remove")
+			.popover__alert(data-alert)
+			.popover__header Удалить область знаний?
+			.popover__text.popover__text_small Вы уверены, что хотите удалить подтвержденную область знаний? В этом случае при повторном добавлении вам снова придется ждать ее одобрения.
+			.popover__action.action
+				.action__button.button.button_large.button_theme-gray(data-trigger="remove:cancel") Нет
+				.action__button.button.button_large(data-trigger="remove:submit") Удалить
+
+.module.module_page(data-route="user:subjects")
+	include ./profile-tabs.pug
+	.module.module_regular.profile
+		.module__content
+			form(action="https://drewsher.ru/preview/api/index.php?res=success", method="post").profile__data.data
+				.profile__header.profile__header_merge Области знаний
+				.profile__body.body
+					.body__row.row
+						.row__content
+							.profile__caption
+								p.profile__text
+									strong Подтвержденные области знаний
+								p.profile__text Администрация не подтвердила пока еще ни одной области ваших знаний. Возможно, стоит их добавить?
+					.body__row.row
+						.row__content
+							.profile__caption
+								p.profile__text
+									strong Подтвержденные области знаний
+								.choice-select(data-choice-accepted="true")
+									.choice-select__list
+										.choice-select__item
+											.choice-select__title Иностранные языки
+											.choice-select__title Английский язык
+											.choice-select__title Локальный
+												.choice-select__remove(data-remove)
+													include ../../../public/images/choice-remove-icon.svg
+										.choice-select__item
+											.choice-select__title Иностранные языки
+											.choice-select__title Английский язык
+											.choice-select__title Локальный
+												.choice-select__remove(data-remove)
+													include ../../../public/images/choice-remove-icon.svg
+										.choice-select__item
+											.choice-select__title Иностранные языки
+											.choice-select__title Английский язык
+											.choice-select__title Локальный
+												.choice-select__remove(data-remove="first")
+													include ../../../public/images/choice-remove-icon.svg
+					.body__row.row
+						.row__content
+							.profile__caption
+								p.profile__text
+									strong Области знаний, ожидающие подтверждения
+								p.profile__text У вас нет ни одной области знаний на рассмотрении. Можете добавить их внизу.
+					.body__row.row
+						.row__content
+							.profile__caption
+								p.profile__text
+									strong Области знаний, ожидающие подтверждения
+								.choice-select(data-choice-accepted="false")
+									.choice-select__list
+										.choice-select__item
+											.choice-select__title Иностранные языки
+											.choice-select__title Английский язык
+											.choice-select__title Локальный
+												.choice-select__remove(data-remove="first")
+													include ../../../public/images/choice-remove-icon.svg
+										.choice-select__item
+											.choice-select__title Иностранные языки
+											.choice-select__title Английский язык
+											.choice-select__title Локальный
+												.choice-select__remove(data-remove)
+													include ../../../public/images/choice-remove-icon.svg
+										.choice-select__item
+											.choice-select__title Иностранные языки
+											.choice-select__title Английский язык
+											.choice-select__title Локальный
+												.choice-select__remove(data-remove)
+													include ../../../public/images/choice-remove-icon.svg
+					.body__row.row.choice(data-choice="single")
+						.row__content
+							.profile__caption
+								p.profile__text
+									strong Добавить область знаний
+								.choice__wrapper
+									input(type="hidden").choice__data
+									.choice__group.state-active.state-expand(data-target="main")
+										.choice__header(data-trigger) Иностранные языки
+										.choice__section.state-active.state-expand(data-target="sub")
+											.choice__item
+												.choice__subheader(data-trigger)
+													.choice__title Английский язык
+													.choice__carret
+														include ../../../public/images/carret-icon.svg
+												.choice__list
+													.choice__field.field.field_checkbox.checkbox.state-exists
+														label.checkbox__label
+															input(type="checkbox", id="first")
+															.checkbox__field
+															| Локальный
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Носитель
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Подготовка к международным экзаменам
+										.choice__section(data-target="sub")
+											.choice__item
+												.choice__subheader(data-trigger)
+													.choice__title Немецкий язык
+													.choice__carret
+														include ../../../public/images/carret-icon.svg
+												.choice__list
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Локальный
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Носитель
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Подготовка к международным экзаменам
+										.choice__section(data-target="sub")
+											.choice__item
+												.choice__subheader(data-trigger)
+													.choice__title Французский язык
+													.choice__carret
+														include ../../../public/images/carret-icon.svg
+												.choice__list
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Локальный
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Носитель
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Подготовка к международным экзаменам
+									.choice__group(data-target="main")
+										.choice__header(data-trigger) Психология
+										.choice__section(data-target="sub")
+											.choice__item
+												.choice__subheader(data-trigger)
+													.choice__title Английский язык
+													.choice__carret
+														include ../../../public/images/carret-icon.svg
+												.choice__list
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Локальный
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Носитель
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Подготовка к международным экзаменам
+										.choice__section(data-target="sub")
+											.choice__item
+												.choice__subheader(data-trigger)
+													.choice__title Немецкий язык
+													.choice__carret
+														include ../../../public/images/carret-icon.svg
+												.choice__list
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Локальный
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Носитель
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Подготовка к международным экзаменам
+										.choice__section(data-target="sub")
+											.choice__item
+												.choice__subheader(data-trigger)
+													.choice__title Французский язык
+													.choice__carret
+														include ../../../public/images/carret-icon.svg
+												.choice__list
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Локальный
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Носитель
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Подготовка к международным экзаменам
+									.choice__group(data-target="main")
+										.choice__header(data-trigger) Иностранные языки
+										.choice__section(data-target="sub")
+											.choice__item
+												.choice__subheader(data-trigger)
+													.choice__title Английский язык
+													.choice__carret
+														include ../../../public/images/carret-icon.svg
+												.choice__list
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Локальный
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Носитель
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Подготовка к международным экзаменам
+										.choice__section(data-target="sub")
+											.choice__item
+												.choice__subheader(data-trigger)
+													.choice__title Немецкий язык
+													.choice__carret
+														include ../../../public/images/carret-icon.svg
+												.choice__list
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Локальный
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Носитель
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Подготовка к международным экзаменам
+										.choice__section(data-target="sub")
+											.choice__item
+												.choice__subheader(data-trigger)
+													.choice__title Французский язык
+													.choice__carret
+														include ../../../public/images/carret-icon.svg
+												.choice__list
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Локальный
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Носитель
+													.choice__field.field.field_checkbox.checkbox
+														label.checkbox__label
+															input(type="checkbox")
+															.checkbox__field
+															| Подготовка к международным экзаменам
+					.body__row
+						.row__content
+							.content__wrapper.content__wrapper_buttons
+								input(type="submit", value="Сохранить").button.button_large

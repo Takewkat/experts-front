@@ -1,0 +1,69 @@
+{
+  "type": "module",
+  "name": "44",
+  "version": "1.0.0",
+  "description": "video service",
+  "author": "Drew Sher.",
+  "license": "ISC",
+  "main": "src/index.js",
+  "scripts": {
+    "serve": "cross-env NODE_ENV=development gulp",
+    "build": "cross-env NODE_ENV=production gulp build",
+    "letters": "node src/emails/index.js",
+    "upload": "rsync -r --exclude=.DS_Store dist/css dist/js drewsher.ru:drewsher.ru/public_html/preview/44",
+    "deploy": "yarn build && yarn upload"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn upload"
+    }
+  },
+  "dependencies": {
+    "@fancyapps/fancybox": "^3.5.7",
+    "air-datepicker": "^2.2.3",
+    "core-js": "^3.17.2",
+    "fullcalendar": "^5.6.0",
+    "imask": "^6.0.5",
+    "jquery": "^3.5.1",
+    "pug": "^3.0.2",
+    "slick-carousel": "^1.8.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "autoprefixer": "^10.2.3",
+    "babel-loader": "^8.2.2",
+    "browser-sync": "^2.26.7",
+    "compression": "^1.7.4",
+    "cross-env": "^7.0.3",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-cached": "^1.1.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^3.0.1",
+    "gulp-exec": "^5.0.0",
+    "gulp-fontmin": "^0.7.4",
+    "gulp-if": "^3.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^9.0.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-shorthand": "^1.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-util": "^3.0.8",
+    "gulp-watch": "^5.0.1",
+    "husky": "4",
+    "jstransformer-markdown-it": "^2.1.0",
+    "mjml": "^4.10.1",
+    "postcss": "^8.2.4",
+    "postcss-cli": "^8.3.1",
+    "postcss-custom-properties": "^11.0.0",
+    "postcss-hexrgba": "^2.0.1",
+    "vinyl-ftp": "^0.6.1",
+    "vinyl-named": "^1.1.0",
+    "webpack-stream": "^6.1.2"
+  }
+}

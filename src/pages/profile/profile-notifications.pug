@@ -1,0 +1,45 @@
+.module.module_page(data-route="user:notifications")
+	.module.module_regular.profile
+		.module__content
+			.profile__info.info
+				.info__wrapper
+					.profile__header Публичные данные
+					.profile__body.body
+						.profile__avatar.avatar
+							.avatar__image(data-avatar)
+								img(src="images/userpic.jpg")
+							.avatar__wrapper
+								.avatar__label Имя
+								.avatar__title Ivan25
+						.profile__text Информация, которую вы укажете в этом разделе, <br> публичная. Она видна другим пользователям.
+				include ./profile-navs.pug
+			form(action="https://drewsher.ru/preview/api/index.php?res=success", method="post").profile__data.data
+				.profile__header.meta
+					.meta__title Настройка уведомлений
+				.profile__body.body(data-notifications-manage)
+					.body__row.row
+						.row__label.row__label_wide Получать СМС-уведомления
+						.row__content
+							.field.field_switch.switch
+								label.switch__label
+									input(type="checkbox", name="sms", id="sms", checked).switch__input
+									.switch__field
+					.body__row.row
+						.row__label.row__label_wide Получать почтовые уведомления
+						.row__content
+							.field.field_switch.switch
+								label.switch__label
+									input(type="checkbox", name="emails", id="emails", checked).switch__input
+									.switch__field
+					.body__row.row
+						.row__label.row__label_wide Не получать уведомлений
+						.row__content
+							.field.field_switch.switch
+								label.switch__label
+									input(type="checkbox", name="off", id="off").switch__input
+									.switch__field
+					.body__row.body__row_footer
+						.body__row.row
+							.row__content
+								.content__wrapper.content__wrapper_buttons
+									input(type="submit", value="Сохранить").button.button_large

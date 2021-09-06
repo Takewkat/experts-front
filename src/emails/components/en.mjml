@@ -1,0 +1,5 @@
+<mj-include path="./../components/gap.mjml">
+<mj-include path="./../components/gap.mjml">
+<mj-include path="./../components/divider.mjml">
+<mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="18px" color="%style.text%"><b>ENGLISH VERSION</b>: You or someone else just indicated this e-mail for authorization on the <a href="%href%" style="color:%style.links%">%hostname%</a> website. If it wasn’t you, just ignore this letter.</mj-text>
+<mj-include path="./../components/divider.mjml">

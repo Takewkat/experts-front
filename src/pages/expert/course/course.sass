@@ -1,0 +1,148 @@
+.course-list
+
+.course-item
+	display: flex
+	position: relative
+
+	padding: 24px 0 24px 24px
+
+	background-color: var(--color-fill-secondary)
+	border-radius: var(--border-radius)
+
+	overflow: hidden
+
+	@media screen and (max-width: 600px)
+		padding: 18px
+		flex-direction: column
+
+	&:not(:last-child)
+		margin-bottom: 24px
+
+.course-link
+	display: flex
+	flex-grow: 1
+	position: relative
+
+	&__icon
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+
+		width: 100px
+		height: 100px
+
+		margin: auto
+
+		opacity: 0
+
+		transition: opacity linear 300ms
+
+		svg
+			width: 100%
+			height: auto
+
+			path
+				fill-opacity: 1
+
+	&::before
+		content: ''
+
+		position: absolute
+		top: -24px
+		left: -24px
+		width: calc(100% + 24px)
+		height: calc(100% + (24px + 32px))
+
+		background-color: rgba(#2C2E31, .75)
+
+		opacity: 0
+
+		transition: opacity linear 300ms
+
+	&:hover
+		.course-link__icon,
+		&::before
+			opacity: 1
+
+.course-image
+	align-self: flex-start
+	border-radius: var(--border-radius)
+	overflow: hidden
+	max-width: 260px
+	@media screen and (max-width: 600px)
+		max-width: 100%
+
+	img
+		max-width: 100%
+
+.course-section
+	flex-grow: 1
+	display: flex
+	flex-direction: column
+	padding: 0 32px
+
+	@media screen and (max-width: 600px)
+		padding: 32px 0 0
+
+	&__title
+		font-size: 18px
+		line-height: 20px
+		font-weight: 700
+		margin-bottom: 8px
+
+	&__description
+		max-width: 540px
+		font-weight: normal
+		font-size: 16px
+
+	&__info
+		margin-top: auto
+
+.course-meta
+	display: flex
+	flex-direction: column
+	align-items: center
+	margin-top: calc(-24px * 2)
+	padding: 24px 32px
+	transform: translateY(24px)
+
+	border-left: 1px solid var(--color-fill-primary)
+
+	@media screen and (max-width: 600px)
+		flex-direction: row
+		justify-content: space-between
+
+		padding: 24px 24px 0
+		margin-top: 32px
+		margin-left: calc(-24px * 2)
+		transform: translateX(24px)
+
+		border-left: unset
+		border-top: 1px solid var(--color-fill-primary)
+
+	&__price
+		display: flex
+		flex-direction: column
+		margin-bottom: 6px
+
+		font-size: 18px
+
+	&__coin
+		margin: 0 auto 18px
+
+		@media screen and (max-width: 600px)
+			margin: unset
+
+		.coin
+
+			&__prepend
+				font-size: 32px
+				font-weight: normal
+
+			&__picture
+
+				svg
+					width: 32px
+					height: 32px

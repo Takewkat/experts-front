@@ -1,0 +1,28 @@
+.select
+	position: relative
+	cursor: pointer
+	&.state-expand
+		.select__carret
+			transform: rotate(180deg)
+			transform-origin: center
+	&__items
+		position: absolute
+		z-index: 1
+		top: calc(100% + 1px)
+		width: 100%
+		max-height: 175px
+		overflow-y: scroll
+		background-color: white
+		color: var(--color-fields-primary)
+		border-radius: var(--border-radius)
+		font-size: 12px
+		display: none
+		box-shadow: var(--shadow-select)
+	&__item
+		padding: 10px 0 10px 16px
+		cursor: pointer
+		&:hover
+			background-color: var(--color-aqua)
+			color: var(--color-gold)
+		&:not(:last-child)
+			border-bottom: 1px solid var(--color-aqua)

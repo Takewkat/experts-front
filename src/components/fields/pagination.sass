@@ -1,0 +1,33 @@
+.pagination
+	display: flex
+	&__pages, &__item
+		display: flex
+		display: flex
+		justify-content: center
+		align-items: center
+	&__item
+		margin-right: 4px
+		width: 32px
+		height: 32px
+		background-color: white
+		border: 1px solid var(--color-silver)
+		border-radius: var(--border-radius)
+		color: var(--color-pagination-secondary)
+		cursor: pointer
+		&:after
+			content: attr(data-nav)
+		&.state-active, &:hover
+			color: var(--color-pagination-primary)
+		&[data-control]
+			&:not(.state-active)
+				opacity: .75
+				cursor: default
+			&:hover
+				&.state-active
+					svg path
+						fill: var(--color-pagination-primary)
+		&[data-control="next"],
+		&[data-control="end"]
+			svg
+				transform: rotate(180deg)
+				transform-origin: center

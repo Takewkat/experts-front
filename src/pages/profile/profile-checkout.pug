@@ -1,0 +1,110 @@
+.module.module_page.profile(data-route="user-card")
+	.module__content
+		.profile__info.info
+			.info__wrapper
+				.profile__header Публичные данные
+				.profile__body.body
+					.profile__avatar.avatar
+						.avatar__image(data-placeholder="images/profile-placeholder.png")
+							img(src="images/profile.png")
+						.avatar__wrapper
+							.avatar__label Имя
+							.avatar__title Ivan25
+					.profile__text Информация, которую вы укажете в этом разделе, <br> публичная. Она видна другим пользователям.
+			include ./profile-navs.pug
+		.profile__data.data
+			.profile__header.meta
+				.meta__title Пополние счета на: 750 ₽
+			.profile__body.body(data-view="select")
+				.body__row.state-error
+					.row__content
+						.row__error
+							span Исправьте следующие ошибки:
+							ul
+								li error 1
+								li error 2
+								li error 3
+						.new-card
+							.new-card__main
+								.new-card__number
+									.new-card__text Укажите номер карты:
+									.new-card__field.field.field_bordered.field_wide.field_select.select.state-selected
+										.field__input(data-select-output) 4276 55 •• •••• 3265
+										input(type="hidden", name="card", data-select-output)
+										.field__icon
+											include ../../public/images/carret-icon.svg
+										.select__items
+											.select__item(data-option="0") 4276 55 •• •••• 3265
+											.select__item(data-option="1") 4276 55 •• •••• 3265
+											.select__item(data-option="add") Добавить новую карту
+								.new-card__icons
+									.new-card__icon.state-active(data-platform="mc")
+										include ../../public/images/platform-mc-icon.svg
+									.new-card__icon(data-platform="visa")
+										include ../../public/images/platform-visa-icon.svg
+									.new-card__icon(data-platform="mir")
+										include ../../public/images/platform-mir-icon.svg
+				.body__row.row
+					.row__content.content
+						.content__wrapper.content__wrapper_buttons
+							input(type="submit", value="Оплатить с карты").button.button_large
+				.body__row.row.state-hidden(data-pay="apple")
+					.row__content.content
+						.content__wrapper.content__wrapper_buttons
+							.button.button_large.button_theme-dark.button_theme-brand.button_theme-brand_apple
+								include ../../public/images/apple-pay-icon.svg
+				.body__row.row.state-hidden(data-pay="google")
+					.row__content.content
+						.content__wrapper.content__wrapper_buttons
+							.button.button_large.button_theme-dark.button_theme-brand.button_theme-brand_google
+								include ../../public/images/google-pay-icon.svg
+			.profile__body.body.state-hidden(data-view="card")
+				.body__row.state-error
+					.row__content
+						.row__error
+							span Исправьте следующие ошибки:
+							ul
+								li error 1
+								li error 2
+								li error 3
+						.new-card
+							.new-card__main
+								.new-card__number
+									.new-card__text Укажите номер карты:
+									.new-card__field.field.field_bordered.field_wide
+										input(type="text", name="number", placeholder="0000 0000 0000 0000").field__input#card-number
+								.new-card__wrapper
+									.new-card__code
+										.new-card__text Месяц/Год:
+										.new-card__field.field.field_bordered
+											input(type="text", name="expire", placeholder="ММ/YY").field__input#card-expire
+									.new-card__holder
+										.new-card__text Укажите ваше имя:
+										.new-card__field.field.field_bordered
+											input(type="text", name="holder", placeholder="IVAN IVANOV").field__input#card-holder
+							.new-card__side
+								.new-card__field.field
+									input(type="text", name="cvc", placeholder="CVC").field__input#card-code
+								.new-card__text Три цифры на обороте карты
+				.body__row.row
+					.row__content.content
+						.content__wrapper.content__wrapper_buttons
+							.new-card__field.field.field_checkbox.checkbox.state-exists
+								label.checkbox__label
+									input(type="checkbox", checked, name="add", id="checkbox")
+									.checkbox__field
+									| Привязать карту
+				.body__row.row
+					.row__content.content
+						.content__wrapper.content__wrapper_buttons
+							input(type="submit", value="Оплатить с карты").button.button_large
+				.body__row.row.state-hidden(data-pay="apple")
+					.row__content.content
+						.content__wrapper.content__wrapper_buttons
+							.button.button_large.button_theme-dark.button_theme-brand.button_theme-brand_apple
+								include ../../public/images/apple-pay-icon.svg
+				.body__row.row.state-hidden(data-pay="google")
+					.row__content.content
+						.content__wrapper.content__wrapper_buttons
+							.button.button_large.button_theme-light.button_theme-brand.button_theme-brand_google
+								include ../../public/images/google-pay-icon-light.svg

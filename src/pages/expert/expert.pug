@@ -1,0 +1,453 @@
+.popover.popover_modal(data-popover)
+	.popover__items
+		.popover__close(data-close)
+			include ../../public/images/popover-close.svg
+
+		.popover__item(data-target="course-buy")
+			.popover__alert(data-alert)
+			.popover__header
+				| Купить курс
+				|
+				span(data-title)
+			.popover__text.popover__text
+				| При покупке курса, с вашего счета спишется
+				|
+				span(data-cost)
+				|
+				| и вы будете перенаправлены на его страницу
+			.popover__action.action
+				.action__button.button.button_large.button_theme-gray(data-trigger="course-buy:cancel") Отмена
+				a(href="/materials/buy").action__button.button.button_large Купить
+		.popover__item(data-target="service-buy")
+			.popover__alert(data-alert)
+			.popover__header
+				| Купить услугу
+				|
+				span(data-title)
+			.popover__text.popover__text
+				| При покупке услуги, с вашего счета спишется
+				|
+				span(data-cost)
+				|
+				| и вы будете перенаправлены на его страницу
+			.popover__action.action
+				.action__button.button.button_large.button_theme-gray(data-trigger="service-buy:cancel") Отмена
+				a(href="/materials/buy").action__button.button.button_large Купить
+
+.module.module_page(data-route="content")
+	.module__content
+		.module.module_regular.expert
+			.expert__info.info
+				.info__avatar(data-status="offline", data-url="https://dev.44a.ru/expert/expert-online-info?expert_id=1")
+					img(src="images/expert.png")
+				.info__meta
+					.info__title Софья Геннадьевна
+					.info__cost
+						span.info__cost_price 56
+						span.info__cost_coin
+							include ../../public/images/coin-icon.svg
+						span.info__cost_time /мин
+			.expert__rating.rating
+				.rating__title Рейтинг эксперта
+				.rating__stars
+					.rating__star
+						svg
+							use(xlink:href="images/rate.svg#full")
+					.rating__star
+						svg
+							use(xlink:href="images/rate.svg#full")
+					.rating__star
+						svg
+							use(xlink:href="images/rate.svg#full")
+					.rating__star
+						svg
+							use(xlink:href="images/rate.svg#half")
+					.rating__star
+						svg
+							use(xlink:href="images/rate.svg#empty")
+				.rating__average (4.5)
+			a(href="./calendar.html").expert__button.button.button_large Посмотреть расписание эксперта
+		.module.module_regular.content
+			.content__header Кратко об эксперте
+			.content__text Опыт успешной практики 20 лет. В своей работе я использую различные колоды карт Таро, Большую колоду Ленорман, Симболон, Манара, 78 дверей.
+
+		.module.module_regular.content
+			.content__header Платные курсы от эксперта
+			.course-list
+				.course-item(data-course="1")
+					a(href="expert-course.html").course-link
+						.course-link__icon
+							include ../../public/images/watch-icon.svg
+						.course-image
+							img(src="images/course-cover.jpg", alt="Мини-курс «Мудры. Магия жестов»")
+						.course-section
+							.course-section__title(data-course-title) Мини-курс «Мудры. Магия жестов»
+							.course-section__description Три составляющие мини-курса: энергия, здоровье и решение проблем. На уроках вы узнаете, как соединяться с высокочастотным...
+							.course-section__info Всего 3ч • 4 картинки • 20 мб презентации
+					.course-meta
+						.course-meta__price
+							| Стоимость
+							.course-meta__coin.coin
+								.coin__prepend(data-course-cost) 100
+								.coin__picture
+									include ../../public/images/coin-icon.svg
+						.course-meta__button.button.button_large(data-target="course-buy", data-url) Купить курс
+				.course-item
+					a(href="expert-course.html").course-link
+						.course-link__icon
+							include ../../public/images/watch-icon.svg
+						.course-image
+							img(src="images/course-cover.jpg", alt="Мини-курс «Мудры. Магия жестов»")
+						.course-section
+							.course-section__title Мини-курс «Мудры. Магия жестов»
+							.course-section__description Три составляющие мини-курса: энергия, здоровье и решение проблем. На уроках вы узнаете, как соединяться с высокочастотным...
+							.course-section__info Всего 3ч • 4 картинки • 20 мб презентации
+			a(href="#").content__load.load Показать еще
+				.load__items(data-loaded="true")
+					.load__item
+					.load__item
+					.load__item
+
+		.module.module_regular.content
+			.content__header Платные услуги от эксперта
+			.course-list
+				.course-item(data-course="1")
+					a(href="expert-service.html").course-link
+						.course-link__icon
+							include ../../public/images/watch-icon.svg
+						.course-image
+							img(src="images/course-cover.jpg", alt="Мини-курс «Мудры. Магия жестов»")
+						.course-section
+							.course-section__title(data-course-title) Услуга «Мудры. Магия жестов»
+							.course-section__description Три составляющие мини-курса: энергия, здоровье и решение проблем. На уроках вы узнаете, как соединяться с высокочастотным...
+							.course-section__info Всего 3ч • 4 картинки • 20 мб презентации
+					.course-meta
+						.course-meta__price
+							| Стоимость
+							.course-meta__coin.coin
+								.coin__prepend(data-course-cost) 100
+								.coin__picture
+									include ../../public/images/coin-icon.svg
+						.course-meta__button.button.button_large(data-target="service-buy", data-url) Купить услугу
+				.course-item
+					a(href="expert-service.html").course-link
+						.course-link__icon
+							include ../../public/images/watch-icon.svg
+						.course-image
+							img(src="images/course-cover.jpg", alt="Мини-курс «Мудры. Магия жестов»")
+						.course-section
+							.course-section__title Мини-курс «Мудры. Магия жестов»
+							.course-section__description Три составляющие мини-курса: энергия, здоровье и решение проблем. На уроках вы узнаете, как соединяться с высокочастотным...
+							.course-section__info Всего 3ч • 4 картинки • 20 мб презентации
+			a(href="#").content__load.load Показать еще
+				.load__items(data-loaded="true")
+					.load__item
+					.load__item
+					.load__item
+
+		.module.module_regular.chat
+			.widget-expert
+				img(src="images/widget-cover.jpg")
+				#vsContainer
+			.widget-popup.state-active
+				.widget-popup__wrapper
+					.widget-popup__heading Ваш браузер устарел
+					.widget-popup__body
+						.widget-popup__text Пожалуйста обновите браузер — на текущей версии браузера сайт может работать неправильно
+						.browser-expire-list
+							.browser-expire-list__item
+								img(src="images/browsers/chrome.jpg", alt="скачать хром").browser-expire-list__icon
+								a(href="#").browser-expire-list__link Chrome
+							.browser-expire-list__item
+								img(src="images/browsers/firefox.jpg", alt="скачать файрфокс").browser-expire-list__icon
+								a(href="#").browser-expire-list__link Firefox
+							.browser-expire-list__item
+								img(src="images/browsers/opera.jpg", alt="скачать оперу").browser-expire-list__icon
+								a(href="#").browser-expire-list__link Opera
+
+		.module.module_regular.chat
+			.widget-expert
+				img(src="images/widget-cover.jpg")
+				#vsContainer
+			.widget-popup.state-active
+				.widget-popup__wrapper
+					.widget-popup__heading Авторизуйтесь, чтобы продолжить
+					.widget-popup__body
+						.widget-popup__text После авторизации вы получите все возможности для общения с экспертом. Сможете узнать свое будущее, прошлое и настоящее. Нажимайте на кнопку ниже и открывайте глаза на реальность
+						a(href="/").widget-popup__button.button Авторизоваться
+
+		.module.module_regular.chat
+			.widget-expert
+				img(src="images/widget-cover.jpg")
+				#vsContainer
+			.widget-popup.state-active
+				.widget-popup__wrapper
+					.widget-popup__heading Авторизуйтесь, чтобы продолжить
+					.widget-popup__body
+						.widget-popup__text После авторизации вы получите все возможности для общения с экспертом. Сможете узнать свое будущее, прошлое и настоящее. Нажимайте на кнопку ниже и открывайте глаза на реальность
+						a(href="/").widget-popup__button.button Авторизоваться
+						a(href="#", onclick="(function(event){event.preventDefault();event.target.closest('.state-active').classList.remove('state-active')})(event)").widget-popup__link.content__link.content__link_selected Пропустить
+
+		.module.module_regular.content
+			.content__header Видео
+			.content__list.list
+				.list__items
+
+					//- .list__item(data-fancybox="video", data-src="#modal-video", data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://44g.ru/uploads/files/0/276000/5f686f442055b.mp4","title": "11Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+					//- 	.list__cover
+					//- 		.list__image
+					//- 			img(src="images/video-item.jpg")
+					//- 		.list__time 3:40
+					//- 		.list__button.list__button_play
+					//- 	.list__title Ощущение счастья просто необходимо каждому из нас...
+					//- 	.list__view 12 просмотров
+
+					//- .list__item(data-fancybox="video", data-src="#modal-video", data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://44g.ru/uploads/files/0/276000/5f686f442055b.mp4","title": "1Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+					//- 	.list__cover
+					//- 		.list__image
+					//- 			img(src="images/video-item.jpg")
+					//- 		.list__time 3:40
+					//- 		.list__button.list__button_play
+					//- 	.list__title Ощущение счастья просто необходимо каждому из нас...
+					//- 	.list__view 12 просмотров
+
+					//- .list__item(data-fancybox="video", data-src="#modal-video", data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://44g.ru/uploads/files/0/269000/5f64bbef4feb3.mp4","title": "1Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+					//- 	.list__cover
+					//- 		.list__image
+					//- 			img(src="images/video-item.jpg")
+					//- 		.list__time 3:40
+					//- 		.list__button.list__button_play
+					//- 	.list__title Ощущение счастья просто необходимо каждому из нас...
+					//- 	.list__view 12 просмотров
+
+					.list__item(data-fancybox="video", data-src="#modal-video", data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://www.html5rocks.com/en/tutorials/video/basics/devstories.mp4","title": "1Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+						.list__cover
+							.list__image
+								img(src="images/video-item.jpg")
+							.list__time 3:40
+							.list__button.list__button_play
+						.list__title Ощущение счастья просто необходимо каждому из нас...
+						.list__view 12 просмотров
+					.list__item(data-fancybox="video", data-src="#modal-video", data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://www.html5rocks.com/en/tutorials/video/basics/devstories.mp4","title": "2Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+						.list__cover
+							.list__image
+								img(src="images/video-item.jpg")
+							.list__time 3:40
+							.list__button.list__button_play
+						.list__title Ощущение счастья просто необходимо каждому из нас...
+						.list__view 12 просмотров
+					.list__item(data-fancybox="video", data-src="#modal-video", data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://www.html5rocks.com/en/tutorials/video/basics/devstories.mp4","title": "3Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+						.list__cover
+							.list__image
+								img(src="images/video-item.jpg")
+							.list__time 3:40
+							.list__button.list__button_play
+						.list__title Ощущение счастья просто необходимо каждому из нас...
+						.list__view 12 просмотров
+					.list__item(data-fancybox="video", data-src="#modal-video", data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://www.html5rocks.com/en/tutorials/video/basics/devstories.mp4","title": "4Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+						.list__cover
+							.list__image
+								img(src="images/video-item.jpg")
+							.list__time 3:40
+							.list__button.list__button_play
+						.list__title Ощущение счастья просто необходимо каждому из нас...
+						.list__view 12 просмотров
+			a(href="#").content__load.load Показать еще
+				.load__items(data-loaded="true")
+					.load__item
+					.load__item
+					.load__item
+
+		.module.module_regular.content
+			.content__header Об эксперте
+			.content__text Дипломированный экстрасенс, Таролог, Прогрессор Космоэнергетики, Мастер свечной магии, Мастер Рейки Иггдрасиль, Маг. Имею посвящения в Зороастризм, нео-шаманизм. Оказываю профессиональную помощь в решении непростых жизненных ситуаций.
+			.content__text Дистанционно и по фото провожу сеансы диагностики и снятия негативных воздействий. Также диагностика энергетического и физического здоровья, внутренних блоков человека. Избавление от негативных и некротических привязок. Успешно помогаю в коррекции различных ситуаций, взаимоотношений. Открываю жизненные дороги. Восстанавливаю и активирую денежный поток. Дам подсказку, совет от Ангелов Света и Духов природы.
+			.content-expand
+				.content-expand__target(data-expand-target="text")
+					.content-expand__wrapper
+						.content__text Дистанционно и по фото провожу сеансы диагностики и снятия негативных воздействий. Также диагностика энергетического и физического здоровья, внутренних блоков человека. Избавление от негативных и некротических привязок. Успешно помогаю в коррекции различных ситуаций, взаимоотношений. Открываю жизненные дороги. Восстанавливаю и активирую денежный поток. Дам подсказку, совет от Ангелов Света и Духов природы.
+						.content__text Дистанционно и по фото провожу сеансы диагностики и снятия негативных воздействий. Также диагностика энергетического и физического здоровья, внутренних блоков человека. Избавление от негативных и некротических привязок. Успешно помогаю в коррекции различных ситуаций, взаимоотношений. Открываю жизненные дороги. Восстанавливаю и активирую денежный поток. Дам подсказку, совет от Ангелов Света и Духов природы.
+				a(href="#", data-expand-trigger="text").content__link.content-expand__trigger Читать полностью
+
+		.module.module_regular.content
+			.content__header Фото
+			.content__list.list
+				.list__items
+					.list__item(data-fancybox="modal-photo", data-src="#modal-photo")
+						.list__cover
+							.list__image
+								img(src="images/photo-item.jpg")
+							.list__title.list__title_overlay Ощущение счастья просто необходимо каждому из нас...
+					.list__item(data-fancybox="modal-photo", data-src="#modal-photo")
+						.list__cover
+							.list__image
+								img(src="images/photo-item.jpg")
+							.list__title.list__title_overlay Ощущение счастья просто необходимо каждому из нас...
+					.list__item(data-fancybox="modal-photo", data-src="#modal-photo")
+						.list__cover
+							.list__image
+								img(src="images/photo-item.jpg")
+							.list__title.list__title_overlay Ощущение счастья просто необходимо каждому из нас...
+					.list__item(data-fancybox="modal-photo", data-src="#modal-photo")
+						.list__cover
+							.list__image
+								img(src="images/photo-item.jpg")
+							.list__title.list__title_overlay Ощущение счастья просто необходимо каждому из нас...
+			a(href="#").content__load.load Показать еще
+				.load__items(data-loaded="true")
+					.load__item
+					.load__item
+					.load__item
+
+		.module.module_regular.content
+			.content__header Практики
+			.content__text
+				a(href="#").content__link.content__link_selected Биоэнергеты,
+				a(href="#").content__link.content__link_selected Гадалки,
+				a(href="#").content__link.content__link_selected Гадание на будущее,
+				a(href="#").content__link.content__link_selected Гадание на измену,
+				a(href="#").content__link.content__link_selected Гадание на имя,
+				a(href="#").content__link.content__link_selected Гадание на картах,
+				a(href="#").content__link.content__link_selected Гадание на кофейной гуще,
+				a(href="#").content__link.content__link_selected Гадание на любовь,
+				a(href="#").content__link.content__link_selected Гадание на мужа,
+				a(href="#").content__link.content__link_selected Гадание на отношения,
+				a(href="#").content__link.content__link_selected Гадание на парня,
+				a(href="#").content__link.content__link_selected Гадание на работу,
+				a(href="#").content__link.content__link_selected Гадание на рунах,
+				a(href="#").content__link.content__link_selected Гадание на семью,
+				a(href="#").content__link.content__link_selected Карта рождения,
+				a(href="#").content__link.content__link_selected Карта судьбы,
+				a(href="#").content__link.content__link_selected Космоэнергеты,
+				a(href="#").content__link.content__link_selected Медиумы,
+				a(href="#").content__link.content__link_selected Советы гадалки,
+				a(href="#").content__link.content__link_selected Эзотерики,
+				a(href="#").content__link.content__link_selected Экстрасенсорика,
+				a(href="#").content__link.content__link_selected Экстрасенсы
+
+.module.modal.modal-video#modal-video
+	.modal__wrapper
+		.modal-video__content
+			.modal-video__player
+			.modal-video__items
+				.content__list.list
+					.list__items
+						//- .list__item(data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://44g.ru/uploads/files/0/279000/5f6b5ac58da6b.avi","title": "1Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+						//- .list__cover
+						//- 	.list__image
+						//- 		img(src="images/video-item.jpg")
+						//- 	.list__time 3:40
+						//- 	.list__button.list__button_play
+						//- .list__title Ощущение счастья просто необходимо каждому из нас...
+						//- .list__view 12 просмотров
+
+						//- .list__item(data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://44g.ru/uploads/files/0/276000/5f686f442055b.mp4","title": "1Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+						//- 	.list__cover
+						//- 		.list__image
+						//- 			img(src="images/video-item.jpg")
+						//- 		.list__time 3:40
+						//- 		.list__button.list__button_play
+						//- 	.list__title Ощущение счастья просто необходимо каждому из нас...
+						//- 	.list__view 12 просмотров
+
+						//- .list__item(data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://44g.ru/uploads/files/0/269000/5f64bbef4feb3.mp4","title": "1Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+						//- 	.list__cover
+						//- 		.list__image
+						//- 			img(src="images/video-item.jpg")
+						//- 		.list__time 3:40
+						//- 		.list__button.list__button_play
+						//- 	.list__title Ощущение счастья просто необходимо каждому из нас...
+						//- 	.list__view 12 просмотров
+
+						.list__item(data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://www.html5rocks.com/en/tutorials/video/basics/devstories.mp4","title": "1Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+							.list__cover
+								.list__image
+									img(src="images/video-item.jpg")
+								.list__time 3:40
+							.list__meta
+								.list__title Ощущение счастья просто необходимо каждому из нас...
+								.list__view 12 просмотров
+						.list__item(data-video='{"poster":"http://media.w3.org/2010/05/sintel/poster.png","source": "http://media.w3.org/2010/05/sintel/trailer.mp4","title": "2Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+							.list__cover
+								.list__image
+									img(src="images/video-item.jpg")
+								.list__time 3:40
+							.list__meta
+								.list__title Ощущение счастья просто необходимо каждому из нас...
+								.list__view 12 просмотров
+						.list__item(data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://www.html5rocks.com/en/tutorials/video/basics/devstories.mp4","title": "3Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+							.list__cover
+								.list__image
+									img(src="images/video-item.jpg")
+								.list__time 3:40
+							.list__meta
+								.list__title Ощущение счастья просто необходимо каждому из нас...
+								.list__view 12 просмотров
+						.list__item(data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://www.html5rocks.com/en/tutorials/video/basics/devstories.mp4","title": "4Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+							.list__cover
+								.list__image
+									img(src="images/video-item.jpg")
+								.list__time 3:40
+							.list__meta
+								.list__title Ощущение счастья просто необходимо каждому из нас...
+								.list__view 12 просмотров
+						.list__item(data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://www.html5rocks.com/en/tutorials/video/basics/devstories.mp4","title": "5Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+							.list__cover
+								.list__image
+									img(src="images/video-item.jpg")
+								.list__time 3:40
+							.list__meta
+								.list__title Ощущение счастья просто необходимо каждому из нас...
+								.list__view 12 просмотров
+						.list__item(data-video='{"poster":"https://www.html5rocks.com/en/tutorials/video/basics/poster.png","source": "https://www.html5rocks.com/en/tutorials/video/basics/devstories.mp4","title": "6Каким будет мой будущий избранник?","text": "По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени, в которое встреча может произойти."}')
+							.list__cover
+								.list__image
+									img(src="images/video-item.jpg")
+								.list__time 3:40
+							.list__meta
+								.list__title Ощущение счастья просто необходимо каждому из нас...
+								.list__view 12 просмотров
+		.modal__caption.caption
+			.caption__header
+			.caption__text
+
+.module.modal.modal-alert#modal-alert
+	.modal__wrapper
+		.modal-alert__header Недостаточно средств
+		.modal-alert__content
+			.modal-alert__text
+				| На вашем счету недостаточно
+				span.modal-alert__text_coin
+					include ../../public/images/coin-icon.svg
+					|  (коинов)
+				br
+				| Приобретите необходимое количество с хорошей скидкой
+			a(href="#").modal-alert__button.button.button_large Пополнить счет
+
+.module.modal.modal-photo#modal-photo
+	.modal__wrapper
+		.modal-photo__items
+			.modal-photo__item
+				.modal-photo__image
+					img(src="images/photo-item_large.jpg")
+				.modal__caption.caption
+					.caption__header 1Каким будет мой будущий избранник?
+					.caption__text По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени
+			.modal-photo__item
+				.modal-photo__image
+					img(src="images/photo-item_large.jpg")
+				.modal__caption.caption
+					.caption__header 2Каким будет мой будущий избранник?
+					.caption__text По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени
+			.modal-photo__item
+				.modal-photo__image
+					img(src="images/photo-item_large.jpg")
+				.modal__caption.caption
+					.caption__header 3Каким будет мой будущий избранник?
+					.caption__text По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени
+			.modal-photo__item
+				.modal-photo__image
+					img(src="images/photo-item_large.jpg")
+				.modal__caption.caption
+					.caption__header 4Каким будет мой будущий избранник?
+					.caption__text По Вашей фото я смогу увидеть возможность появления в Вашей жизни значимого для Вас мужчины, описать его внешность, увидеть интервал времени

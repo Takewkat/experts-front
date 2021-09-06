@@ -1,0 +1,87 @@
+.files, .manage
+	&__actions, &__list, &__remove
+		display: none
+		&.state-active
+			display: block
+	&__actions, &__list
+		&.state-active
+			margin-bottom: 24px
+	&__actions
+		&.state-active
+			display: flex
+	&__checkbox
+		margin-right: 20px
+	&__remove
+		color: var(--color-error)
+	&__list
+	&__item
+		display: flex
+		flex-wrap: wrap
+		padding: 0
+		&:not(:last-child)
+			margin-bottom: 40px
+		&[data-model]
+			display: none
+		&.state-error
+			div.row__error[data-error]
+				display: inline-flex
+	&__controls
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+	&__order
+		align-self: flex-end
+		opacity: .5
+		&.state-active
+			opacity: 1
+			cursor: pointer
+		font-size: 0
+		&:not(:last-child)
+			margin-bottom: 10px
+	&__image
+		margin-right: 20px
+	&__fields,
+	&__content
+		flex: 1
+	&__fields
+		align-self: flex-end
+		.field
+			display: block
+			&:not(:last-child)
+				margin-bottom: 8px
+	&__content
+	&__title
+		font-size: 18px
+		font-weight: bold
+	&__description
+		margin-top: 8px
+	&__select
+		margin-right: 8px
+	&__button
+	&__upload
+		display: none
+
+// Mobile
+
+@media screen and (max-width: 600px)
+	.files
+		&__item
+			&:not(:last-child)
+				margin-bottom: 16px
+		&__remove
+			flex-shrink: 0
+		&__controls
+			margin-right: auto
+		&__image
+			flex-basis: 85%
+			margin-right: unset
+		&__fields,
+		&__content
+			flex: 100%
+		&__fields
+			margin-top: 16px
+			.field
+				&:not(:last-child)
+					margin-bottom: 4px
+		&__content
+			margin-top: 16px

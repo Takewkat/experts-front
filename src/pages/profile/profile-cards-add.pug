@@ -1,0 +1,58 @@
+.module.module_page.profile(data-route="user-card")
+	.module__content
+		.profile__info.info
+			.info__wrapper
+				.profile__header Публичные данные
+				.profile__body.body
+					.profile__avatar.avatar
+						.avatar__image(data-placeholder="images/profile-placeholder.png")
+							img(src="images/profile.png")
+						.avatar__wrapper
+							.avatar__label Имя
+							.avatar__title Ivan25
+					.profile__text Информация, которую вы укажете в этом разделе, <br> публичная. Она видна другим пользователям.
+			include ./profile-navs.pug
+		form(action="https://drewsher.ru/preview/api/index.php?res=success", method="post").profile__data.data
+			.profile__header.meta
+				.meta__title Привязка банковской карты
+			.profile__body.body
+				.body__row.state-error
+					.row__content
+						.row__error
+							span Исправьте следующие ошибки:
+							ul
+								li error 1
+								li error 2
+								li error 3
+						.new-card
+							.new-card__main
+								.new-card__number
+									.new-card__text Укажите номер карты:
+									.new-card__field.field.field_bordered.field_wide
+										input(type="text", name="number", placeholder="0000 0000 0000 0000").field__input#card-number
+								.new-card__wrapper
+									.new-card__code
+										.new-card__text Месяц/Год:
+										.new-card__field.field.field_bordered
+											input(type="text", name="expire", placeholder="ММ/YY").field__input#card-expire
+									.new-card__holder
+										.new-card__text Укажите ваше имя:
+										.new-card__field.field.field_bordered
+											input(type="text", name="holder", placeholder="IVAN IVANOV").field__input#card-holder
+							.new-card__side
+								.new-card__field.field
+									input(type="text", name="cvc", placeholder="CVC").field__input#card-code
+								.new-card__text Три цифры на обороте карты
+				.body__row.row
+					.row__content.content
+						.content__wrapper.content__wrapper_buttons
+							.new-card__field.field.field_checkbox.checkbox
+								label.checkbox__label
+									input(type="checkbox", checked, name="add", id="checkbox").checkbox__input
+									.checkbox__field
+									| Привязать карту
+				.body__row.row
+					.row__content.content
+						.content__wrapper.content__wrapper_buttons
+							a(href="./profile-cards.html").button.button_large.button_theme-gray Отменить
+							input(type="submit", value="Продолжить").button.button_large

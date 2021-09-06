@@ -1,0 +1,147 @@
+.module.module_page.database(data-route="database")
+	.module__content
+		.database__meta.meta
+			.meta__search.search
+				.search__icon(data-nav)
+					include ../../public/images/database-expand-icon.svg
+				.field.field_bordered.field_search(data-search="https://dev.44g.ru/help/search")
+					input(type="text", name="query", placeholder="Поиск").field__input
+					.field__icon.state-active(data-search-trigger)
+						include ../../public/images/search-icon.svg
+					.field__icon(data-search-trigger)
+						include ../../public/images/clear-icon.svg
+					.field__content.content(data-content)
+			.meta__list.list(data-list)
+				.list__header
+					.list__icon(data-close)
+						include ../../public/images/close.svg
+					.list__title Содержание
+				a(href="#").list__item.list__link О сервисе
+				a(href="#").list__item.list__link Что такое 44a.ru?
+				.list__item.list__expand.expand.state-expand.state-active(data-expand)
+					.expand__header
+						.expand__carret(data-expand-trigger)
+							include ../../public/images/carret-icon.svg
+						a(href="#").expand__title.list__link Что такое публичный видеочат?
+					.expand__list.list(data-expand-target)
+						.list__wrapper
+							a(href="#").list__item.list__link Что это такое?
+							a(href="#").list__item.list__link Как пользоваться?
+							a(href="#").list__item.list__link Какие преимущества?
+							a(href="#").list__item.list__link Сколько стоит?
+				.list__item.list__expand.expand(data-expand)
+					.expand__header
+						.expand__carret(data-expand-trigger)
+							include ../../public/images/carret-icon.svg
+						a(href="#").expand__title.list__link Как заказать консультацию?
+					.expand__list.list(data-expand-target)
+						.list__wrapper
+							a(href="#").list__item.list__link Что это такое?
+							a(href="#").list__item.list__link Как пользоваться?
+							a(href="#").list__item.list__link Какие преимущества?
+							a(href="#").list__item.list__link Сколько стоит?
+				.list__item.list__expand.expand(data-expand)
+					.expand__header
+						.expand__carret(data-expand-trigger)
+							include ../../public/images/carret-icon.svg
+						a(href="#").expand__title.list__link Что такое приватная консультация?
+					.expand__list.list(data-expand-target)
+						.list__wrapper
+							a(href="#").list__item.list__link Что это такое?
+							a(href="#").list__item.list__link Как пользоваться?
+							a(href="#").list__item.list__link Какие преимущества?
+							a(href="#").list__item.list__link Сколько стоит?
+				.list__item.list__expand.expand(data-expand)
+					.expand__header
+						.expand__carret(data-expand-trigger)
+							include ../../public/images/carret-icon.svg
+						a(href="#").expand__title.list__link Что такое услуги?
+					.expand__list.list(data-expand-target)
+						.list__wrapper
+							a(href="#").list__item.list__link Что это такое?
+							a(href="#").list__item.list__link Как пользоваться?
+							a(href="#").list__item.list__link Какие преимущества?
+							a(href="#").list__item.list__link Сколько стоит?
+				.list__item.list__expand.expand(data-expand)
+					.expand__header
+						.expand__carret(data-expand-trigger)
+							include ../../public/images/carret-icon.svg
+						a(href="#").expand__title.list__link Что такое подарок?
+					.expand__list.list(data-expand-target)
+						.list__wrapper
+							a(href="#").list__item.list__link Что это такое?
+							a(href="#").list__item.list__link Как пользоваться?
+							a(href="#").list__item.list__link Какие преимущества?
+							a(href="#").list__item.list__link Сколько стоит?
+				a(href="#").list__item.list__link Как пополнить счет?
+				.list__item.list__expand.expand(data-expand)
+					.expand__header
+						.expand__carret(data-expand-trigger)
+							include ../../public/images/carret-icon.svg
+						a(href="#").expand__title.list__link Не слышите и не видите эксперта?
+					.expand__list.list(data-expand-target)
+						.list__wrapper
+							a(href="#").list__item.list__link Что это такое?
+							a(href="#").list__item.list__link Как пользоваться?
+							a(href="#").list__item.list__link Какие преимущества?
+							a(href="#").list__item.list__link Сколько стоит?
+				.list__item.list__expand.expand(data-expand)
+					.expand__header
+						.expand__carret(data-expand-trigger)
+							include ../../public/images/carret-icon.svg
+						a(href="#").expand__title.list__link Не вижу и не слышу эксперта с мобильного телефона
+					.expand__list.list(data-expand-target)
+						.list__wrapper
+							a(href="#").list__item.list__link Что это такое?
+							a(href="#").list__item.list__link Как пользоваться?
+							a(href="#").list__item.list__link Какие преимущества?
+							a(href="#").list__item.list__link Сколько стоит?
+				a(href="#").list__item.list__link Как проверяются эксперты?
+
+
+
+		.database__content.content
+			.content__wrapper
+				.module.module_regular.content
+					h1.content__title Сервис видеочатов 44a.ru. База знаний
+					ul.content__bullet.list
+						li.list__item
+							a(href="#").content__link.content__link_selected Верен ли мне мой мужчина?
+						li.list__item
+							a(href="#").content__link.content__link_selected Вероятен ли благополучный брак?
+						li.list__item
+							a(href="#").content__link.content__link_selected Какие ждут отношения в дальнейшем?
+						li.list__item
+							a(href="#").content__link.content__link_selected Сложный выбор
+				.module.module_regular.content
+					p.content__text На этой странице мы постараемся ответить на все вопросы, касающиеся площадки 22e.ru. Если вы не нашли ответа на свой вопрос, пожалуйста, задайте его нашему менеджеру при помощи формы внизу страницы.
+					blockquote.content__quote Эксперты будут рады, если сайт экстрасенсов 44a.ru принесет вам удовольствие от использование и будет являться надежным помощником и советчиком в повседневных делах и жизненных ситуациях.
+					p.content__text.content__text_strong Консультация экстрасенса бесплатно
+					p.content__text Вы можете задать вопрос экстрасенсам бесплатно (письменно) и получить ответы, советы, рекомендации. Ясновидящие, Гадалки, Тарологи, Астрологи дают ответы только на вопросы с описанием конкретной ситуации из вашей жизни с полными данными.
+					.content__table.table
+						.table__head
+							.table__row
+								.table__item Эксперты
+								.table__item Опыт
+								.table__item Стоимость
+						.table__body
+							.table__row
+								.table__item Линда Бэру
+								.table__item 20 лет
+								.table__item 49 рублей/мин.
+							.table__row
+								.table__item Линда Бэру
+								.table__item 20 лет
+								.table__item 49 рублей/мин.
+			.content__nav.nav
+				a(href="#").nav__control.nav__control_prev
+					.nav__icon
+						include ../../public/images/carret-icon.svg
+					.nav__wrapper
+						.nav__link.content__link.content__link_selected Что такое 44a.ru?
+				a(href="#").nav__control.nav__control_next
+					.nav__wrapper
+						.nav__link.content__link.content__link_selected Что такое 44a.ru?
+					.nav__icon
+						include ../../public/images/carret-icon.svg
+

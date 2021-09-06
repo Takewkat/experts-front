@@ -1,0 +1,32 @@
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+.module.module_page.login(data-route="login")
+
+	.module.modal.modal-alert.modal_fake.state-active
+		.modal__wrapper
+			.modal-alert__header Войти или зарегистрироваться
+			.modal-alert__content
+				.modal-alert__text Для общения с нашими экспертами <br> введите свой номер телефона или e-mail
+				form(action="https://drewsher.ru/preview/api/send_password.php", method="post").modal-alert__form#login-form
+					.field
+						input(type="text", name="username", autofocus, placeholder="E-mail или номер телефона").field__input
+						.field__error
+					input(type="submit", value="Войти").modal-alert__button.button.button_large
+					input(type="button", data-recap, data-sitekey="6LfcorEZAAAAAMzhgIe70q7EuLMPTsrvl2U4kmY6", data-callback="rv3", style="display:none").g-recaptcha
+				.modal-alert__policy Нажимая на кнопку, вы даете согласие на обработку персональных <br> данных и соглашаетесь с <a href="#">политикой конфиденциальности</a>
+
+	.module.modal.modal-alert.modal_fake
+		.modal__wrapper
+			.modal-alert__header Введите код
+			.modal-alert__content
+				.modal-alert__text(data-text)
+				form(action="https://drewsher.ru/preview/api/resend_password.php", method="post", id="code-form")
+				form(action="https://drewsher.ru/preview/api/check_password.php", method="post").modal-alert__form#verify-form
+					.modal-alert__code
+						.code(data-verifyCode)
+						a(href="#", data-resend).modal-alert__link.code__link
+							| Повторить
+							span.code__time(data-timer)
+						.code__error
+				//- 	input(type="submit", value="Войти").modal-alert__button.button.button_large
+				//- .modal-alert__policy Нажимая на кнопку, вы даете согласие на обработку персональных <br> данных и соглашаетесь с <a href="#">политикой конфиденциальности</a>

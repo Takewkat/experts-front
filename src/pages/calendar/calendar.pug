@@ -1,0 +1,415 @@
+//- .popover__module(data-cancel="true")
+//- 	.popover__header Вы отменили консультацию
+//- 	.popover__text Мы вернем вам
+//- 		span.coin
+//- 			span.coin__text(data-total)
+//- 			span.coin__icon
+//- 				include ../../public/images/popover-coin.svg
+
+.overflow-calendar
+.overflow-popover
+
+.popover.popover_modal(data-popover)
+	.popover__items
+		.popover__close(data-close)
+			include ../../public/images/popover-close.svg
+
+		.popover__item(data-target="computed")
+			.popover__header Что вы хотите сделать?
+			.popover__computed(data-computed)
+
+		.popover__item(data-target="unauth")
+			.popover__alert(data-alert)
+			.popover__header Вы не авторизованы
+			.popover__text Чтобы продолжить пользоваться сервисом, пожалуйста, авторизуйтесь
+			.popover__action.action
+				a(href="/").action__button.button.button_large Авторизоваться
+			.popover__text.popover__text_small Если вы не зарегистрированы, аккаунт будет создан автоматически
+
+		.popover__item(data-target="order-open")
+			.popover__alert(data-alert)
+			.popover__header Забронировать консультацию
+			.popover__table.table
+				.table__row
+					.table__cell.table__title Дата начала
+					.table__cell.table__info.info
+						.info__text.info__select.select
+							.select__header(data-select-output, data-start)
+							.info__icon.select__carret
+								include ../../public/images/popover-carret.svg
+							.select__items
+				.table__row
+					.table__cell.table__title Дата окончания
+					.table__cell.table__info.info
+						.info__text.info__select.select
+							.select__header(data-select-output, data-end)
+							.info__icon.select__carret
+								include ../../public/images/popover-carret.svg
+							.select__items
+				.table__row
+					.table__cell.table__title Продолжительность
+					.table__cell.table__info.info
+						.info__text(data-time)
+				.table__row
+					.table__cell.table__title Стоимость
+					.table__cell.table__info.info
+						.info__text.info__coin
+							span.info__cost(data-total)
+							.info__icon
+								include ../../public/images/popover-coin.svg
+				.table__row
+					.table__cell.table__title Эксперт
+					.table__cell.table__info.info
+						.info__text(data-expert)
+			.popover__action.action
+				.action__button.button.button_large(data-trigger="order-open:success") Записаться на консультацию
+			.popover__text.popover__text_small Оплата за консультацию списывается при бронировании
+
+		.popover__item(data-target="order-open:success")
+			.popover__alert(data-alert)
+			.popover__header Вы записались на консультацию
+			.popover__table.table
+				.table__row
+					.table__cell.table__title Дата начала
+					.table__cell.table__info.info
+						.info__text(data-start)
+				.table__row
+					.table__cell.table__title Дата окончания
+					.table__cell.table__info.info
+						.info__text(data-end)
+				.table__row
+					.table__cell.table__title Продолжительность
+					.table__cell.table__info.info
+						.info__text(data-time)
+				.table__row
+					.table__cell.table__title Стоимость
+					.table__cell.table__info.info
+						.info__text.info__coin
+							span.info__cost(data-total)
+							.info__icon
+								include ../../public/images/popover-coin.svg
+				.table__row
+					.table__cell.table__title Эксперт
+					.table__cell.table__info.info
+						.info__text(data-expert)
+
+		.popover__item(data-target="order-delete")
+			.popover__alert(data-alert)
+			.popover__module(data-expire="false")
+				.popover__header Отменить бронирование?
+				.popover__text(data-refund="full") Так как вы отменяете бронирование консультации заранее, мы вернем вам 100% от ее стоимости
+				.popover__text(data-refund="half") Мы удержим с вас 50% от стоимости консультации, так как вы отменяете бронирование позднее, чем за 24 часа до консультации. Точно отменяем бронирование?
+				.popover__action.action
+					.action__button.button.button_large.button_theme-gray(data-trigger="order-delete:cancel") Нет
+					.action__button.button.button_large(data-trigger="order-delete:submit") Отменить бронирование
+			.popover__module(data-expire="true")
+				.popover__icon
+					include ../../public/images/popover-info.svg
+				.popover__header Вы не можете отменить бронирование
+
+		.popover__item(data-target="order-info")
+			.popover__alert(data-alert)
+			.popover__header Информации о консультации
+			.popover__table.table
+				.table__row
+					.table__cell.table__title Дата начала
+					.table__cell.table__info.info
+						.info__text(data-start)
+				.table__row
+					.table__cell.table__title Продолжительность
+					.table__cell.table__info.info
+						.info__text(data-time)
+				.table__row
+					.table__cell.table__title Стоимость
+					.table__cell.table__info.info
+						.info__text.info__coin
+							span.info__cost(data-total)
+							.info__icon
+								include ../../public/images/popover-coin.svg
+				.table__row
+					.table__cell.table__title Эксперт
+					.table__cell.table__info.info(data-expert)
+				.table__row.state-hidden
+					.table__cell.table__title Клиент
+					.table__cell.table__info.info
+						.info__text(data-username)
+				.table__row
+					.table__cell.table__title Статус
+					.table__cell.table__info.info
+						.info__text(data-status)
+			.popover__module(data-visibillity="true")
+				.popover__module(data-expire="false")
+					.popover__text.popover__text_small(data-refund="full") Так как вы отменяете бронирование консультации заранее, мы вернем вам 100% от ее стоимости
+					.popover__text.popover__text_small(data-refund="half") Мы удержим с вас 50% от стоимости консультации, так как вы отменяете бронирование позднее, чем за 24 часа до консультации. Точно отменяем бронирование?
+					.popover__action.action
+						.action__button.button.button_large.button_theme-gray(data-trigger="order-info:cancel") Нет
+						.action__button.button.button_large(data-trigger="order-info:submit") Отменить бронирование
+				.popover__module(data-expire="true")
+					.popover__text.popover__text_small Вы не можете отменить бронирование, потому что до него осталось менее трех часов
+
+		.popover__item(data-target="order-cancel")
+			.popover__alert(data-alert)
+			.popover__icon
+				include ../../public/images/popover-success.svg
+			.popover__header Успешно, запись закрыта
+
+		.popover__item(data-target="order-late")
+			.popover__alert(data-alert)
+			.popover__icon
+				include ../../public/images/popover-warning.svg
+			.popover__header Вы отменили консультацию
+			.popover__text Мы вернули вам
+				span.coin
+					span.coin__text(data-total)
+					span.coin__icon
+						include ../../public/images/popover-coin.svg
+
+		.popover__item(data-target="order-pass")
+			.popover__alert(data-alert)
+			.popover__icon
+				include ../../public/images/popover-warning.svg
+			.popover__header Эксперт не пришел на консультацию
+			.popover__text Мы вернули вам
+				span.coin
+					span.coin__text(data-total)
+					span.coin__icon
+						include ../../public/images/popover-coin.svg
+
+		.popover__item(data-target="webinar-open")
+			.popover__alert(data-alert)
+			.popover__header Записаться на вебинар
+			.popover__table.table
+				.table__row
+					.table__cell.table__title Вебинар
+					.table__cell.table__info.info
+						.info__text(data-webinar)
+				.table__row
+					.table__cell.table__title Эксперт
+					.table__cell.table__info.info(data-expert)
+				.table__row
+					.table__cell.table__title Дата начала
+					.table__cell.table__info.info
+						.info__text(data-start)
+				.table__row
+					.table__cell.table__title Дата окончания
+					.table__cell.table__info.info
+						.info__text(data-end)
+				.table__row
+					.table__cell.table__title Продолжительность
+					.table__cell.table__info.info
+						.info__text(data-time)
+				.table__row
+					.table__cell.table__title Стоимость
+					.table__cell.table__info.info
+						.info__text.info__coin
+							span.info__cost(data-total)
+							.info__icon
+								include ../../public/images/popover-coin.svg
+				.table__row
+					.table__cell.table__title Статус
+					.table__cell.table__info.info
+						.info__text(data-status)
+			.popover__module(data-visibillity="true")
+				.popover__module(data-order="false")
+					.popover__action.action
+						.action__button.button.button_large(data-trigger="webinar-open:submit") Записаться на вебинар
+					.popover__text.popover__text_small Оплата за вебинар списывается при бронировании
+				.popover__module(data-order="true")
+					.popover__text.popover__text_small Вы точно хотите отменить вебинар?
+					.popover__action.action
+						.action__button.button.button_large.button_theme-gray(data-trigger="webinar-open:cancel") Нет
+						.action__button.button.button_large(data-trigger="webinar-open:delete") Отменить бронирование
+
+		.popover__item(data-target="webinar-success")
+			.popover__alert(data-alert)
+			.popover__header Вебинар забронирован
+			.popover__table.table
+				.table__row
+					.table__cell.table__title Дата начала
+					.table__cell.table__info.info
+						.info__text(data-start)
+				.table__row
+					.table__cell.table__title Дата окончания
+					.table__cell.table__info.info
+						.info__text(data-end)
+				.table__row
+					.table__cell.table__title Продолжительность
+					.table__cell.table__info.info
+						.info__text(data-time)
+				.table__row
+					.table__cell.table__title Стоимость
+					.table__cell.table__info.info
+						.info__text.info__coin
+							span.info__cost(data-total)
+							.info__icon
+								include ../../public/images/popover-coin.svg
+				.table__row
+					.table__cell.table__title Эксперт
+					.table__cell.table__info.info(data-expert)
+
+		.popover__item(data-target="webinar-delete")
+			.popover__alert(data-alert)
+			.popover__header Отменить вебинар?
+			.popover__text Вы точно хотите отменить вебинар?
+			.popover__action.action
+				.action__button.button.button_large.button_theme-gray(data-trigger="webinar-delete:cancel") Нет
+				.action__button.button.button_large(data-trigger="webinar-delete:delete") Отменить бронирование
+
+		.popover__item(data-target="webinar-info")
+			.popover__alert(data-alert)
+			.popover__header Информация о вебинаре
+			.popover__table.table
+				.table__row
+					.table__cell.table__title Вебинар
+					.table__cell.table__info.info
+						.info__text(data-webinar)
+				.table__row
+					.table__cell.table__title Эксперт
+					.table__cell.table__info.info(data-expert)
+				.table__row
+					.table__cell.table__title Дата начала
+					.table__cell.table__info.info
+						.info__text(data-start)
+				.table__row
+					.table__cell.table__title Дата окончания
+					.table__cell.table__info.info
+						.info__text(data-end)
+				.table__row
+					.table__cell.table__title Продолжительность
+					.table__cell.table__info.info
+						.info__text(data-time)
+				.table__row
+					.table__cell.table__title Стоимость
+					.table__cell.table__info.info
+						.info__text.info__coin
+							span.info__cost(data-total)
+							.info__icon
+								include ../../public/images/popover-coin.svg
+				.table__row
+					.table__cell.table__title Статус
+					.table__cell.table__info.info
+						.info__text(data-status)
+			.popover__module(data-visibillity="true")
+				.popover__module(data-order="false")
+					.popover__action.action
+						.action__button.button.button_large(data-trigger="webinar-info:submit") Записаться на вебинар
+					.popover__text.popover__text_small Оплата за вебинар списывается при бронировании
+				.popover__module(data-order="true")
+					.popover__text.popover__text_small Вы точно хотите отменить вебинар?
+					.popover__action.action
+						.action__button.button.button_large.button_theme-gray(data-trigger="webinar-info:cancel") Нет
+						.action__button.button.button_large(data-trigger="webinar-info:delete") Отменить бронирование
+
+		.popover__item(data-target="webinar-cancel")
+			.popover__alert(data-alert)
+			.popover__icon
+				include ../../public/images/popover-success.svg
+			.popover__header Успешно, вебинар отменен
+
+.module.module_page
+	.module__content
+
+		.module.module_regular.expert
+			.expert__info.info
+				.info__avatar
+					img(src="images/expert.png")
+				.info__meta
+					.info__title Софья Геннадьевна
+					.info__cost
+						span.info__cost_price 56
+						span.info__cost_coin
+							include ../../public/images/coin-icon.svg
+						span.info__cost_time /мин
+			.expert__rating.rating
+				.rating__title Рейтинг эксперта
+				.rating__stars
+					.rating__star
+						svg
+							use(xlink:href="images/rate.svg#full")
+					.rating__star
+						svg
+							use(xlink:href="images/rate.svg#full")
+					.rating__star
+						svg
+							use(xlink:href="images/rate.svg#full")
+					.rating__star
+						svg
+							use(xlink:href="images/rate.svg#half")
+					.rating__star
+						svg
+							use(xlink:href="images/rate.svg#empty")
+				.rating__average (4.5)
+			a(href="./expert.html").expert__button.button.button_large Перейти в профиль эксперта
+
+		.module.calendar(data-route="calendar")
+			.calendar__view.view
+				.view__date.date
+					.date__prev(data-prev)
+						include ../../public/images/calendar/arrow.svg
+					.date__picker(data-picker)
+						input(type="button").field
+						include ../../public/images/calendar/calendar.svg
+					.date__next(data-next)
+						include ../../public/images/calendar/arrow.svg
+				.view__timezone.tz(data-tz="https://dev.22e.ru/users/get-time-zone")
+					.tz__field.field
+						input(type="text", placeholder="Москва", data-tz-search="Europe/Moscow").field__input
+					.tz__list
+
+				.view__size.size
+					.size__item.state-active(data-size="timeGridWeek") Неделя
+					.size__item(data-size="timeGridDay") День
+			.calendar__toolbar.toolbar
+				.toolbar__title
+				.toolbar__action.action
+					.action__button.action__button_accent.action__button_mobile(data-trigger="mobile:menu")
+						include ../../public/images/calendar/more.svg
+					.action__button.action__button_accent.action__button_mobile(data-trigger="mobile:menu-close")
+						.action__tooltip закрыть
+						include ../../public/images/calendar/close.svg
+					.action__button(data-trigger="unselect")
+						.action__tooltip снять выделение
+						include ../../public/images/calendar/select.svg
+
+					.action__button(data-trigger="order-open")
+						.action__tooltip забронировать консультацию
+						include ../../public/images/calendar/order.svg
+
+					.action__button(data-trigger="order-delete")
+						.action__tooltip отменить бронирование
+						include ../../public/images/calendar/unorder.svg
+
+					.action__button(data-trigger="order-info")
+						.action__tooltip посмотреть информацию
+						include ../../public/images/calendar/info.svg
+
+					.action__button(data-trigger="order-late")
+						.action__tooltip информация об отмене
+						include ../../public/images/calendar/info.svg
+
+					.action__button(data-trigger="order-pass")
+						.action__tooltip информация об отмене
+						include ../../public/images/calendar/info.svg
+
+					.action__button(data-trigger="webinar-open")
+						.action__tooltip записаться на вебинар
+						include ../../public/images/calendar/order.svg
+
+					.action__button(data-trigger="webinar-delete")
+						.action__tooltip отменить запись
+						include ../../public/images/calendar/unorder.svg
+
+					.action__button(data-trigger="webinar-info")
+						.action__tooltip посмотреть информацию
+						include ../../public/images/calendar/info.svg
+
+			.calendar__wrapper
+				#calendar(data-role="user-expert")
+
+			.calendar__legend.legend
+				.legend__item.legend__item_order(data-count="1") Консультация
+				.legend__item.legend__item_webinar(data-count="3") Вебинара
+				.legend__item.legend__item_open Открыто <br> для записи
+				.legend__item.legend__item_close Нет записи
+				.legend__item.legend__item_late Поздняя отмена <br> консультации
+				.legend__item.legend__item_pass Эксперт не явился <br> на консультацию

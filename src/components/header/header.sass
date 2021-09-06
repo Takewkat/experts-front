@@ -1,0 +1,348 @@
+.header,
+.header-meta,
+.header-info
+	display: flex
+	align-items: center
+
+.header
+	position: relative
+	z-index: 3
+
+	flex-wrap: wrap
+	justify-content: space-between
+
+	padding: 16px
+
+.header-cover
+	position: absolute
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	z-index: -1
+	&__picture
+		width: 100%
+		height: 100%
+		object-fit: cover
+
+.header-meta
+	position: relative
+	> .control
+		margin-right: 8px
+
+.online
+	position: relative
+
+	margin: 0 auto 0 25px
+	padding-left: 12px
+
+	font-size: 11px
+
+	color: var(--color-default)
+	&::before
+		content: ''
+
+		position: absolute
+		left: 0
+		top: 0
+		bottom: 0
+
+		width: 8px
+		height: 8px
+
+		margin: auto
+
+		border-radius: 50%
+		background-color: var(--color-green)
+
+.header-info
+	position: relative
+
+	.control-group
+		margin-left: 24px
+
+.balance
+	display: flex
+	align-items: center
+
+	&__prepend
+		margin-right: 4px
+		font-size: 12px
+
+	&__append
+		.button
+			margin-left: 10px
+
+.coin
+	margin-left: 0
+	&__prepend
+		font-family: 'Museo'
+		font-size: 14px
+		font-weight: 500
+	&__picture
+		margin-left: 2px
+
+.control-group
+	position: relative
+
+	display: flex
+
+	.control:not(:last-child)
+		margin-right: 12px
+
+.control
+
+	&__header
+		display: flex
+		align-items: center
+
+		cursor: pointer
+
+	&__picture
+		display: flex
+		align-items: center
+		justify-content: center
+
+		width: 32px
+		height: 32px
+
+		&_round
+			border-radius: 50%
+
+		&_fill
+			background-color: var(--color-nav-sublevel-hover)
+
+		img
+			width: 100%
+			height: 100%
+
+			object-fit: cover
+			border-radius: inherit
+
+		svg
+			max-width: 100%
+			max-height: 100%
+
+	&__header
+		font-size: 12px
+
+	&__prepend
+		margin-right: 6px
+
+	&__append
+		margin-left: 6px
+
+.control-list,
+.notification-alert
+	position: absolute
+	top: calc(100% + 16px)
+	right: 0
+
+.control-list
+	flex-direction: column
+
+	border-radius: var(--border-radius)
+	background-color: var(--color-nav-sublevel-hover)
+	box-shadow: var(--shadow)
+	overflow: hidden
+
+.header-meta
+	.control-list
+		left: 0
+
+[data-dropdown] > [data-dropdown-target]
+	display: none
+
+[data-dropdown].state-active > [data-dropdown-target]
+	display: flex
+
+div [data-model]
+	display: none
+
+// Notifications
+
+.notification
+	display: flex
+	align-items: center
+
+	padding: 6px 8px
+
+	font-size: 12px
+
+	color: var(--color-dark)
+	background-color: var(--color-white)
+
+	&[data-status="error"]
+		background-color: var(--color-red)
+
+	&[data-status="warning"]
+		background-color: #FFF176
+
+	&[data-status="success"]
+		background-color: var(--color-green)
+
+	border: 1px solid rgba(0, 0, 0, .15)
+	border-radius: var(--border-radius)
+	&__content
+		margin-right: 8px
+	&__trigger
+		cursor: pointer
+		margin-left: auto
+		svg
+			display: block
+			width: 16px
+			height: 16px
+	&:not(:last-child)
+		margin-bottom: 8px
+
+.notification-list,
+.notification-alert
+	width: 280px
+
+.notification-alert
+	position: absolute
+	&.state-sticky
+		position: fixed
+		top: 16px
+		right: 16px
+
+.notification-list
+	padding: 8px
+	&::before
+		content: 'У вас нет уведомлений'
+		text-align: center
+	&:not(.state-empty)
+		&::before
+			display: none
+	.notification
+		width: 100%
+
+.menu
+	display: flex
+	flex-direction: column
+
+	background-color: var(--color-nav)
+	.control
+		&__header
+			font-size: inherit
+		&__prepend
+			margin-right: 8px
+		&__picture
+			width: auto
+			height: auto
+		&-list
+			top: 100%
+			left: 0
+			width: 220px
+			.menu__item
+				padding: 10px 14px
+
+	&__item
+		position: relative
+
+		padding: 10px 14px
+
+		cursor: pointer
+		&:hover
+			background-color: var(--color-nav)
+
+.main-menu
+	z-index: 2
+
+	flex-direction: row
+
+	padding: 0 70px
+
+	.control-list
+		z-index: -1
+
+		display: none
+
+		border-top-left-radius: 0
+		border-top-right-radius: 0
+
+	> .menu__item
+		&:hover
+			background-color: var(--color-nav-sublevel-hover)
+			.control-list
+				display: flex
+
+.humburger-menu
+
+	background-color: var(--color-nav-sublevel-hover)
+
+	.control-list
+		position: static
+
+		width: 100%
+
+		margin: 10px 0 0
+
+		background-color: var(--color-nav)
+		box-shadow: unset
+
+.user-menu
+	background-color: var(--color-nav-sublevel-hover)
+
+	.control-list
+		&__prepend
+			padding: 10px 14px
+
+			border-bottom: 1px solid rgba(0,0,0,.3)
+			.balance
+				margin-right: 16px
+
+	.menu
+		&__item
+			white-space: nowrap
+
+
+.header-title
+	flex-basis: 100%
+
+	padding: 0 45px
+	margin-top: 26px
+
+	font-family: 'Museo'
+	font-size: 18px
+	font-weight: 500
+
+	color: var(--color-text-primary)
+
+// Avatar
+
+[data-avatar]
+	display: flex
+	align-items: center
+	justify-content: center
+	svg
+		width: 50%
+		height: 50%
+
+@media screen and (max-width: 800px)
+
+	.header-title
+		padding: 0
+
+	.control-list,
+	.notification-alert
+		width: calc(100vw - 32px)
+
+	.main-menu
+		display: none
+
+	.menu
+		&__item
+			&:hover
+				background-color: unset
+
+	.humburger-menu
+		.control-list
+			width: calc(100% - 28px)
+			margin: 0 auto 14px
+
+	.humburger
+		.control-list
+			position: static
+
+			box-shadow: unset

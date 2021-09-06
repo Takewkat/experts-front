@@ -1,0 +1,493 @@
+.widget-expert
+	img
+		position: absolute
+	#vsContainer
+		width: 100%
+		height: 600px
+
+.profile
+	.module__content
+		display: flex
+		justify-content: space-between
+	&__info
+		flex-basis: 32.1302816901%
+		margin-right: 20px
+		.info
+			&__wrapper
+				&:not(:last-child)
+					margin-bottom: 20px
+	&__link
+		display: flex
+		align-items: center
+		padding: 8px 16px
+		border-radius: var(--border-radius)
+		font-weight: bold
+		color: var(--color-default)
+		&:not(:last-child)
+			margin-bottom: 8px
+		&:hover,
+		&.state-active
+			background-color: var(--color-fill-primary)
+		.link
+			&__icon
+				margin-right: 8px
+				width: 24px
+				height: 24px
+				svg
+					width: 100%
+					height: 100%
+					path
+						fill: var(--color-default)
+						fill-opacity: 1
+			&__title
+				margin-right: auto
+			&__counter
+				width: 24px
+				height: 24px
+				border-radius: 50%
+				display: flex
+				justify-content: center
+				align-items: center
+				font-size: 12px
+				background-color: var(--color-tomato)
+				color: var(--color-white)
+				&:after
+					content: attr(data-count)
+	&__data
+		flex-basis: 66.0211267606%
+		flex-grow: 1
+	&__header
+		background-color: var(--color-accent)
+		color: white
+		font-size: 18px
+		font-weight: bold
+		padding: 20px 24px
+		display: flex
+		justify-content: space-between
+		align-items: center
+		border-radius: var(--border-radius) var(--border-radius) 0 0
+		&_merge
+			padding: 20px 40px
+			background-color: var(--color-profile-primary)
+			color: var(--color-contrast)
+			font-weight: 500
+			border-bottom: 1px solid var(--color-profile-secondary)
+		.meta
+			&__label
+				font-size: 14px
+				font-weight: normal
+		+ .profile__body
+			border-radius: 0 0 var(--border-radius) var(--border-radius)
+	&-preview
+		position: relative
+		display: flex
+		align-items: center
+
+		padding: 4px 16px 4px 8px
+
+		border-radius: var(--border-radius-round)
+		background-color: var(--color-default)
+		color: var(--color-fill-primary)
+
+		font-size: 14px
+
+		transition: all linear 300ms
+
+		&__link
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+
+		&__icon
+			width: 25px
+			height: 25px
+
+			padding: 2px
+
+			border-radius: 50%
+
+			svg
+				width: 100%
+				height: 100%
+
+				path
+					fill-opacity: 1
+					fill: var(--color-fill-primary)
+
+					transition: fill linear 300ms
+
+		&__text
+			margin-left: 4px
+
+		&:hover
+			background-color: var(--color-control)
+			color: var(--color-white)
+			path
+				fill: var(--color-white)
+
+	&__body
+		background-color: var(--color-profile-primary)
+		border-radius: var(--border-radius)
+	&__info
+		.profile
+			&__body
+				padding: 24px
+	&__avatar
+		display: flex
+		align-items: center
+		position: relative
+		.avatar
+			&__image
+				margin-right: 16px
+				background-color: var(--color-fill-primary)
+				border-radius: 50%
+				width: 70px
+				height: 70px
+				img
+					width: 100%
+					height: 100%
+					object-fit: cover
+					border-radius: inherit
+			&__title
+				font-size: 24px
+				font-weight: bold
+		~ .profile__text
+			margin-top: 12px
+	&__text
+		font-size: 11px
+		line-height: 1.5
+		color: var(--color-text-secondary)
+		max-width: 800px
+		&_full
+			max-width: 100%
+	&__group
+		&:not(:last-child)
+			margin-bottom: 24px
+	&__caption
+		width: 100%
+		background-color: white
+		box-shadow: var(--shadow-caption)
+		border-radius: var(--border-radius)
+		padding: 24px 16px
+		color: #46464F
+		position: relative
+		&:not(:last-child)
+			margin-bottom: 16px
+		.profile__text
+			color: inherit
+			font-size: 14px
+			&:not(:last-child)
+				margin-bottom: 16px
+			&_mb-small
+				&:not(:last-child)
+					margin-bottom: 6px
+		hr
+			border: none
+			background-color: var(--color-silver)
+			height: 1px
+			margin: 0 -16px 24px
+	&__data
+		.profile
+			&__body
+				padding: 40px
+				&_headless
+					padding: 0
+					background-color: unset
+				&.state-hidden
+					display: none
+				.body
+					&__row
+						display: flex
+						&.state-hidden
+							display: none
+						&_section
+							margin-bottom: 24px
+							&:not(:first-child)
+								margin: 40px 0 24px
+							&:last-child
+								margin-bottom: 0
+							.body__label
+								margin-top: unset
+						&_submit
+							margin-top: 40px
+						&:not(:last-child):not(.body__row_section):not(.state-hidden)
+							margin-bottom: 16px
+						&_footer
+							margin-top: 32px
+							padding-top: 32px
+							margin-bottom: 0
+							position: relative
+							flex-direction: column
+							&::before
+								content: ''
+								position: absolute
+								top: 0
+								left: -40px
+								width: calc(100% + 80px)
+								height: 1px
+								background-color: var(--color-profile-secondary)
+							.row
+								&:last-child
+									margin-top: 8px
+								&__content
+									.row__text
+										font-size: 14px
+						&.state-error
+							.row
+								&__label
+									margin-top: 30px
+								&__error
+									display: block
+									//display: flex
+									span
+										//display: block
+										//margin-bottom: 5px
+									ul
+										padding-left: 17px
+										margin-bottom: 15px
+						.row
+							&__status
+								margin-left: 16px
+							&__title
+								font-size: 14px
+								font-weight: bold
+							&__subtitle
+								margin-top: 16px
+							&__text
+								max-width: 70%
+								margin-top: 5px
+								font-size: 11px
+								color: var(--color-text-secondary)
+								[data-resend]
+									padding-left: 5px
+									cursor: auto
+									text-decoration: underline
+									color: var(--color-link)
+									font-weight: 700
+								&.state-resend
+									[data-resend]
+										cursor: text
+										text-decoration: none
+										color: inherit
+							&__link
+								color: var(--color-link)
+								text-decoration: underline
+								&:hover
+									text-decoration: none
+							&__error
+								font-size: 12px
+								color: var(--color-error)
+								margin-bottom: 5px
+								display: none
+								[data-action="remove"]
+									color: var(--color-error)
+								a
+									color: var(--color-link)
+									display: inline-block
+									margin-left: 4px
+								&_line
+									flex: 100%
+							&__label
+								flex: 0 0 17.5%
+								&_wide
+									flex: 0 0 35%
+							&__content
+								flex-grow: 1
+								&[data-state]
+									display: none
+									&.state-active
+										display: block
+								.avatar
+									&__image
+										margin: 10px 0
+										width: 97px
+										height: 97px
+									&__action
+										position: absolute
+										right: -20px
+										width: 24px
+										height: 24px
+										cursor: pointer
+										&[data-action="change"]
+											top: -5px
+										&[data-action="remove"]
+											bottom: -5px
+											&.state-hidden
+												opacity: 0
+												pointer-events: none
+								.content
+									&__title
+										font-size: 18px
+										font-weight: bold
+									&__wrapper
+										display: flex
+										align-items: center
+										width: 100%
+										&_group, &_file
+											.field
+												flex-basis: auto
+												margin-right: 8px
+											.button
+												flex-shrink: 0
+										&_file
+											[type="text"], .button
+												cursor: pointer
+											[type="file"]
+												display: none
+										&_buttons
+											justify-content: flex-start
+											.button
+												&:not(:last-child)
+													margin-right: 16px
+										&__text
+											margin-top: 48px
+
+// for profile docs
+
+.profile-state
+	display: flex
+	flex-wrap: wrap
+	align-items: center
+	margin-bottom: 18px
+	&_merge
+		margin-bottom: 0
+	&__icon
+		margin-right: 8px
+		font-size: 0
+	&__title
+		margin-right: 20px
+		padding: 15px 0
+	&__button
+
+.profile-tabs
+	margin-bottom: 24px
+	position: relative
+	&__header
+		display: flex
+		flex-wrap: nowrap
+		overflow-x: scroll
+		-ms-overflow-style: none
+		scrollbar-width: none
+		&::-webkit-scrollbar
+			display: none
+		width: 100%
+		background-color: var(--color-profile-primary)
+		padding: 8px
+		border-radius: var(--border-radius)
+	&__item
+		flex: 0 0 auto
+		padding: 8px
+		font-weight: 500
+		font-family: 'Museo'
+		border-radius: var(--border-radius)
+		&:hover,
+		&.state-active
+			background-color: var(--color-accent)
+			color: var(--color-white)
+		&:not(:last-child)
+			margin-right: 8px
+
+@media screen and (max-width: 1200px)
+	.profile-tabs
+		&::after
+			opacity: 1
+		&__header
+			display: inline-flex
+			flex-wrap: nowrap
+			overflow-x: scroll
+		&__item
+			flex: 0 0 auto
+
+@media screen and (max-width: 768px)
+	.profile
+		.module__content
+			flex-direction: column-reverse
+			max-width: 100%
+		&__info, &__data
+			flex-basis: 100%
+		&__info
+			margin-right: unset
+		&__data
+			margin-bottom: 24px
+
+
+@media screen and (max-width: 600px)
+	.profile
+		.module__content
+			width: 100%
+		&__header
+			flex-direction: column
+			align-items: flex-start
+			&_merge
+				padding: 18px 24px
+			.meta
+				&__label
+					margin-top: 3px
+		&__info
+			margin-right: unset
+			.profile__body
+				padding: 40px 24px 24px
+		&__data
+			.profile
+				&__body
+					padding: 40px 24px
+					.body
+						&__row
+							flex-direction: column
+							justify-content: flex-start
+							&_section .row__label,
+							&_submit .row__label
+								display: none
+							&_section
+								&:not(:first-child)
+									margin: 42px 0 16px
+							&_footer
+								&::before
+									left: -24px
+									width: calc(100% + 48px)
+							.field
+								margin-right: unset
+								flex-grow: 1
+								width: auto
+							&.state-error
+								.row
+									&__label
+										margin-top: unset
+							.row
+								&__label
+									flex: 0 0 auto
+									margin-bottom: 8px
+								&__text
+									min-width: 100%
+									br
+										display: none
+								&__error
+									&_line
+										margin-top: -8px
+								&__content
+									.profile
+										&__avatar
+											margin-top: 10px
+									.content
+										&__wrapper
+											flex-wrap: wrap
+											&_group
+												.field
+													&:first-child
+														flex-basis: 100%
+														margin-bottom: unset
+														margin-right: unset
+													&:nth-child(2)
+														flex-basis: 72.5%
+												.button
+													flex-basis: 23.5%
+													margin-left: unset
+											&_file
+												.field
+													margin-right: unset
+											&_buttons
+												margin-top: -8px
+											.button
+												margin-top: 8px

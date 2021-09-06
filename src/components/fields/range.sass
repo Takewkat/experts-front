@@ -1,0 +1,41 @@
+.range
+	position: relative
+	&__field
+		-webkit-appearance: none
+		appearance: none
+		width: 100%
+		height: 5px
+		display: block
+		outline: none
+		cursor: pointer
+		background-color: transparent
+		&::-webkit-slider-thumb
+			-webkit-appearance: none
+			appearance: none
+			width: 15px
+			height: 15px
+			border-radius: 50%
+			background-color: var(--color-accent)
+		&::-moz-range-thumb
+			-webkit-appearance: none
+			appearance: none
+			width: 15px
+			height: 15px
+			border: none
+			border-radius: 50%
+			background-color: var(--color-accent)
+		&::-moz-focus-outer
+			border: 0
+	&__item,
+	&__bg
+		position: absolute
+		top: 0
+		bottom: 0
+		left: 0
+		right: 0
+		height: 5px
+		margin: auto
+	&__item
+		z-index: 1
+	&__bg
+		background-image: linear-gradient(to right, var(--color-accent), var(--color-silver))

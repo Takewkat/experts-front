@@ -1,0 +1,73 @@
+.popover.popover_modal(data-popover)
+	.popover__items
+		.popover__close(data-close)
+			include ../../../public/images/popover-close.svg
+
+		.popover__item(data-target="lesson-buy")
+			.popover__alert(data-alert)
+			.popover__header
+				| Купить урок
+				|
+				span(data-title)
+			.popover__text.popover__text
+				| При покупке урока, с вашего счета спишется
+				|
+				span(data-cost)
+				|
+				| и вы будете перенаправлены на его страницу
+			.popover__action.action
+				.action__button.button.button_large.button_theme-gray(data-trigger="lesson-buy:cancel") Отмена
+				a(href="/materials/buy").action__button.button.button_large Купить
+
+.module.module_page(data-route="course")
+	.module__content
+		.module.module_regular.content
+			.content__link.content__link_selected.content__link_backward
+				include ../../../public/images/calendar/arrow.svg
+				a(href="expert.html") Назад на страницу эксперта
+		.module.module_regular.module_shrink.content
+			h1.content__title Избавьтесь от стресса и улучшите самочувствие за 10 минут в день
+			.content__text Курс «Избавьтесь от стресса и улучшите самочувствие за 10 минут в день» содержит действенную методику, позволяющую расслабиться и почувствовать связь с окружающим миром. Я научу применять медитацию для здоровья и очищения организма, снятия стресса, улучшения креативных навыков и развития интуиции.
+		.module.module_regular.content
+			h2.content__header Материалы курса
+			.course-list
+				.course-item(data-course="1")
+					.course-image
+						img(src="images/course-cover.jpg", alt="Мини-курс «Мудры. Магия жестов»")
+					.course-section
+						h3.course-section__title(data-course-title) Мини-курс «Мудры. Магия жестов»
+						.course-section__description Три составляющие мини-курса: энергия, здоровье и решение проблем. На уроках вы узнаете, как соединяться с высокочастотным...
+						.course-section__info Всего 3ч • 4 картинки • 20 мб презентации
+					.course-meta
+						.course-meta__price
+							| Стоимость
+							.course-meta__coin.coin
+								.coin__prepend(data-course-cost) 10
+								.coin__picture
+									include ../../../public/images/coin-icon.svg
+						.course-meta__button.button.button_large(data-target="lesson-buy", data-url) Купить урок
+				.course-item(data-course)
+					.course-image
+						img(src="images/course-cover.jpg", alt="Мини-курс «Мудры. Магия жестов»")
+					.course-section
+						h3.course-section__title(data-course-title) Мини-курс «Мудры. Магия жестов»
+						.course-section__description Три составляющие мини-курса: энергия, здоровье и решение проблем. На уроках вы узнаете, как соединяться с высокочастотным...
+						.course-section__info Всего 3ч • 4 картинки • 20 мб презентации
+					.course-meta
+						.course-meta__price
+							| Стоимость
+							.course-meta__coin.coin
+								.coin__prepend(data-course-cost) 100
+								.coin__picture
+									include ../../../public/images/coin-icon.svg
+						.course-meta__button.button.button_large(data-target="lesson-buy", data-url) Купить урок
+				.course-item
+					a(href="expert-lesson.html").course-link
+						.course-link__icon
+							include ../../../public/images/watch-icon.svg
+						.course-image
+							img(src="images/course-cover.jpg", alt="Мини-курс «Мудры. Магия жестов»")
+						.course-section
+							h3.course-section__title Мини-курс «Мудры. Магия жестов»
+							.course-section__description Три составляющие мини-курса: энергия, здоровье и решение проблем. На уроках вы узнаете, как соединяться с высокочастотным...
+							.course-section__info Всего 3ч • 4 картинки • 20 мб презентации

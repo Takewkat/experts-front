@@ -1,0 +1,88 @@
+.module.module_page(data-route="user:stat")
+	include ./profile-tabs.pug
+	.module.module_regular.profile
+		.module__content
+			.profile__data.data
+				.profile__header.profile__header_merge Статистика
+				.profile__body.body
+					.body__row.row
+						.row__content
+							.stats(data-stats)
+								.profile__caption
+									.profile__text Вы можете давать ссылку для привлечения статистики:
+									.copy-link(data-copy)
+										.copy-link__icon
+											include ../../../public/images/copy-icon.svg
+										.copy-link__text https://22e.ru/?pid=1
+								.stats__filter.stats-filter
+									.stats-filter__item(data-dates)
+										.stats-filter__label Интервал времени
+										.stats-filter__field.field
+											input(type="text", placeholder="Выберите дату").field__input
+									.stats-filter__item(data-group)
+										.stats-filter__label Сгруппировать по:
+										.stats-filter__field.field.field_select.select.state-selected
+											.field__input(data-select-output="days", data-placeholder="выбрать группировку") дням
+											.field__icon.select__carret
+												svg(width="16", height="16", viewBox="0 0 16 16", fill="none", xmlns="http://www.w3.org/2000/svg")
+													path(d="M3.07273 4.66699L2 5.67813L8 11.3337L14 5.67813L12.9273 4.66699L8 9.31138L3.07273 4.66699V4.66699Z", fill="#676767")
+											.select__items
+												.select__item(data-option="days") дням
+												.select__item(data-option="weeks") неделям
+												.select__item(data-option="months") месяцам
+									.stats-filter__item(data-times)
+										.stats-filter__label Показать за:
+										.stats-filter__field.field.field_select.select
+											.field__input(data-select-output, data-placeholder="выбрать период") выбрать период
+											.field__icon.select__carret
+												svg(width="16", height="16", viewBox="0 0 16 16", fill="none", xmlns="http://www.w3.org/2000/svg")
+													path(d="M3.07273 4.66699L2 5.67813L8 11.3337L14 5.67813L12.9273 4.66699L8 9.31138L3.07273 4.66699V4.66699Z", fill="#676767")
+											.select__items
+												.select__item(data-option="current_month") текущий месяц
+												.select__item(data-option="last_month") предыдущий месяц
+												.select__item(data-option="current_year") текущий год
+									button.stats-filter__item.stats-filter__button.button.button_large.button_accent(data-submit="https://dev.22e.ru/myexpert/stat?isAjax=1&isOpenSite=1") Показать
+
+								.sort-table.stats__table.state-active(data-table="static")
+									.sort-table__wrapper
+										table.sort-table__container
+											thead.sort-table__head
+												tr.sort-table__row
+													th.sort-table__cell(data-name="date", data-direction)
+														span Дата
+													th.sort-table__cell(data-name="sum_duration_online", data-direction)
+														span Мин.онлайн
+													th.sort-table__cell(data-name="sum_duration", data-direction)
+														span Мин.конс.
+													th.sort-table__cell(data-name="sum_cost", data-direction)
+														span Коинов.конс.
+													th.sort-table__cell(data-name="users", data-direction)
+														span Привл.кл.
+													th.sort-table__cell(data-name="users_coins", data-direction)
+														span Коинов привл.кл.
+													th.sort-table__cell(data-name="out_coins", data-direction)
+														span Коинов выв.
+											tbody.sort-table__body(data-rows)
+												tr.sort-table__row
+													td.sort-table__cell 14.01.2021
+													td.sort-table__cell 347asdas
+													td.sort-table__cell 0
+													td.sort-table__cell 0
+													td.sort-table__cell 0
+													td.sort-table__cell 0
+													td.sort-table__cell 0
+									.sort-table__pagination.stats__pagination.state-active.pagination(data-pagination="10/10")
+										.pagination__item(data-control="start")
+											include ../../../public/images/pagination-arrow-extend.svg
+										.pagination__item(data-control="prev")
+											include ../../../public/images/pagination-arrow.svg
+										.pagination__pages(data-pages)
+											.pagination__item.state-active(data-nav="1")
+										.pagination__item(data-control="next")
+											include ../../../public/images/pagination-arrow.svg
+										.pagination__item(data-control="end")
+											include ../../../public/images/pagination-arrow-extend.svg
+
+								.stats__message(data-message)
+									.profile__caption
+										.profile__text По вашему запросу нет данных, попробуйте изменить фильтры и сделать поиск заново

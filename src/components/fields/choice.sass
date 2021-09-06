@@ -1,0 +1,101 @@
+.choice
+	&__group
+		border: 1px solid var(--color-choice-secondary)
+		border-radius: var(--border-radius)
+		&:not(:last-child)
+			margin-bottom: 8px
+	&__section
+		&:not(:first-child)
+			border-top: 1px solid var(--color-choice-secondary)
+	&__header, &__subheader
+		cursor: pointer
+	&__header
+		background-color: var(--color-choice-primary)
+		padding: 8px 16px
+		font-weight: bold
+		color: var(--color-text-primary)
+	&__item
+		padding: 0 16px
+	&__subheader
+		display: flex
+		justify-content: space-between
+		align-items: center
+	&__title
+		padding: 8px 0
+	&__carret
+		width: 16px
+		font-size: 0
+		svg
+			width: 100%
+	&__list
+		display: none
+		padding: 8px 0 20px 8px
+		border-radius: 0 0 var(--border-radius) var(--border-radius)
+	&__field
+		font-size: 12px
+		&:not(:first-child)
+			margin-top: 12px
+
+.choice
+	&__group.state-expand
+		.choice__section
+			display: block
+	&__section.state-expand
+		.choice
+			&__carret
+				transform: rotate(180deg)
+			&__list
+				display: block
+	&__group, &__section
+		&:not(.state-active):not(.state-expand.state-active)
+			display: none
+	&__field
+		&.state-exists
+			&:not(.state-active)
+				display: none
+
+.choice-select
+	&__list
+	&__item
+		display: flex
+		flex-wrap: wrap
+		align-items: center
+		&:not(:last-child)
+			margin-bottom: 10px
+	&__title
+		display: flex
+		align-items: center
+		&:not(:nth-last-child(-n+1))
+			margin-right: 10px
+			padding-right: 10px
+			position: relative
+			&::after
+				content: ''
+				position: absolute
+				top: 0
+				bottom: 0
+				right: -4px
+				margin: auto
+				width: 6px
+				height: 8px
+				background-image: url('./../images/choice-separator-icon.svg')
+				background-size: cover
+				background-position: center
+	&__remove
+		font-size: 0
+		margin-left: 8px
+		cursor: pointer
+
+@media screen and (max-width: 600px)
+	.choice
+	.choice-select
+		&__item
+			display: flex
+			flex-direction: column
+			align-items: flex-start
+		&__title
+			margin-bottom: 8px
+			&:last-child
+				margin-top: -2px
+		&__remove
+			margin-right: auto

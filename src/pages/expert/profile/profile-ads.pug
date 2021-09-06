@@ -1,0 +1,42 @@
+.module.module_page(data-route="user:ads")
+	include ./profile-tabs.pug
+	.module.module_regular.profile
+		.module__content
+			.profile__data.data
+				.profile__header.profile__header_merge Партнерская ссылка
+				.profile__body.body
+					.body__row.row
+						.row__content
+							.profile__caption
+								.profile__group
+									.profile__text Вы можете давать ссылку(и) как на главную страницу сайта(ов) на котором(ых) вы являетесь экспертом:
+									.copy-link(data-copy)
+										.copy-link__icon
+											include ../../../public/images/copy-icon.svg
+										.copy-link__text https://22e.ru/?pid=1
+									.copy-link(data-copy)
+										.copy-link__icon
+											include ../../../public/images/copy-icon.svg
+										.copy-link__text https://44e.ru/?pid=1
+								.profile__group
+									.profile__text Так и ссылку конкретно на вашу(и) страницу(ы) на нем(них)
+									.copy-link(data-copy)
+										.copy-link__icon
+											include ../../../public/images/copy-icon.svg
+										.copy-link__text https://22e.ru/expert/11-test/?pid=1
+									.copy-link(data-copy)
+										.copy-link__icon
+											include ../../../public/images/copy-icon.svg
+										.copy-link__text https://244a.ru/expert/11-test/?pid=1
+								.profile__group
+									.profile__text Ваш клиент, зарегистрировавшийся в системе по вашей же ссылке, будет приносить вам дополнительно 20% от всех потраченных на ваши консультации средств. А также, вы будете получать 20% от тех средств, которые потратит приглашенный вами клиент у других экспертов. Рекомендуем разместить эту ссылку во всех своих социалках и рекламах.
+								hr
+								.profile__text
+									| Вами приглашено клиентов:
+									strong 2
+								.profile__text
+									| Всего на них заработано:
+									span.coin
+										span.coin__text 100
+										span.coin__icon
+											include ../../../public/images/coin-icon.svg

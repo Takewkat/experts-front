@@ -1,0 +1,35 @@
+.video-preview
+	&__items
+		display: flex
+		justify-content: space-between
+		margin-bottom: 32px
+	&__item
+		flex-basis: 49%
+	&__player
+		width: 100%
+		height: 300px
+		object-fit: cover
+	&__title
+		font-weight: 500
+		font-family: 'Museo'
+		text-align: center
+		margin-bottom: 8px
+	&__controls
+		padding: 16px
+		background-color: white
+		display: flex
+		align-items: center
+		border-radius: var(--border-radius)
+	&__control
+		font-size: 0
+	&__button
+		cursor: pointer
+		margin-right: 12px
+		border-radius: var(--border-radius)
+		overflow: hidden
+	&__range
+		margin-left: calc(24px - 12px)
+		flex-grow: 1
+		margin-right: 8px
+	&__time
+		color: var(--color-black-soft)

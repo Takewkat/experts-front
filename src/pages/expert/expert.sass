@@ -1,0 +1,140 @@
+.expert
+	display: flex
+	flex-direction: row
+	flex-wrap: wrap
+	align-items: center
+	padding-bottom: 16px
+	&__header
+		font-size: 90px
+	&__info
+		display: flex
+		margin-right: auto
+		.info
+			&__avatar
+				position: relative
+				flex-shrink: 0
+				margin-right: 18px
+				width: 75px
+				height: 75px
+				border-radius: 50%
+				img
+					width: 100%
+					height: 100%
+					object-fit: cover
+					border-radius: 50%
+				&[data-status]::after
+					content: ''
+
+					position: absolute
+					right: 2px
+					bottom: 2px
+
+					width: 17px
+					height: 17px
+
+					border-radius: 50%
+					border: 2px solid var(--color-fill-primary)
+				&[data-status="online"]::after
+					background-color: var(--color-green)
+				&[data-status="offline"]::after
+					background-color: var(--color-tomato)
+			&__title
+				font-size: 34px
+				margin-bottom: 5px
+			&__cost
+				display: flex
+				align-items: baseline
+
+				font-family: 'Museo'
+				font-weight: 500
+				&_price
+					margin-right: 4px
+				&_coin
+				&_time
+					color: var(--color-gold)
+	&__rating
+		display: flex
+		.rating
+			&__stars
+				margin: 0 8px 0 16px
+	&__button
+		margin-left: 48px
+
+.rating
+	line-height: 1
+	&__title
+	&__stars
+		display: inline-flex
+	&__star
+		font-size: 0
+		width: 13px
+		height: 13px
+		svg
+			width: 100%
+			height: 100%
+		&:not(:last-child)
+			margin-right: 6px
+	&__average
+		font-family: 'Museo'
+		font-weight: 500
+		color: var(--color-gold)
+	[data-rating]
+		.rating__star
+			cursor: pointer
+
+.chat
+	position: relative
+	.widget-popup
+		display: none
+		justify-content: center
+		align-items: center
+
+		position: absolute
+		top: 0
+
+		width: 100%
+		height: 100%
+		&.state-active
+			display: flex
+		&__wrapper
+			max-width: 90%
+
+			padding: 25px
+
+			color: var(--color-dark)
+			border-radius: var(--border-radius)
+			background-color: white
+			box-shadow: var(--shadow)
+		&__heading
+			margin-bottom: 16px
+
+			font-size: 24px
+			font-weight: 700
+			line-height: 32px
+		&__text
+			max-width: 400px
+		&__button
+			margin-top: 16px
+		&__link
+			margin-left: 16px
+			font-size: inherit
+		.browser-expire-list
+			margin-top: 24px
+
+
+// Modile
+
+@media screen and (max-width: 767px)
+	.expert
+		.info
+			&__avatar
+				width: 15vw
+				height: 15vw
+			&__title
+				font-size: 5.625vw
+			&__cost
+			font-size: 4.375vw
+		&__rating
+			display: none
+		&__button
+			margin: 24px 0 0 0

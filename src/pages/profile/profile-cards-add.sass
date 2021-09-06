@@ -1,0 +1,89 @@
+.new-card
+	display: flex
+	width: 100%
+	&__main
+		background-color: var(--color-profile-cards-secondary)
+		padding: 24px
+		border-radius: var(--border-radius)
+		flex-basis: 400px
+		position: relative
+		z-index: 1
+	&__number
+		margin-bottom: 40px
+	&__text
+		margin-bottom: 8px
+		flex-basis: 100%
+	&__field
+		&.field_select
+			margin-bottom: -20px
+	&__wrapper
+		display: flex
+	&__code
+		margin-right: 16px
+		.field
+			width: 80px
+		span
+			margin: 0 8px
+			align-self: center
+			transform: translateY(-2px)
+	&__holder
+		width: 100%
+		.field
+			width: 100%
+	&__icons
+		display: flex
+		justify-content: flex-end
+	&__icon
+		display: none
+		&.state-active
+			display: flex
+	&__side
+		flex-basis: 150px
+		background-color: var(--color-profile-cards-primary)
+		border-radius: var(--border-radius)
+		transform: translateX(-2px)
+		position: relative
+		display: flex
+		flex-direction: column
+		justify-content: flex-end
+		padding: 25px
+		&::after
+			content: ''
+			position: absolute
+			left: 0
+			right: 0
+			top: 20px
+			height: 45px
+			background-color: var(--color-black)
+		.field
+			width: 63px
+			margin-bottom: 8px
+		.new-card__text
+			margin-bottom: unset
+			flex-basis: auto
+			font-size: 12px
+
+// Mobile
+
+@media screen and (max-width: 600px)
+	.new-card
+		flex-direction: column
+		&__main, &__side
+			flex-basis: auto
+		&__main
+			border-radius: var(--border-radius) var(--border-radius) 0 0
+		&__number
+		&__side
+			transform: unset
+
+			border-radius: 0 0 var(--border-radius) var(--border-radius)
+			&::after
+				content: unset
+		&__wrapper
+			flex-wrap: wrap
+			.field
+				flex-basis: 100%
+			.new-card__code
+				flex-basis: 100%
+				margin-bottom: 16px
+				margin-right: 0

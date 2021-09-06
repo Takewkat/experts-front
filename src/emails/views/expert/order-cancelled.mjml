@@ -1,0 +1,28 @@
+<mjml>
+  <mj-head>
+    <mj-include path="./components/styles.mjml.css" type="css" css-inline="inline">
+		<mj-include path="./components/fonts.mjml.css" type="css">
+  </mj-head>
+  <mj-body background-color="%style.silver%">
+
+    <mj-include path="./components/header.mjml">
+
+    <mj-section background-color="%style.white%">
+      <mj-column>
+
+        <mj-include path="./components/greeting-name.mjml">
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="18px" color="%style.text%">Консультация в Вашем расписании отменена.</mj-text>
+
+        <mj-include path="./components/calendar-order.mjml">
+
+        <mj-include path="./components/buttons/calendar.mjml">
+
+        <mj-include path="./components/msk.mjml">
+
+        <mj-include path="./components/footer.mjml">
+
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

@@ -1,0 +1,415 @@
+.module.module_page
+	include ./profile-tabs.pug
+
+	.overflow-calendar
+	.overflow-popover
+
+	.popover.popover_modal(data-popover)
+		.popover__items
+			.popover__close(data-close)
+				include ../../../public/images/popover-close.svg
+
+			.popover__item(data-target="computed")
+				.popover__header Что вы хотите сделать?
+				.popover__computed(data-computed)
+
+			.popover__item(data-target="open-create")
+				.popover__alert(data-alert)
+				.popover__header Открыть запись для консультации
+				.popover__table.table
+					.table__row
+						.table__cell.table__title Дата начала
+						.table__cell.table__info.info
+							.info__text.info__select.select
+								.select__header(data-select-output, data-start)
+								.info__icon.select__carret
+									include ../../../public/images/popover-carret.svg
+								.select__items
+					.table__row
+						.table__cell.table__title Дата окончания
+						.table__cell.table__info.info
+							.info__text.info__select.select
+								.select__header(data-select-output, data-end)
+								.info__icon.select__carret
+									include ../../../public/images/popover-carret.svg
+								.select__items
+					.table__row
+						.table__cell.table__title Продолжительность
+						.table__cell.table__info.info
+							.info__text(data-time)
+				.popover__action.action
+					.action__button.button.button_large(data-trigger="open-success") Открыть запись
+				.popover__text.popover__text_small  Вы можите выбратьи нтервал времени, в котором клиенты могут забонировать консультацию
+
+			.popover__item(data-target="open-success")
+				.popover__alert(data-alert)
+				.popover__icon
+					include ../../../public/images/popover-success.svg
+				.popover__header Успешно, запись открыта
+				.popover__table.table
+					.table__row
+						.table__cell.table__title Дата начала
+						.table__cell.table__info.info
+							.info__text(data-start)
+					.table__row
+						.table__cell.table__title Дата окончания
+						.table__cell.table__info.info
+							.info__text(data-end)
+					.table__row
+						.table__cell.table__title Продолжительность
+						.table__cell.table__info.info
+							.info__text(data-time)
+
+			.popover__item(data-target="open-info")
+				.popover__alert(data-alert)
+				.popover__header Информация о рабочем времени
+				.popover__text Время, в течении которого клиенты могут забронировать консультацию
+				.popover__table.table
+					.table__row
+						.table__cell.table__title Дата начала
+						.table__cell.table__info.info
+							.info__text(data-start)
+					.table__row
+						.table__cell.table__title Дата окончания
+						.table__cell.table__info.info
+							.info__text(data-end)
+					.table__row
+						.table__cell.table__title Продолжительность
+						.table__cell.table__info.info
+							.info__text(data-time)
+				.popover__action.action
+					.action__button.button.button_large.button_theme-gray(data-trigger="open-info:cancel") Нет
+					.action__button.button.button_large(data-trigger="open-info:submit") Закрыть запись
+
+			.popover__item(data-target="open-delete")
+				.popover__alert(data-alert)
+				.popover__header Закрыть запись
+				.popover__text Вы точно хотите закрыть запись?
+				.popover__action.action
+					.action__button.button.button_large.button_theme-gray(data-trigger="open-delete:cancel") Нет
+					.action__button.button.button_large(data-trigger="open-delete:submit") Закрыть запись
+
+			.popover__item(data-target="open-cancel")
+				.popover__alert(data-alert)
+				.popover__icon
+					include ../../../public/images/popover-success.svg
+				.popover__header Успешно, запись закрыта
+
+			.popover__item(data-target="order-info")
+				.popover__alert(data-alert)
+				.popover__header Информации о бронировании
+				.popover__table.table
+					.table__row
+						.table__cell.table__title Дата начала
+						.table__cell.table__info.info
+							.info__text(data-start)
+					.table__row
+						.table__cell.table__title Продолжительность
+						.table__cell.table__info.info
+							.info__text(data-time)
+					.table__row
+						.table__cell.table__title Стоимость
+						.table__cell.table__info.info
+							.info__text.info__coin
+								span.info__cost(data-total)
+								.info__icon
+									include ../../../public/images/popover-coin.svg
+					.table__row
+						.table__cell.table__title Клиент
+						.table__cell.table__info.info
+							.info__text(data-username)
+					.table__row
+						.table__cell.table__title Статус
+						.table__cell.table__info.info
+							.info__text(data-status)
+
+			.popover__item(data-target="order-late")
+				.popover__alert(data-alert)
+				.popover__icon
+					include ../../../public/images/popover-warning.svg
+				.popover__header Клиент отменил консультацию
+				.popover__text Мы вернем вам
+					span.coin
+						span.coin__text(data-total)
+						span.coin__icon
+							include ../../../public/images/popover-coin.svg
+
+			.popover__item(data-target="order-pass")
+				.popover__alert(data-alert)
+				.popover__icon
+					include ../../../public/images/popover-warning.svg
+				.popover__header Вы не пришли на консультацию
+				.popover__text Мы с вас списали штраф
+					span.coin
+						span.coin__text(data-total)
+						span.coin__icon
+							include ../../../public/images/popover-coin.svg
+
+			.popover__item(data-target="webinar-create")
+				.popover__alert(data-alert)
+				.popover__header Создать вебинар
+				textarea(placeholder="Напишите название вебинара", data-field).popover__field
+				.popover__table.table
+					.table__row
+						.table__cell.table__title Дата начала
+						.table__cell.table__info.info
+							.info__text.info__select.select
+								.select__header(data-select-output, data-start)
+								.info__icon.select__carret
+									include ../../../public/images/popover-carret.svg
+								.select__items
+					.table__row
+						.table__cell.table__title Дата окончания
+						.table__cell.table__info.info
+							.info__text.info__select.select
+								.select__header(data-select-output, data-end)
+								.info__icon.select__carret
+									include ../../../public/images/popover-carret.svg
+								.select__items
+					.table__row
+						.table__cell.table__title Продолжительность
+						.table__cell.table__info.info
+							.info__text(data-time)
+					.table__row
+						.table__cell.table__title Стоимость
+						.table__cell.table__info.info
+							.info__field.field.field_bordered
+								input(type="text", placeholder="Введите стоимость", data-total).field__input
+				.popover__action.action
+					.action__button.button.button_large(data-trigger="webinar-success") Создать вебинар
+
+			.popover__item(data-target="webinar-success")
+				.popover__alert(data-alert)
+				.popover__icon
+					include ../../../public/images/popover-success.svg
+				.popover__header Вебинар создан
+				.popover__table.table
+					.table__row
+						.table__cell.table__title Вебинар
+						.table__cell.table__info.info
+							.info__text(data-title)
+					.table__row
+						.table__cell.table__title Дата начала
+						.table__cell.table__info.info
+							.info__text(data-start)
+					.table__row
+						.table__cell.table__title Дата окончания
+						.table__cell.table__info.info
+							.info__text(data-end)
+					.table__row
+						.table__cell.table__title Продолжительность
+						.table__cell.table__info.info
+							.info__text(data-time)
+					.table__row
+						.table__cell.table__title Стоимость
+						.table__cell.table__info.info
+							.info__text.info__coin
+								span.info__cost(data-total)
+								.info__icon
+									include ../../../public/images/popover-coin.svg
+
+			.popover__item(data-target="webinar-info")
+				.popover__alert(data-alert)
+				.popover__header Информация о вебинаре
+				.popover__table.table
+					.table__row
+						.table__cell.table__title Вебинар
+						.table__cell.table__info.info
+							.info__text(data-title)
+					.table__row
+						.table__cell.table__title Дата начала
+						.table__cell.table__info.info
+							.info__text(data-start)
+					.table__row
+						.table__cell.table__title Дата окончания
+						.table__cell.table__info.info
+							.info__text(data-end)
+					.table__row
+						.table__cell.table__title Продолжительность
+						.table__cell.table__info.info
+							.info__text(data-time)
+					.table__row
+						.table__cell.table__title Стоимость
+						.table__cell.table__info.info
+							.info__text.info__coin
+								span.info__cost(data-total)
+								.info__icon
+									include ../../../public/images/popover-coin.svg
+				.popover__module(data-order="true")
+					.popover__text.popover__text_small Вы не можете отменить вебинар, потому что на него уже записались
+				.popover__module(data-order="false")
+					.popover__action.action
+						.action__button.button.button_large(data-trigger="webinar-info:submit") Закрыть запись
+
+			.popover__item(data-target="webinar-delete")
+				.popover__alert(data-alert)
+				.popover__header Отменить вебинар
+				.popover__text Вы точно хотите отменить вебинар?
+				.popover__action.action
+					.action__button.button.button_large.button_theme-gray(data-trigger="webinar-delete:cancel") Нет
+					.action__button.button.button_large(data-trigger="webinar-delete:submit") Отменить вебинар
+
+			.popover__item(data-target="webinar-cancel")
+				.popover__alert(data-alert)
+				.popover__icon
+					include ../../../public/images/popover-success.svg
+				.popover__header Успешно, вебинар отменен
+
+			.popover__item(data-target="copy-day")
+				.popover__alert(data-alert)
+				.popover__header Копировать день
+				.popover__table.table
+					.table__row
+						.table__cell.table__title Копировать
+						.table__cell.table__info.info
+							.info__text(data-start)
+					.table__row
+						.table__cell.table__title Копировать куда
+						.table__cell.table__info.info
+							.info__text.info__select.select
+								.select__header(data-select-output, data-end)
+								.info__icon.select__carret
+									include ../../../public/images/popover-carret.svg
+								.select__items
+				.popover__action.action
+					.action__button.button.button_theme-gray.button_large(data-trigger="copy-day:cancel") Отмена
+					.action__button.button.button_large(data-trigger="copy-day:success") Копировать
+				.popover__text.popover__text_small Вы можете копировать своё рабочее расписание (только зеленых слотов)
+
+			.popover__item(data-target="copy-day:success")
+				.popover__alert(data-alert)
+				.popover__module(data-state="success")
+					.popover__icon
+						include ../../../public/images/popover-success.svg
+					.popover__header Успешно, день скопирован
+				.popover__module(data-state="warning")
+					.popover__icon
+						include ../../../public/images/popover-warning.svg
+					.popover__header День скопирован неполностью
+					.popover__text Часть событий совпадают с интервалом копируемой области
+					.popover__table.popover__table_scroll.table
+						.table__row(data-model)
+							.table__cell.table__info.table__info_wide.info
+								.info__text(data-date)
+
+			.popover__item(data-target="copy-week")
+				.popover__alert(data-alert)
+				.popover__header Копировать неделю
+				.popover__table.table
+					.table__row
+						.table__cell.table__title Копировать
+						.table__cell.table__info.info
+							.info__text(data-start)
+					.table__row
+						.table__cell.table__title Копировать куда
+						.table__cell.table__info.info
+							.info__text.info__select.select
+								.select__header(data-select-output, data-end)
+								.info__icon.select__carret
+									include ../../../public/images/popover-carret.svg
+								.select__items
+				.popover__action.action
+					.action__button.button.button_theme-gray.button_large(data-trigger="copy-week:cancel") Отмена
+					.action__button.button.button_large(data-trigger="copy-week:success") Копировать
+				.popover__text.popover__text_small Вы можете копировать своё рабочее расписание (только зеленых слотов)
+
+			.popover__item(data-target="copy-week:success")
+				.popover__alert(data-alert)
+				.popover__module(data-state="success")
+					.popover__icon
+						include ../../../public/images/popover-success.svg
+					.popover__header Успешно, неделя скопирована
+				.popover__module(data-state="warning")
+					.popover__icon
+						include ../../../public/images/popover-warning.svg
+					.popover__header Неделя скопирована неполностью
+					.popover__text Часть событий совпадают с интервалом копируемой области
+					.popover__table.popover__table_scroll.table
+						.table__row(data-model)
+							.table__cell.table__info.table__info_wide.info
+								.info__text(data-date)
+
+	.module__content
+
+		.module.calendar(data-route="calendar")
+			.calendar__view.view
+				.view__date.date
+					.date__prev(data-prev)
+						include ../../../public/images/calendar/arrow.svg
+					.date__picker(data-picker)
+						input(type="button").field
+						include ../../../public/images/calendar/calendar.svg
+					.date__next(data-next)
+						include ../../../public/images/calendar/arrow.svg
+				.view__timezone.tz(data-tz="https://dev.22e.ru/users/get-time-zone")
+					.tz__field.field
+						input(type="text", placeholder="Москва", data-tz-search="Europe/Moscow").field__input
+					.tz__list
+				.view__size.size
+					.size__item.state-active(data-size="timeGridWeek") Неделя
+					.size__item(data-size="timeGridDay") День
+			.calendar__toolbar.toolbar
+				.toolbar__title
+				.toolbar__action.action
+					.action__button.action__button_accent.action__button_mobile(data-trigger="mobile:menu")
+						include ../../../public/images/calendar/more.svg
+					.action__button.action__button_accent.action__button_mobile(data-trigger="mobile:menu-close")
+						.action__tooltip закрыть
+						include ../../../public/images/calendar/close.svg
+					.action__button(data-trigger="unselect")
+						.action__tooltip снять выделение
+						include ../../../public/images/calendar/select.svg
+
+					.action__button(data-trigger="copy-day")
+						.action__tooltip скопировать день
+						include ../../../public/images/calendar/copy.svg
+
+					.action__button(data-trigger="copy-week")
+						.action__tooltip скопировать неделю
+						include ../../../public/images/calendar/copy.svg
+
+					.action__button(data-trigger="open-create")
+						.action__tooltip открыть запись
+						include ../../../public/images/calendar/open-create.svg
+
+					.action__button(data-trigger="open-delete")
+						.action__tooltip закрыть запись
+						include ../../../public/images/calendar/open-delete.svg
+
+					.action__button(data-trigger="open-info")
+						.action__tooltip посмотреть информацию
+						include ../../../public/images/calendar/info.svg
+
+					.action__button(data-trigger="order-info")
+						.action__tooltip посмотреть информацию
+						include ../../../public/images/calendar/info.svg
+
+					.action__button(data-trigger="order-late")
+						.action__tooltip информация об отмене
+						include ../../../public/images/calendar/info.svg
+
+					.action__button(data-trigger="order-pass")
+						.action__tooltip информация об отмене
+						include ../../../public/images/calendar/info.svg
+
+					.action__button(data-trigger="webinar-create")
+						.action__tooltip создать вебинар
+						include ../../../public/images/calendar/webinar-create.svg
+
+					.action__button(data-trigger="webinar-info")
+						.action__tooltip посмотреть информацию
+						include ../../../public/images/calendar/info.svg
+
+					.action__button(data-trigger="webinar-delete")
+						.action__tooltip отменить вебинар
+						include ../../../public/images/calendar/webinar-delete.svg
+			.calendar__wrapper
+				#calendar(data-role="expert")
+
+			.calendar__legend.legend
+				.legend__item.legend__item_order(data-count="1") Консультация
+				.legend__item.legend__item_webinar(data-count="3") Вебинара
+				.legend__item.legend__item_open Открыто <br> для записи
+				.legend__item.legend__item_close Нет записи
+				.legend__item.legend__item_late Поздняя отмена <br> консультации
+				.legend__item.legend__item_pass Эксперт не явился <br> на консультацию

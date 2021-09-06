@@ -1,0 +1,83 @@
+.popover(data-popover)
+	.popover__items
+		.popover__close(data-close)
+			include ../../public/images/popover-close.svg
+		.popover__item(data-target="remove")
+			.popover__alert(data-alert)
+			.popover__header Удалить карту?
+			.popover__text Вы уверены, что хотите удалить карту?
+			.popover__action.action
+				.action__button.button.button_large.button_theme-gray(data-trigger="remove:cancel") Нет
+				.action__button.button.button_large(data-trigger="remove:submit") Удалить карту
+
+.module.module_page.profile(data-route="user-cards")
+	.module__content
+		.profile__info.info
+			.info__wrapper
+				.profile__header Публичные данные
+				.profile__body.body
+					.profile__avatar.avatar
+						.avatar__image(data-placeholder="images/profile-placeholder.png")
+							img(src="images/profile.png")
+						.avatar__wrapper
+							.avatar__label Имя
+							.avatar__title Ivan25
+					.profile__text Информация, которую вы укажете в этом разделе, <br> публичная. Она видна другим пользователям.
+			include ./profile-navs.pug
+		.profile__data.data
+			.profile__header.meta
+				.meta__title Привязанные карты
+			.profile__body.body
+				.profile-cards(data-action="https://dev.44a.ru/users/cards-handler")
+					.profile-cards__wrapper
+						.profile-cards__error.state-hidden(data-error) Ошибка удаления карты
+						a(href="./profile-cards-add.html").profile-cards__link Добавить карту
+					.profile-cards__list
+						.profile-card.state-selected(data-card="first")
+							.profile-card__image
+								include ../../public/images/visa-card-icon.svg
+							.profile-card__info.info
+								.info__title 4276 55 •• •••• 3265
+								.info__meta
+									| 03/23
+									span основная карта
+									span.state-hidden
+										a(href="#", data-handler="favorite").content__link.content__link_selected сделать основной
+							.profile-card__action
+								.profile-card__button.button.button_large.button_theme-accent(data-handler="remove", data-trigger="remove") Удалить
+						.profile-card(data-card="second")
+							.profile-card__image
+								include ../../public/images/ms-card-icon.svg
+							.profile-card__info.info
+								.info__title 4276 55 •• •••• 3265
+								.info__meta
+									| 03/23
+									span.state-hidden основная карта
+									span
+										a(href="#", data-handler="favorite").content__link.content__link_selected сделать основной
+							.profile-card__action
+								.profile-card__button.button.button_large.button_theme-accent(data-handler="remove", data-trigger="remove") Удалить
+						.profile-card(data-card="second")
+							.profile-card__image
+								include ../../public/images/mir-card-icon.svg
+							.profile-card__info.info
+								.info__title 4276 55 •• •••• 3265
+								.info__meta
+									| 03/23
+									span.state-hidden основная карта
+									span
+										a(href="#", data-handler="favorite").content__link.content__link_selected сделать основной
+							.profile-card__action
+								.profile-card__button.button.button_large.button_theme-accent(data-handler="remove", data-trigger="remove") Удалить
+						.profile-card(data-card="second")
+							.profile-card__image
+								include ../../public/images/card-icon.svg
+							.profile-card__info.info
+								.info__title 4276 55 •• •••• 3265
+								.info__meta
+									| 03/23
+									span.state-hidden основная карта
+									span
+										a(href="#", data-handler="favorite").content__link.content__link_selected сделать основной
+							.profile-card__action
+								.profile-card__button.button.button_large.button_theme-accent(data-handler="remove", data-trigger="remove") Удалить

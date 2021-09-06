@@ -1,0 +1,63 @@
+.module.module_page.profile(data-route="user")
+	.module__content
+		.profile__info.info
+			.info__wrapper
+				.profile__header Публичные данные
+				.profile__body.body
+					.profile__avatar.avatar
+						.avatar__image(data-placeholder="images/profile-placeholder.png")
+							img(src="images/profile.png")
+						.avatar__wrapper
+							.avatar__label Имя
+							.avatar__title Ivan25
+					.profile__text Информация, которую вы укажете в этом разделе, <br> публичная. Она видна другим пользователям.
+			include ./profile-navs.pug
+		.profile__data.data
+			.profile__header.meta
+				.meta__title Пополнить счет
+			.profile__body.body
+				.profile-balance
+					.profile-balance__item
+						.profile-balance__cost.cost
+							.cost__title 30
+							.cost__icon
+								include ../../public/images/coin-icon.svg
+						.profile-balance__price.price
+							.price__current 200 ₽
+							.price__sale 180 ₽
+						a(href="profile-checkout.html?tariff_id=1").profile-balance__button.button.button_large пополнить
+						.profile-balance__info 1 COIN = 6 RUB
+					.profile-balance__item
+						.profile-balance__cost.cost
+							.cost__title 150
+							.cost__icon
+								include ../../public/images/coin-icon.svg
+						.profile-balance__price.price
+							.price__current 750 ₽
+							.price__sale 600 ₽
+						a(href="profile-checkout.html?tariff_id=2").profile-balance__button.button.button_large пополнить
+						.profile-balance__info 1 COIN = 6 RUB
+					.profile-balance__item.state-selected
+						.profile-balance__label Лучший выбор
+						.profile-balance__cost.cost
+							.cost__title 450
+							.cost__icon
+								include ../../public/images/coin-icon.svg
+						.profile-balance__price.price
+							.price__current 2 000 ₽
+							.price__sale 1 900 ₽
+						a(href="profile-checkout.html?tariff_id=3").profile-balance__button.button.button_large пополнить
+						.profile-balance__info
+							| 1 COIN =
+							span.profile-balance__info_selected  6
+							|  RUB
+					.profile-balance__item
+						.profile-balance__cost.cost
+							.cost__title 1500
+							.cost__icon
+								include ../../public/images/coin-icon.svg
+						.profile-balance__price.price
+							.price__current 6 000 ₽
+							.price__sale 5 500 ₽
+						a(href="profile-checkout.html?tariff_id=4").profile-balance__button.button.button_large пополнить
+						.profile-balance__info 1 COIN = 6 RUB

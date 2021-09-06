@@ -1,0 +1,357 @@
+.popover.popover_shadow.popover_modal(data-popover)
+	.popover__items
+		.popover__close(data-close)
+			include ../../../public/images/popover-close.svg
+		.popover__item(data-target="remove-course")
+			.popover__alert(data-alert)
+			.popover__header
+				| Удалить услугу
+				|
+				span(data-title)
+			.popover__action.action
+				.action__button.button.button_large.button_theme-gray(data-trigger="remove-course:cancel") Отмена
+				a(href="/users/delete-objects?material").action__button.button.button_large Удалить
+		.popover__item(data-target="remove-file")
+			.popover__alert(data-alert)
+			.popover__header Удалить файл
+			.popover__text.popover__text_small Вы уверены, что хотите удалить файл?
+			.popover__action.action
+				.action__button.button.button_large.button_theme-gray(data-trigger="remove-file:cancel") Нет
+				.action__button.button.button_large(data-trigger="remove-file:submit") Удалить
+		.popover__item(data-target="remove-files")
+			.popover__alert(data-alert)
+			.popover__header Удалить файлы
+			.popover__text.popover__text_small Вы уверены, что хотите удалить выбранные файлы?
+			.popover__action.action
+				.action__button.button.button_large.button_theme-gray(data-trigger="remove-files:cancel") Нет
+				.action__button.button.button_large(data-trigger="remove-files:submit") Удалить
+
+.module.module_page(data-route="user:courses")
+	include ./profile-tabs.pug
+	.module.module_regular.profile
+		.module__content
+			.profile__data.data
+				.profile__header.profile__header_merge
+					| Платные услуги
+					.profile-preview
+						a(href="#").profile-preview__link
+						.profile-preview__icon
+							include ../../../public/images/watch-icon.svg
+						.profile-preview__text Предпросмотр
+				.profile__body.body
+					.body__row.body__row_section.row
+						.row__content.content
+							h2.content__title Список услуг
+					.body__row.row
+						.row__content
+							a(href="#").button.button_large.button_accent Добавить услугу
+					.body__row.row
+						.row__content
+							.sort-table
+								.sort-table__wrapper
+									table.sort-table__container
+										thead.sort-table__head
+											tr.sort-table__row
+												th.sort-table__cell
+													span Название
+												th.sort-table__cell
+													span Описание
+												th.sort-table__cell
+													span Активна
+												th.sort-table__cell
+													span Подтверждена
+												th.sort-table__cell
+													span Управление
+										tbody.sort-table__body
+											tr.sort-table__row(data-course="1")
+												td.sort-table__cell(data-course-title) Курс «Избавьтесь от стресса и улучшите самочувствие за 10 минут в день»
+												td.sort-table__cell Курс содержит действенную методику, позволяющую расслабиться и почувствовать связь с окружающим миром.
+												td.sort-table__cell
+													.sort-table__icon
+														include ../../../public/images/warning-icon.svg
+												td.sort-table__cell
+													.sort-table__icon
+														include ../../../public/images/table-error-icon.svg
+												td.sort-table__cell
+													a(href="#").sort-table__icon
+														include ../../../public/images/table-edit-icon.svg
+													a(href="#", data-target="remove-course").sort-table__icon
+														include ../../../public/images/table-remove-icon.svg
+													a(href="#").sort-table__icon
+														include ../../../public/images/table-notification-icon.svg
+											tr.sort-table__row(data-course="2")
+												td.sort-table__cell(data-course-title) Курс «Избавьтесь от стресса и улучшите самочувствие за 10 минут в день»
+												td.sort-table__cell Курс содержит действенную методику, позволяющую расслабиться и почувствовать связь с окружающим миром.
+												td.sort-table__cell
+													.sort-table__icon
+														include ../../../public/images/table-ok-icon.svg
+												td.sort-table__cell
+													.sort-table__icon
+														include ../../../public/images/table-error-icon.svg
+												td.sort-table__cell
+													a(href="#").sort-table__icon
+														include ../../../public/images/table-edit-icon.svg
+													a(href="#", data-target="remove-course").sort-table__icon
+														include ../../../public/images/table-remove-icon.svg
+													a(href="#").sort-table__icon
+														include ../../../public/images/table-notification-icon.svg
+					.body__row.body__row_section.row
+						.row__content.content
+							h2.content__title Список заказов
+					.body__row.row
+						.row__content
+							.sort-table
+								.sort-table__wrapper
+									table.sort-table__container
+										thead.sort-table__head
+											tr.sort-table__row
+												th.sort-table__cell
+													span Услуга
+												th.sort-table__cell
+													span Имя
+												th.sort-table__cell
+													span Дата
+												th.sort-table__cell
+													span Статус
+												th.sort-table__cell
+													span Управление
+										tbody.sort-table__body
+											tr.sort-table__row
+												td.sort-table__cell Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis distinctio culpa quas, a recusandae adipisci molestias aut maiores quae laborum!
+												td.sort-table__cell %username%
+												td.sort-table__cell 2021.01.21
+												td.sort-table__cell
+													.sort-table__icon
+														include ../../../public/images/table-error-icon.svg
+												td.sort-table__cell
+													a(href="#").sort-table__icon
+														include ../../../public/images/table-preview-icon.svg
+					.body__row.body__row_section.row
+						.row__content.content
+							h2.content__title Статистика
+					.body__row.row
+						.row__content
+							.sort-table.state-active(data-table="static")
+								.sort-table__wrapper
+									table.sort-table__container
+										thead.sort-table__head
+											tr.sort-table__row
+												th.sort-table__cell(data-name="date", data-direction)
+													span Дата
+												th.sort-table__cell(data-name="sum_duration_online", data-direction)
+													span Мин.онлайн
+												th.sort-table__cell(data-name="sum_duration", data-direction)
+													span Мин.конс.
+												th.sort-table__cell(data-name="sum_cost", data-direction)
+													span Коинов.конс.
+												th.sort-table__cell(data-name="users", data-direction)
+													span Привл.кл.
+												th.sort-table__cell(data-name="users_coins", data-direction)
+													span Коинов привл.кл.
+												th.sort-table__cell(data-name="out_coins", data-direction)
+													span Коинов выв.
+										tbody.sort-table__body(data-rows)
+											tr.sort-table__row
+												td.sort-table__cell(data-value="1610571600000") 14.01.2021
+												td.sort-table__cell(data-value="347asdas") 347asdas
+												td.sort-table__cell(data-value="1") 1
+												td.sort-table__cell(data-value="0") 0
+												td.sort-table__cell(data-value="0") 0
+												td.sort-table__cell(data-value="0") 0
+												td.sort-table__cell(data-value="0") 0
+											tr.sort-table__row
+												td.sort-table__cell(data-value="1610571600000") 14.01.2021
+												td.sort-table__cell(data-value="347asdas") 347asdas
+												td.sort-table__cell(data-value="0") 0
+												td.sort-table__cell(data-value="0") 0
+												td.sort-table__cell(data-value="0") 0
+												td.sort-table__cell(data-value="0") 0
+												td.sort-table__cell(data-value="0") 0
+	.module.module_regular.profile
+		.module__content
+			form(action="#", method="post").profile__data.data
+				.profile__header.profile__header_merge Добавить услугу
+				.profile__body.body
+					.body__row.row
+						.row__label Название услуги
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								input(type="text", name="title", placeholder="Напишите название услуги").field__input
+					.body__row.row
+						.row__label Краткое описание
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								textarea(name="short-description", placeholder="Не более 512 символов").field__textarea
+					.body__row.row
+						.row__label Полное описание
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								textarea(name="short-description", placeholder="Опишите услугу подробнее").field__textarea.field__textarea_full
+					.body__row.row
+						.row__label Стоимость
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								input(type="text", name="cost", placeholder="Стоимость курса").field__input
+					.body__row.row.file
+						input(type="hidden", name="test")
+						.row__label Фотография для обложки
+						.row__content
+							.row__error.row__error_line(data-error)
+								span Ошибка при загрузке
+								a(href="#", data-action="change") Повторить
+								a(href="#", data-action="remove") Удалить
+							.file__field.state-active
+								.content__wrapper.content__wrapper_file
+									.field.field_wide
+										input(type="file", name="cover", data-type="5" data-url="https://dev.22e.ru/users/upload-image", accept=".jpg, .jpeg, .png")
+										input(type="text", placeholder="Файл не выбран", readonly, data-action="upload").field__input
+									.button.button_large(data-action="upload") Выберите файл
+							.file__image
+								.file__cover
+								.file__source
+									img(src="")
+								.file__action(data-action="change")
+									include ../../../public/images/avatar-change-icon.svg
+								.file__action(data-action="remove")
+									include ../../../public/images/avatar-remove-icon.svg
+					.body__row.row.files#files
+						.row__label Дополнительные материалы
+						.row__content
+							.files__actions
+								.files__checkbox.field.field_checkbox.checkbox(data-select-all)
+									label.checkbox__label
+										input(type="checkbox").checkbox__input
+										.checkbox__field
+										| Выбрать все
+								a(href="#", data-remove, data-url="https://dev.22e.ru/users/delete-objects?type=file").files__remove Удалить выбранное
+							.files__list
+								.files__item.file(data-model)
+									.row__error.row__error_line(data-error)
+										span Ошибка при загрузке
+										a(href="#", data-action="change") Повторить
+										a(href="#", data-action="remove", data-url="https://dev.22e.ru/users/delete-objects?type=file&id=") Удалить
+									.files__controls
+										.files__select.field.field_checkbox.checkbox(data-select)
+											label.checkbox__label
+												input(type="checkbox").checkbox__input
+												.checkbox__field
+										.files__orders
+											.files__order(data-order="up", data-url="https://dev.22e.ru/users/change-positions?type=file")
+												include ../../../public/images/order-up-icon.svg
+											.files__order(data-order="down", data-url="https://dev.22e.ru/users/change-positions?type=file")
+												include ../../../public/images/order-down-icon.svg
+									.files__image
+										.file__field
+											input(type="file", data-type="1", data-url="https://dev.22e.ru/users/upload-file", accept=".png, .jpeg, .jpg, .gif")
+											input(type="hidden", name="image-state-$name" value="model")
+										.file__image.state-active
+											.file__cover
+												img(data-src="$src")
+											.file__source
+												img(data-src="$src")
+											.file__action(data-action="change")
+												include ../../../public/images/avatar-change-icon.svg
+											.file__action(data-action="remove", data-url="https://dev.22e.ru/users/delete-objects?type=file&id=")
+												include ../../../public/images/avatar-remove-icon.svg
+							.files__button.button.button_large(data-add) Добавить файлы
+							input(type="file", data-type="1", data-upload, multiple, data-url="https://dev.22e.ru/users/upload-file", accept=".png, .jpeg, .jpg, .pdf, .doc, .docx, .mp3, .mov, .avi").files__upload
+					.body__row.body__row_footer
+						.body__row.row
+							.row__content
+								.content__wrapper.content__wrapper_buttons
+									input(type="submit", value="Отправить на модерацию", disabled).button.button_large.button_theme-gray
+									input(type="submit", value="Сохранить").button.button_large
+	.module.module_regular.profile
+		.module__content
+			form(action="#", method="post").profile__data.data
+				.profile__header.profile__header_merge Заказ
+				.profile__body.body
+					.body__row.body__row_section.row
+						.row__content.content
+							h2.content__title Информация от клиента
+					.body__row.body__row_section.row
+						.row__title Описание
+					.body__row.row
+						.row__content
+							| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur repellendus autem incidunt, magnam voluptatum. Enim sapiente consectetur ducimus error, illum?
+					.body__row.body__row_section.row
+						.row__title Графическая информация
+					.body__row.row.files.files_static
+						.row__content
+							.files__list.state-active
+								.files__item.file.file_static
+									.files__image
+										.file__image.state-active
+											.file__source
+												img(src="images/card-image.png")
+											a(href="#", download, data-action="remove").file__action
+												button.button Скачать
+									.files__content
+										.files__title Heading
+										.files__description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi distinctio aspernatur voluptas dignissimos reiciendis animi dolor, illum ipsa cum voluptates, corrupti eligendi nobis facere nemo non esse molestiae numquam adipisci sed ea similique. Magnam quia quidem, quos soluta, quaerat nihil quibusdam voluptatem, adipisci assumenda, repellat quasi vitae ducimus. Veniam, ab!
+					.body__row.body__row_section.row
+						.row__content.content
+							h2.content__title Ответ клиенту
+					.body__row.row
+						.row__label Полное описание
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								textarea(name="short-description", placeholder="Опишите услугу подробнее").field__textarea.field__textarea_full
+					.body__row.row
+						.row__label Стоимость
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								input(type="text", name="cost", placeholder="Стоимость курса").field__input
+					.body__row.row.files
+						.row__label Дополнительные материалы
+						.row__content
+							.files__actions
+								.files__checkbox.field.field_checkbox.checkbox(data-select-all)
+									label.checkbox__label
+										input(type="checkbox").checkbox__input
+										.checkbox__field
+										| Выбрать все
+								a(href="#", data-remove, data-url="https://dev.22e.ru/users/delete-objects?type=file").files__remove Удалить выбранное
+							.files__list
+								.files__item.file(data-model)
+									.row__error.row__error_line(data-error)
+										span Ошибка при загрузке
+										a(href="#", data-action="change") Повторить
+										a(href="#", data-action="remove", data-url="https://dev.22e.ru/users/delete-objects?type=file&id=") Удалить
+									.files__controls
+										.files__select.field.field_checkbox.checkbox(data-select)
+											label.checkbox__label
+												input(type="checkbox").checkbox__input
+												.checkbox__field
+										.files__orders
+											.files__order(data-order="up", data-url="https://dev.22e.ru/users/change-positions?type=file")
+												include ../../../public/images/order-up-icon.svg
+											.files__order(data-order="down", data-url="https://dev.22e.ru/users/change-positions?type=file")
+												include ../../../public/images/order-down-icon.svg
+									.files__image
+										.file__field
+											input(type="file", data-type="1", data-url="https://dev.22e.ru/users/upload-file", accept=".png, .jpeg, .jpg, .gif")
+											input(type="hidden", name="image-state-$name" value="model")
+										.file__image.state-active
+											.file__cover
+												img(data-src="$src")
+											.file__source
+												img(data-src="$src")
+											.file__action(data-action="change")
+												include ../../../public/images/avatar-change-icon.svg
+											.file__action(data-action="remove", data-url="https://dev.22e.ru/users/delete-objects?type=file&id=")
+												include ../../../public/images/avatar-remove-icon.svg
+							.files__button.button.button_large(data-add) Добавить файлы
+							input(type="file", data-type="1", data-upload, multiple, data-url="https://dev.22e.ru/users/upload-file", accept=".png, .jpeg, .jpg, .pdf, .doc, .docx, .mp3, .mov, .avi").files__upload
+					.body__row.body__row_footer
+						.body__row.row
+							.row__content
+								.content__wrapper.content__wrapper_buttons
+									input(type="submit", value="Отправить").button.button_large
+

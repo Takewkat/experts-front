@@ -1,0 +1,9 @@
+hr {
+  border: 1px solid %style.divider%;
+  border-width: 1px 0 0 0;
+  margin: 10px 0 8px;
+}
+
+b {
+  font-weight: 500
+}

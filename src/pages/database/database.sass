@@ -1,0 +1,179 @@
+.database
+	.module__content
+		display: flex
+		justify-content: space-between
+	&__meta
+		margin-right: 40px
+		flex-basis: calc(100% - 77%)
+		.meta
+			&__search
+				padding-bottom: 20px
+				margin-bottom: 40px
+				border-bottom: 1px solid var(--color-fill-secondary)
+				.search__icon
+					display: none
+				.field
+					width: calc(100% - 20px)
+					&__icon
+						&:not(.state-active)
+							display: none
+						&[data-search-trigger]
+							&:not(:first-of-type)
+								pointer-events: auto
+								cursor: pointer
+						svg
+							path
+								fill: var(--color-dark)
+					&__content
+						position: absolute
+						top: calc(100% + 4px)
+						left: -1px
+						z-index: 1
+						width: calc(100% + 2px)
+						max-height: 200px
+						overflow-y: scroll
+						border-radius: var(--border-radius)
+						background-color: white
+						border: 1px solid var(--color-silver)
+						color: var(--color-dark)
+						padding: 8px
+						display: none
+						&.state-active
+							display: block
+						.content
+							&__item
+								display: block
+								padding: 4px 8px
+								border-radius: var(--border-radius)
+								&:not(:last-child)
+									margin-bottom: 5px
+								&:hover
+									background-color: var(--color-accent)
+									color: white
+
+			&__list
+				width: calc(100% - 20px)
+				.list
+					&__header
+						display: none
+					&__item
+						text-transform: uppercase
+						cursor: pointer
+						display: block
+						padding-left: 30px
+						line-height: 27px
+						&:not(:last-child)
+							margin-bottom: 16px
+					&__link
+						&.state-active,
+						&:hover
+							color: var(--color-accent)
+					&__expand
+						margin-left: -30px
+						.expand
+							&__header
+								display: flex
+							&__carret
+								flex-shrink: 0
+								margin-top: 5px
+								margin-right: 14px
+								width: 16px
+								height: 16px
+								transform: rotate(-90deg)
+								transform-origin: center
+								svg
+									width: 100%
+									height: 100%
+									path
+										fill: var(--color-default)
+							&__title
+								line-height: 27px
+							&__list
+								overflow: hidden
+								transition: height 300ms linear
+								.list
+									&__wrapper
+										padding: 24px 0 16px 16px
+									&__item
+										text-transform: none
+										line-height: 18px
+										&:not(:last-child)
+											margin-bottom: 8px
+						&.state-expand
+							.expand__carret
+								transform: rotate(0deg)
+							~ .expand__list
+								display: block
+
+	&__content
+		flex-basis: calc(77% - 40px)
+		.content
+			&__wrapper
+				margin-bottom: 56px
+
+// Mobile
+
+@media screen and (max-width: 600px)
+	.database
+		.module__content
+			flex-direction: column
+		&__meta
+			margin-right: unset
+			.meta
+				&__search
+					display: flex
+					align-items: center
+					.search__icon
+						margin-right: 8px
+						cursor: pointer
+						display: block
+					.field
+						width: 100%
+					padding-bottom: 0
+					margin-bottom: 32px
+					border: none
+				&__list
+					position: absolute
+					top: 0
+					left: 0
+					z-index: 3
+					padding: 0 28px 28px
+					background-color: var(--color-fill-primary)
+					display: none
+					&.state-active
+						display: block
+					.list__header
+						display: flex
+						align-items: center
+						padding: 23px 0
+						margin-bottom: 24px
+					.list__icon
+						width: 15px
+						height: 15px
+						margin-right: 14px
+						cursor: pointer
+						svg
+							width: 100%
+							height: 100%
+							path
+								fill: #676767
+					.list__title
+						font-size: 18px
+						font-weight: 500
+						font-family: 'Museo'
+		&__meta,
+		&__wrapper
+			flex-basis: 100%
+		&__content
+			.content__nav
+				flex-wrap: wrap
+				.nav__control
+					width: auto
+					&_prev
+						.nav__wrapper
+							margin-left: 8px
+					&_next
+						margin-top: 16px
+						margin-left: auto
+						.nav__wrapper
+							margin-right: 8px

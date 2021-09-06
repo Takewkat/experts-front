@@ -1,0 +1,75 @@
+<mjml>
+  <mj-head>
+    <mj-title>Список писем</mj-title>
+    <mj-include path="./components/styles.mjml.css" type="css" css-inline="inline">
+		<mj-include path="./components/fonts.mjml.css" type="css">
+  </mj-head>
+  <mj-body background-color="%style.silver%">
+
+    <mj-section background-color="%style.white%">
+      <mj-column>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="18px" font-weight="500" color="%style.text%">Отправка кода:</mj-text>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="16px" color="%style.text%" padding="2px 25px"><a href="email-login.html" style="color:%style.links%">— Авторизация [email-login]</a></mj-text>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="16px" color="%style.text%" padding="2px 25px"><a href="email-verify.html" style="color:%style.links%">— Подтвержение [email-verify]</a></mj-text>
+
+        <mj-include path="./components/gap.mjml">
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="18px" font-weight="500" color="%style.text%">Расписание:</mj-text>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="16px" color="%style.text%" padding="2px 25px"><a href="order-add.html" style="color:%style.links%">— Добавилась консультация [order-add]</a></mj-text>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="16px" color="%style.text%" padding="2px 25px"><a href="order-cancelled.html" style="color:%style.links%">— Отменилась консультация [order-cancelled]</a></mj-text>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="16px" color="%style.text%" padding="2px 25px"><a href="order-cancelled-50.html" style="color:%style.links%">— Отменилась консультация (штраф 50%) [order-cancelled-50]</a></mj-text>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="16px" color="%style.text%" padding="2px 25px"><a href="webinar-join.html" style="color:%style.links%">— Запись на вебинар [webinar-join]</a></mj-text>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="16px" color="%style.text%" padding="2px 25px"><a href="webinar-leave.html" style="color:%style.links%">— Отписка от вебинара [webinar-leave]</a></mj-text>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="16px" color="%style.text%" padding="2px 25px"><a href="calendar-next-day.html" style="color:%style.links%">— Расписание на завтра [calendar-next-day]</a></mj-text>
+
+        <mj-include path="./components/gap.mjml">
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="18px" font-weight="500" color="%style.text%">Профиль:</mj-text>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="16px" color="%style.text%" padding="2px 25px"><a href="profile-expert-update.html" style="color:%style.links%">— Изменение статуса профиля эксперта [profile-expert-update]</a></mj-text>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="16px" color="%style.text%" padding="2px 25px"><a href="profile-partner-update.html" style="color:%style.links%">— Изменение статуса профиля партнера [profile-partner-update]</a></mj-text>
+
+        <mj-include path="./components/gap.mjml">
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="18px" font-weight="500" color="%style.text%">Области знаний:</mj-text>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="16px" color="%style.text%" padding="2px 25px"><a href="subject-removed.html" style="color:%style.links%">— Область знаний удалена [subject-removed]</a></mj-text>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="16px" color="%style.text%" padding="2px 25px"><a href="subject-update.html" style="color:%style.links%">— Область знаний изменена [subject-update]</a></mj-text>
+
+        <mj-include path="./components/gap.mjml">
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="18px" font-weight="500" color="%style.text%">Выплаты:</mj-text>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="16px" color="%style.text%" padding="2px 25px"><a href="payout-attach.html" style="color:%style.links%">— Укажите чек [payout-attach]</a></mj-text>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="16px" color="%style.text%" padding="2px 25px"><a href="payout-update.html" style="color:%style.links%">— Изменение статуса выплаты [payout-update]</a></mj-text>
+
+        <mj-include path="./components/gap.mjml">
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="18px" font-weight="500" color="%style.text%">ОПФ:</mj-text>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="16px" color="%style.text%" padding="2px 25px"><a href="opf-update.html" style="color:%style.links%">— Статус ОПФ изменен [opf-update]</a></mj-text>
+
+        <mj-include path="./components/gap.mjml">
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="18px" font-weight="500" color="%style.text%">Услуги:</mj-text>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="16px" color="%style.text%" padding="2px 25px"><a href="service-pending.html" style="color:%style.links%">— Клиент заказал услугу [service-pending]</a></mj-text>
+
+        <mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="16px" color="%style.text%" padding="2px 25px"><a href="service-paid.html" style="color:%style.links%">— Клиент оплатил услугу [service-paid]</a></mj-text>
+
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

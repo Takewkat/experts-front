@@ -1,0 +1,227 @@
+.dev-preview
+	.nav-preview
+		a(href="index.html") главная
+		a(href="expert.html") эксперты
+		a(href="content.html") контент
+		a(href="profile.html") пользователь
+		a(href="profile-expert.html") эксперт
+		a(href="profile-partner.html") партнер
+		a(href="login.html") вход
+		a(href="calendar.html") расписание
+		a(href="database.html") база знаний
+		a(href="not-found.html") 404
+	.theme-toggle
+		label
+			input(type="checkbox")
+			| переключить тему
+
+header.header
+	.header-cover
+		img.header-cover__picture(src="images/header-cover.png")
+	aside.header-meta
+		.control.show-mobile(data-dropdown="control")
+			.control__header(data-dropdown-trigger)
+				.control__picture
+					svg(width="28", height="28")
+						use(xlink:href="images/control-humburger-icon.svg#close")
+			nav.control-list.menu.humburger-menu(data-dropdown-target)
+				.control(data-dropdown="menu")
+					.menu__item.control__header(data-dropdown-trigger)
+						.control__prepend Астрологи
+						.control__picture
+							svg(width="10", height="6")
+								use(xlink:href="images/control-carret-icon.svg#close")
+					.control-list(data-dropdown-target)
+						a(href="/").menu__item Космоэнергеты
+						a(href="/").menu__item Экстрасенсорика
+						a(href="/").menu__item Медиумы
+						a(href="/").menu__item Эзотерики
+						a(href="/").menu__item Все астрологи
+				.control(data-dropdown="menu")
+					.menu__item.control__header(data-dropdown-trigger)
+						.control__prepend Экстрасенсы
+						.control__picture
+							svg(width="10", height="6")
+								use(xlink:href="images/control-carret-icon.svg#close")
+					.control-list(data-dropdown-target)
+						a(href="/").menu__item Космоэнергеты
+						a(href="/").menu__item Экстрасенсорика
+						a(href="/").menu__item Медиумы
+						a(href="/").menu__item Эзотерики
+						a(href="/").menu__item Все экстрасенсы
+				.control(data-dropdown="menu")
+					.menu__item.control__header(data-dropdown-trigger)
+						.control__prepend Ясновидящие
+						.control__picture
+							svg(width="10", height="6")
+								use(xlink:href="images/control-carret-icon.svg#close")
+					.control-list(data-dropdown-target)
+						a(href="/").menu__item Космоэнергеты
+						a(href="/").menu__item Экстрасенсорика
+						a(href="/").menu__item Медиумы
+						a(href="/").menu__item Эзотерики
+						a(href="/").menu__item Все ясновидящие
+				.control(data-dropdown="menu")
+					.menu__item.control__header(data-dropdown-trigger)
+						.control__prepend Гадалки
+						.control__picture
+							svg(width="10", height="6")
+								use(xlink:href="images/control-carret-icon.svg#close")
+					.control-list(data-dropdown-target)
+						a(href="/").menu__item Космоэнергеты
+						a(href="/").menu__item Экстрасенсорика
+						a(href="/").menu__item Медиумы
+						a(href="/").menu__item Эзотерики
+						a(href="/").menu__item Все гадалки
+				.control(data-dropdown="menu")
+					.menu__item.control__header(data-dropdown-trigger)
+						.control__prepend Тарологи
+						.control__picture
+							svg(width="10", height="6")
+								use(xlink:href="images/control-carret-icon.svg#close")
+					.control-list(data-dropdown-target)
+						a(href="/").menu__item Космоэнергеты
+						a(href="/").menu__item Экстрасенсорика
+						a(href="/").menu__item Медиумы
+						a(href="/").menu__item Эзотерики
+						a(href="/").menu__item Все тарологи
+				.control(data-dropdown="menu")
+					.menu__item.control__header(data-dropdown-trigger)
+						.control__prepend Другие
+						.control__picture
+							svg(width="10", height="6")
+								use(xlink:href="images/control-carret-icon.svg#close")
+					.control-list(data-dropdown-target)
+						a(href="/").menu__item Космоэнергеты
+						a(href="/").menu__item Экстрасенсорика
+						a(href="/").menu__item Медиумы
+						a(href="/").menu__item Эзотерики
+		.logo
+			a(href="/").logo__picture
+				include ../../public/images/logo.svg
+		.online.hide-mobile 13 909 online
+	section.header-info
+		.notification-alert(data-notification="alert")
+			.notification(data-model)
+				.notification__content(data-model-key="content")
+				.notification__trigger(data-model-key="trigger")
+					include ../../public/images/clear-icon.svg
+		.balance.hide-mobile
+			.balance__prepend Баланс
+			.coin
+				.coin__prepend 1200
+				.coin__picture
+					include ../../public/images/coin-icon.svg
+			.balance__append
+				a(href="/").button.hide-mobile Пополнить
+		//- a(href="/").button Авторизация
+		.control-group
+			.control-group__item.control
+				a(href="/", data-dropdown-trigger).control__header
+					.control__picture.control__picture_fill.control__picture_round(data-avatar)
+						img(src="images/userpic.jpg")
+					.control__append.hide-mobile Drew Sher.
+
+			.control-group__item.control(data-dropdown="control")
+				.control__header(data-dropdown-trigger)
+					.control__picture.control__picture_round.control__picture_fill
+						svg(width="20", height="20")
+							use(xlink:href="images/control-notification-icon.svg#close")
+				.control-list.notification-list.state-empty(data-dropdown-target, data-notification="list")
+					.notification(data-model)
+						.notification__content(data-model-key="content")
+						.notification__trigger(data-model-key="trigger")
+							include ../../public/images/clear-icon.svg
+
+			.control-group__item.control(data-dropdown="control")
+				.control__header(data-dropdown-trigger)
+					.control__picture.control__picture_round.control__picture_fill
+						svg(width="10", height="6")
+							use(xlink:href="images/control-carret-icon.svg#close")
+				.control-list.menu.user-menu(data-dropdown-target)
+					.control-list__prepend.show-mobile
+						.balance
+							.balance__prepend Баланс
+							.coin
+								.coin__prepend 1200
+								.coin__picture
+									include ../../public/images/coin-icon.svg
+						a(href="/").button Пополнить
+					a(href="/").menu__item Профиль
+					a(href="/").menu__item Привязанные карты
+					a(href="/").menu__item Мое расписание
+					a(href="/").menu__item Выход
+	.header-title 44Астролога - онлайн видео-консультации с ясновидищими, предстазателями и гадалками
+
+nav.menu.main-menu
+	.menu__item.control
+		.control__header
+			.control__prepend Астрологи
+			.control__picture
+				svg(width="10", height="6")
+					use(xlink:href="images/control-carret-icon.svg#close")
+		.control-list
+			a(href="/").menu__item Космоэнергеты
+			a(href="/").menu__item Экстрасенсорика
+			a(href="/").menu__item Медиумы
+			a(href="/").menu__item Эзотерики
+			a(href="/").menu__item Все астрологи
+	.menu__item.control
+		.control__header
+			.control__prepend Экстрасенсы
+			.control__picture
+				svg(width="10", height="6")
+					use(xlink:href="images/control-carret-icon.svg#close")
+		.control-list
+			a(href="/").menu__item Космоэнергеты
+			a(href="/").menu__item Экстрасенсорика
+			a(href="/").menu__item Медиумы
+			a(href="/").menu__item Эзотерики
+			a(href="/").menu__item Все экстрасенсы
+	.menu__item.control
+		.control__header
+			.control__prepend Ясновидящие
+			.control__picture
+				svg(width="10", height="6")
+					use(xlink:href="images/control-carret-icon.svg#close")
+		.control-list
+			a(href="/").menu__item Космоэнергеты
+			a(href="/").menu__item Экстрасенсорика
+			a(href="/").menu__item Медиумы
+			a(href="/").menu__item Эзотерики
+			a(href="/").menu__item Все ясновидящие
+	.menu__item.control
+		.control__header
+			.control__prepend Гадалки
+			.control__picture
+				svg(width="10", height="6")
+					use(xlink:href="images/control-carret-icon.svg#close")
+		.control-list(data-dropdown-target)
+			a(href="/").menu__item Космоэнергеты
+			a(href="/").menu__item Экстрасенсорика
+			a(href="/").menu__item Медиумы
+			a(href="/").menu__item Эзотерики
+			a(href="/").menu__item Все гадалки
+	.menu__item.control
+		.control__header
+			.control__prepend Тарологи
+			.control__picture
+				svg(width="10", height="6")
+					use(xlink:href="images/control-carret-icon.svg#close")
+		.control-list
+			a(href="/").menu__item Космоэнергеты
+			a(href="/").menu__item Экстрасенсорика
+			a(href="/").menu__item Медиумы
+			a(href="/").menu__item Эзотерики
+			a(href="/").menu__item Все тарологи
+	.menu__item.control
+		.control__header
+			.control__prepend Другие
+			.control__picture
+				svg(width="10", height="6")
+					use(xlink:href="images/control-carret-icon.svg#close")
+		.control-list
+			a(href="/").menu__item Космоэнергеты
+			a(href="/").menu__item Экстрасенсорика
+			a(href="/").menu__item Медиумы
+			a(href="/").menu__item Эзотерики

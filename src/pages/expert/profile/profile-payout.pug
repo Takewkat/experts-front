@@ -1,0 +1,220 @@
+.popover.popover_shadow.popover_modal(data-popover)
+	.popover__items
+		.popover__close(data-close)
+			include ../../../public/images/popover-close.svg
+		.popover__item(data-target="cancel-paid")
+			.popover__alert(data-alert)
+			.popover__header Отменить выплату
+			.popover__text.popover__text_small Вы уверены, что хотите отменить выплату?
+			.popover__action.action
+				.action__button.button.button_large.button_theme-gray(data-trigger="cancel-paid:cancel") Нет
+				.action__button.button.button_large(data-trigger="cancel-paid:submit") Отменить
+
+.module.module_page(data-route="user:payout")
+	include ./profile-tabs.pug
+	.module.module_regular.profile
+		.module__content
+			.profile__data.data
+				.profile__header.profile__header_merge Выплаты (без данных)
+				.profile__body.body
+					.body__row.row
+						.row__content
+							.profile__caption
+								p.profile__text
+									| Баланс:
+									|
+									span.coin
+										span.coin__text 100
+										span.coin__icon
+											include ../../../public/images/coin-icon.svg
+								p.profile__text
+									| Для того, чтобы получать выплаты, вам необходимо
+									a(href="#").row__link заполнить реквизиты
+									|  для перевода и согласиться с условиями договора.
+								p.profile__text
+									| Вопросы или какие-то сложности?
+									a(href="#").row__link Обращайтесь к нам!
+
+	.module.module_regular.profile
+		.module__content
+			.profile__data.data
+				.profile__header.profile__header_merge Выплаты (есть данные, но нет выплат)
+				.profile__body.body
+					.body__row.row
+						.row__content
+							.profile__caption
+								p.profile__text
+									| Баланс:
+									|
+									span.coin
+										span.coin__text 100
+										span.coin__icon
+											include ../../../public/images/coin-icon.svg
+								p.profile__text
+									| Доступно к выводу:
+									span.coin
+										span.coin__text 80
+										span.coin__icon
+											include ../../../public/images/coin-icon.svg
+								hr
+								form(action="#", method="post", data-amount="80").request-money
+									.request-money__text Сумма в коинах
+									.request-money__group
+										.request-money__error.state-error(data-error) Необходимо заполнить поле «Сумма»
+										.request-money__field.field.field_bordered
+											input(type="text", placeholder="Сумма").field__input
+										input(type="submit", value="Сделать запрос").request-money__button.button.button_accent
+										.request-money__message
+											p Вы получите
+												span(data-value="0", data-by="4")  ₽
+											p 1 COIN = 4 RUB
+					.body__row.body__row_section.row
+						.row__content
+							p.row__title Ранее запрошенные выплаты
+							p.row__subtitle Нет данных
+
+	.module.module_regular.profile
+		.module__content
+			.profile__data.data
+				.profile__header.profile__header_merge Выплаты (подверждение выплаты)
+				.profile__body.body
+					.body__row.row
+						.row__content
+							.profile__caption
+								p.profile__text
+									| Баланс:
+									|
+									span.coin
+										span.coin__text 100
+										span.coin__icon
+											include ../../../public/images/coin-icon.svg
+							.profile__caption
+								p.profile__text Вами уже была запрошена выплата
+								p.profile__text.profile__text_mb-small
+									strong Дата запроса выплаты:
+									|
+									| 21.12.2020 09:38:55
+								p.profile__text.profile__text_mb-small
+									strong Сумма запроса выплаты:
+									|
+									|
+									span.coin
+										span.coin__text 50
+										span.coin__icon
+											include ../../../public/images/coin-icon.svg
+							.profile__caption
+								p.profile__text Следующую можно запросить только после завершения обработки этой заявки.
+
+	.module.module_regular.profile
+		.module__content
+			.profile__data.data
+				.profile__header.profile__header_merge Выплаты (есть выплаты)
+				.profile__body.body
+					.body__row.row
+						.row__content
+							.profile__caption
+								p.profile__text
+									| Баланс:
+									|
+									span.coin
+										span.coin__text 100
+										span.coin__icon
+											include ../../../public/images/coin-icon.svg
+								p.profile__text
+									| Доступно к выводу:
+									|
+									span.coin
+										span.coin__text 80
+										span.coin__icon
+											include ../../../public/images/coin-icon.svg
+								hr
+								form(action="#", method="post", data-amount="80").request-money
+									.request-money__text Сумма в коинах
+									.request-money__group
+										.request-money__error.state-error(data-error) Необходимо заполнить поле «Сумма»
+										.request-money__field.field.field_bordered
+											input(type="text", placeholder="Сумма").field__input
+										input(type="submit", value="Сделать запрос").request-money__button.button.button_accent
+										.request-money__message
+											p Вы получите
+												span(data-value="0", data-by="4") ₽
+											p 1 COIN = 4 RUB
+					.body__row.body__row_section.row
+						.row__content
+							.row__title Ранее запрошенные выплаты
+					.body__row.row
+						.row__content
+							.sort-table
+								.sort-table__wrapper
+									table.sort-table__container
+										thead.sort-table__head
+											tr.sort-table__row
+												th.sort-table__cell
+													span ID
+												th.sort-table__cell
+													span Дата
+												th.sort-table__cell
+													span Сумма
+												th.sort-table__cell
+													span Итоговая сумма
+												th.sort-table__cell
+													span Статус
+												th.sort-table__cell
+													span Комментарий
+												th.sort-table__cell.sort-table__cell_tax
+													span Чек
+												th.sort-table__cell
+													span Отмена
+										tbody.sort-table__body
+											tr.sort-table__row#1
+												td.sort-table__cell 012
+												td.sort-table__cell 10 ноября 2020
+												td.sort-table__cell 10.00 ₽
+												td.sort-table__cell 50.00 ₽
+												td.sort-table__cell(data-status) оплачена
+												td.sort-table__cell
+												td.sort-table__cell
+													.table-tax
+														.table-tax__item.state-active(data-state="link")
+															a(href="#", data-action="input").row__link указать
+														form.table-tax__item(data-state="input")
+															.table-tax__group
+																.table-tax__field.field.field_bordered
+																	input(type="text", name="tax", data-error="неправильный урл", placeholder="ссылка на чек").field__input
+																button.table-tax__button.button.button_accent(data-action="send", data-url="https://dev.22e.ru/myexpert/save-order") Ok
+														.table-tax__item(data-state="error")
+															.table-tax__error(data-error)
+																span.table-tax__text(data-message)
+																a(href="#", data-action="retry").row__link повторить
+														.table-tax__item(data-state="success")
+															a(href="#", target="_blank", data-link).row__link загруженный чек (на проверке)
+															br
+															a(href="#", data-action="cancel", data-state="cancel", data-url="https://dev.22e.ru/myexpert/cancel-order").table-tax__remove удалить чек
+												td.sort-table__cell
+													a(href="#", data-cancel, data-url="https://dev.22e.ru/myexpert/cancel-payout").row__link.table-cancel.state-active Отменить
+											tr.sort-table__row#2
+												td.sort-table__cell 013
+												td.sort-table__cell 26 сентября 2020
+												td.sort-table__cell 250.00 ₽
+												td.sort-table__cell 60.00 ₽
+												td.sort-table__cell(data-status) оплачена
+												td.sort-table__cell
+												td.sort-table__cell
+													.table-tax
+														.table-tax__item.state-active(data-state="link")
+															a(href="#", data-action="input").row__link указать
+														form.table-tax__item(data-state="input")
+															.table-tax__group
+																.table-tax__field.field.field_bordered
+																	input(type="text", name="tax", data-error="неправильный урл", placeholder="ссылка на чек").field__input
+																button.table-tax__button.button.button_accent(data-action="send", data-url="https://dev.22e.ru/myexpert/save-order") Ok
+														.table-tax__item(data-state="error")
+															.table-tax__error(data-error)
+																span.table-tax__text(data-message)
+																a(href="#", data-action="retry").row__link повторить
+														.table-tax__item(data-state="success")
+															a(href="#", target="_blank", data-link).row__link загруженный чек (на проверке)
+															br
+															a(href="#", data-action="cancel", data-state="cancel", data-url="https://dev.22e.ru/myexpert/cancel-order").table-tax__remove удалить чек
+												td.sort-table__cell
+													a(href="#", data-cancel, data-url="https://dev.22e.ru/myexpert/cancel-payout").row__link.table-cancel.state-active Отменить

@@ -1,0 +1,34 @@
+.switch
+	display: flex
+	width: auto
+	input
+		display: none
+		&:checked
+			~ .switch__field
+				border-color: var(--color-control)
+				&::after
+					left: calc((100% - 10px) - 2px)
+					background-color: var(--color-control)
+	&__label
+		display: inline-flex
+	&__field
+		display: inline-block
+		position: relative
+		cursor: pointer
+		flex-shrink: 0
+		width: 32px
+		height: 16px
+		border-radius: 16px
+		border: 1px solid #5F666D
+		&::after
+			content: ''
+			transition: left linear 150ms
+			position: absolute
+			top: 0
+			left: 2px
+			bottom: 0
+			margin: auto
+			width: 10px
+			height: 10px
+			background-color: #5F666D
+			border-radius: 50%

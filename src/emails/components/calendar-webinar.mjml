@@ -1,0 +1,8 @@
+<mj-text line-height="1.3" font-family="PT, Roboto, sans-serif" font-size="18px" color="%style.text%">
+  Дата: <b>%date%</b>
+  <hr>
+  Время начала: <b>%time_start%</b>
+  <hr>
+  Продолжительность: <b>%duration%</b>
+  <hr>
+</mj-text>

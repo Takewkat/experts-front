@@ -1,0 +1,37 @@
+.datepicker--cell.datepicker--cell-day.-current-,
+.datepicker--day-name
+	color: var(--color-accent)
+
+.datepicker--cell.datepicker--cell-day.-selected-,
+.datepicker--cell.datepicker--cell-day.-selected-.-focus-,
+.datepicker--cell.datepicker--cell-month.-current-,
+.datepicker--cell.datepicker--cell-month.-selected-,
+.datepicker--cell.datepicker--cell-month.-current-.-selected-
+	background-color: var(--color-accent)
+
+.datepicker--cell.-selected-,
+.datepicker--cell.-selected-.-current-,
+.datepicker--cell.-current-,
+	color: white
+
+.datepicker--cell
+	.datepicker-notify
+		position: absolute
+		left: 0
+		right: 0
+		bottom: 2px
+		display: flex
+		justify-content: center
+		&__item
+			width: 4px
+			height: 4px
+
+			margin: 0 1px
+
+			border-radius: 50%
+
+			&[data-type="open"]
+				background-color: var(--color-green)
+
+			&[data-type="webinar"]
+				background-color: var(--color-navy)

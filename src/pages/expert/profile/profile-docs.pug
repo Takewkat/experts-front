@@ -1,0 +1,437 @@
+.module.module_page(data-route="user:docs")
+	include ./profile-tabs.pug
+	.module.module_regular.profile
+		.module__content
+			.profile__data.data
+				.profile__header.profile__header_merge Список ОПФ
+				.profile__body.body
+					.body__row.row
+						.row__content
+							a(href="#").button.button_large.button_accent Добавить ОПФ
+					.body__row.row
+						.row__content
+							.sort-table
+								.sort-table__wrapper
+									table.sort-table__container
+										thead.sort-table__head
+											tr.sort-table__row
+												th.sort-table__cell
+													span Имя
+												th.sort-table__cell
+													span Тип
+												th.sort-table__cell
+													span Активна
+												th.sort-table__cell
+													span Подтверждена
+										tbody.sort-table__body
+											tr.sort-table__row
+												td.sort-table__cell
+													a(href="#").row__link Самозанятый
+												td.sort-table__cell РФ самозанятый
+												td.sort-table__cell
+													.sort-table__icon
+														include ../../../public/images/table-ok-icon.svg
+												td.sort-table__cell
+													.sort-table__icon
+														include ../../../public/images/table-error-icon.svg
+											tr.sort-table__row
+												td.sort-table__cell
+													a(href="#").row__link Самозанятый
+												td.sort-table__cell РФ самозанятый
+												td.sort-table__cell
+													.sort-table__icon
+														include ../../../public/images/table-ok-icon.svg
+												td.sort-table__cell
+													.sort-table__icon
+														include ../../../public/images/table-error-icon.svg
+	.module.module_regular.profile
+		.module__content
+			form(action="#", method="post").profile__data.data
+				.profile__header.profile__header_merge Организационно-правовая форма
+				.profile__body.body
+					.body__row.body__row_section.row
+						.row__label
+						.row__content
+							.row__title Личная информация
+					.body__row.row
+						.row__label Выберите тип
+						.row__content
+							.field.field_wide.field_select.select.state-selected(data-select-choice)
+								.field__input(data-select-output="0") РФ Физ лицо
+									input(type="hidden", name="type", data-select-output)
+								.field__icon
+									include ../../../public/images/carret-icon.svg
+								.select__items
+									.select__item(data-option="0") РФ Физ. лицо
+									.select__item(data-option="1") РФ Самозанятый
+									.select__item(data-option="2") РФ ИП
+									.select__item(data-option="3") РФ Юр. лицо
+					.body__row.row
+						.row__label Название ОПФ
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								input(type="text", name="title", placeholder="Укажите название ОПФ").field__input
+					.body__row.row.state-error(data-group="012", data-sender="1")
+						.row__label Полное ФИО
+						.row__content
+							.row__error(data-error) Не указано поле: полное ФИО
+							.field.field_wide
+								input(type="text", name="fullname", placeholder="ФИО").field__input
+					.body__row.row.state-error(data-group="012")
+						.row__label Серия паспорта
+						.row__content
+							.row__error(data-error) Не указано поле: серия паспорта
+							.field.field_wide
+								input(type="text", name="doc", placeholder="Серия паспорта").field__input
+					.body__row.row(data-group="012")
+						.row__label Номер паспорта
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								input(type="text", name="doc", placeholder="Номер паспорта").field__input
+					.body__row.row(data-group="012")
+						.row__label Кем выдан
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								textarea(name="address", placeholder="Кем выдан").field__textarea
+					.body__row.row(data-group="012")
+						.row__label Когда выдан
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								input(type="text", name="doc", placeholder="Когда выдан").field__input
+					.body__row.row.state-error(data-group="012")
+						.row__label Адрес прописки
+						.row__content
+							.row__error(data-error) Не указано поле: адрес прописки
+							.field.field_wide
+								textarea(name="address", placeholder="Адрес прописки").field__textarea.field__textarea_full
+					.body__row.row.state-hidden(data-group="2")
+						.row__label ОГРНИП (15 цифр)
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								input(type="text", name="doc", placeholder="Когда выдан").field__input
+					.body__row.row(data-group="012", data-sender="3")
+						.row__label ИНН (12 цифр)
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								input(type="text", name="doc", placeholder="ИНН").field__input
+					.body__row.row.file.state-hidden(data-group="2")
+						input(type="hidden", name="test")
+						.row__label Скан ОГРНИП
+						.row__content
+							.row__error.row__error_line(data-error)
+								span Ошибка при загрузке
+								a(href="#", data-action="change") Повторить
+								a(href="#", data-action="remove") Удалить
+							.file__field.state-active
+								.content__wrapper.content__wrapper_file
+									.field.field_wide
+										input(type="file", name="cover", data-type="cover" data-url="https://dev.22e.ru/users/upload-image", accept=".jpg, .jpeg, .png")
+										input(type="text", placeholder="Файл не выбран", readonly, data-action="upload").field__input
+									.button.button_large(data-action="upload") Выберите файл
+							.file__image
+								.file__cover
+								.file__source
+									img(src="")
+								.file__action(data-action="change")
+									include ../../../public/images/avatar-change-icon.svg
+								.file__action(data-action="remove")
+									include ../../../public/images/avatar-remove-icon.svg
+					.body__row.row.state-hidden(data-group="3", data-sender="2")
+						.row__label Полное название организации
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								input(type="text", name="doc", placeholder="Полное название организации").field__input
+					.body__row.row.state-hidden(data-group="3", data-sender="4")
+						.row__label ИНН (10 цифр)
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								input(type="text", name="doc", placeholder="ИНН").field__input
+					.body__row.row.state-hidden(data-group="3")
+						.row__label ОГРН (13 цифр)
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								input(type="text", name="doc", placeholder="ОГРН").field__input
+					.body__row.row.state-hidden(data-group="3")
+						.row__label В лице должность (текст)
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+							input(type="text", name="doc", placeholder="В лице должность (текст)").field__input
+					.body__row.row.state-hidden(data-group="3")
+						.row__label В лице ФИО (текст)
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								input(type="text", name="doc", placeholder="В лице ФИО (текст)").field__input
+					.body__row.row.state-hidden(data-group="3")
+						.row__label Действующего на основании (текст)
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								input(type="text", name="doc", placeholder="Действующего на основании (текст)").field__input
+					.body__row.row.file(data-group="0123")
+						input(type="hidden", name="test")
+						.row__label Скан ИНН
+						.row__content
+							.row__error.row__error_line(data-error)
+								span Ошибка при загрузке
+								a(href="#", data-action="change") Повторить
+								a(href="#", data-action="remove") Удалить
+							.file__field.state-active
+								.content__wrapper.content__wrapper_file
+									.field.field_wide
+										input(type="file", name="cover", data-type="cover" data-url="https://dev.22e.ru/users/upload-image", accept=".jpg, .jpeg, .png")
+										input(type="text", placeholder="Файл не выбран", readonly, data-action="upload").field__input
+									.button.button_large(data-action="upload") Выберите файл
+							.file__image
+								.file__cover
+								.file__source
+									img(src="")
+								.file__action(data-action="change")
+									include ../../../public/images/avatar-change-icon.svg
+								.file__action(data-action="remove")
+									include ../../../public/images/avatar-remove-icon.svg
+					.body__row.row.file.state-hidden(data-group="2")
+						input(type="hidden", name="test")
+						.row__label Скан выписки из ЕГРИП
+						.row__content
+							.row__error.row__error_line(data-error)
+								span Ошибка при загрузке
+								a(href="#", data-action="change") Повторить
+								a(href="#", data-action="remove") Удалить
+							.file__field.state-active
+								.content__wrapper.content__wrapper_file
+									.field.field_wide
+										input(type="file", name="cover", data-type="cover" data-url="https://dev.22e.ru/users/upload-image", accept=".jpg, .jpeg, .png")
+										input(type="text", placeholder="Файл не выбран", readonly, data-action="upload").field__input
+									.button.button_large(data-action="upload") Выберите файл
+							.file__image
+								.file__cover
+								.file__source
+									img(src="")
+								.file__action(data-action="change")
+									include ../../../public/images/avatar-change-icon.svg
+								.file__action(data-action="remove")
+									include ../../../public/images/avatar-remove-icon.svg
+					.body__row.row.file(data-group="012")
+						input(type="hidden", name="test")
+						.row__label Скан первой <br> страницы паспорта
+						.row__content
+							.row__error.row__error_line(data-error)
+								span Ошибка при загрузке
+								a(href="#", data-action="change") Повторить
+								a(href="#", data-action="remove") Удалить
+							.file__field.state-active
+								.content__wrapper.content__wrapper_file
+									.field.field_wide
+										input(type="file", name="cover", data-type="cover" data-url="https://dev.22e.ru/users/upload-image", accept=".jpg, .jpeg, .png")
+										input(type="text", placeholder="Файл не выбран", readonly, data-action="upload").field__input
+									.button.button_large(data-action="upload") Выберите файл
+							.file__image
+								.file__cover
+								.file__source
+									img(src="")
+								.file__action(data-action="change")
+									include ../../../public/images/avatar-change-icon.svg
+								.file__action(data-action="remove")
+									include ../../../public/images/avatar-remove-icon.svg
+					.body__row.row.file(data-group="012")
+						input(type="hidden", name="test")
+						.row__label Скан страницы <br> с пропиской
+						.row__content
+							.row__error.row__error_line(data-error)
+								span Ошибка при загрузке
+								a(href="#", data-action="change") Повторить
+								a(href="#", data-action="remove") Удалить
+							.file__field.state-active
+								.content__wrapper.content__wrapper_file
+									.field.field_wide
+										input(type="file", name="cover", data-type="cover" data-url="https://dev.22e.ru/users/upload-image", accept=".jpg, .jpeg, .png")
+										input(type="text", placeholder="Файл не выбран", readonly, data-action="upload").field__input
+									.button.button_large(data-action="upload") Выберите файл
+							.file__image
+								.file__cover
+								.file__source
+									img(src="")
+								.file__action(data-action="change")
+									include ../../../public/images/avatar-change-icon.svg
+								.file__action(data-action="remove")
+									include ../../../public/images/avatar-remove-icon.svg
+					.body__row.row.file.state-hidden(data-group="1")
+						input(type="hidden", name="test")
+						.row__label Скан справки о поставноки на учет физ. лица как НПД
+						.row__content
+							.row__error.row__error_line(data-error)
+								span Ошибка при загрузке
+								a(href="#", data-action="change") Повторить
+								a(href="#", data-action="remove") Удалить
+							.file__field.state-active
+								.content__wrapper.content__wrapper_file
+									.field.field_wide
+										input(type="file", name="cover", data-type="cover" data-url="https://dev.22e.ru/users/upload-image", accept=".jpg, .jpeg, .png")
+										input(type="text", placeholder="Файл не выбран", readonly, data-action="upload").field__input
+									.button.button_large(data-action="upload") Выберите файл
+							.file__image
+								.file__cover
+								.file__source
+									img(src="")
+								.file__action(data-action="change")
+									include ../../../public/images/avatar-change-icon.svg
+								.file__action(data-action="remove")
+									include ../../../public/images/avatar-remove-icon.svg
+					.body__row.row.file.state-hidden(data-group="3")
+						input(type="hidden", name="test")
+						.row__label Скан выписки из ЕГРЮЛ
+						.row__content
+							.row__error.row__error_line(data-error)
+								span Ошибка при загрузке
+								a(href="#", data-action="change") Повторить
+								a(href="#", data-action="remove") Удалить
+							.file__field.state-active
+								.content__wrapper.content__wrapper_file
+									.field.field_wide
+										input(type="file", name="cover", data-type="cover" data-url="https://dev.22e.ru/users/upload-image", accept=".jpg, .jpeg, .png")
+										input(type="text", placeholder="Файл не выбран", readonly, data-action="upload").field__input
+									.button.button_large(data-action="upload") Выберите файл
+							.file__image
+								.file__cover
+								.file__source
+									img(src="")
+								.file__action(data-action="change")
+									include ../../../public/images/avatar-change-icon.svg
+								.file__action(data-action="remove")
+									include ../../../public/images/avatar-remove-icon.svg
+					.body__row.row.file.state-hidden(data-group="3")
+						input(type="hidden", name="test")
+						.row__label Скан ОГРН
+						.row__content
+							.row__error.row__error_line(data-error)
+								span Ошибка при загрузке
+								a(href="#", data-action="change") Повторить
+								a(href="#", data-action="remove") Удалить
+							.file__field.state-active
+								.content__wrapper.content__wrapper_file
+									.field.field_wide
+										input(type="file", name="cover", data-type="cover" data-url="https://dev.22e.ru/users/upload-image", accept=".jpg, .jpeg, .png")
+										input(type="text", placeholder="Файл не выбран", readonly, data-action="upload").field__input
+									.button.button_large(data-action="upload") Выберите файл
+							.file__image
+								.file__cover
+								.file__source
+									img(src="")
+								.file__action(data-action="change")
+									include ../../../public/images/avatar-change-icon.svg
+								.file__action(data-action="remove")
+									include ../../../public/images/avatar-remove-icon.svg
+					.body__row.body__row_section.row
+						.row__label
+						.row__content
+							.row__title Банковские реквизиты
+					.body__row.row(data-receiver="1,2")
+						.row__label Наименование <br> получателя
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								input(type="text", name="doc", placeholder="Укажите наименование получателя").field__input
+					.body__row.row(data-receiver="3,4")
+						.row__label ИНН получателя
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								input(type="text", name="doc", placeholder="ИНН получателя").field__input
+					.body__row.row
+						.row__label Счет получателя (20 цифр)
+						.row__content
+							.row__error(data-error) Не указано поле: серия паспорта
+							.field.field_wide
+								input(type="text", name="doc", placeholder="Счет получателя").field__input
+					.body__row.row
+						.row__label БИК банка <br> получателя (9 цифр)
+						.row__content
+							.row__error(data-error)
+							.field.field_wide
+								input(type="text", name="doc", placeholder="БИК банка").field__input
+					.body__row.body__row_footer
+						.body__row.row
+							.row__content
+								.content__wrapper.content__wrapper_buttons
+								input(type="submit", value="Добавить").button.button_large
+
+	.module.module_regular.profile
+		.module__content
+			.profile__data.data
+				.profile__header.profile__header_merge Просмотр ОПФ: Самозанятый
+				.profile__body.body
+					.body__row
+						.row__content
+							.profile-state
+								.profile-state__icon
+									include ../../../public/images/table-ok-icon.svg
+								.profile-state__icon
+									include ../../../public/images/table-error-icon.svg
+								.profile-state__title ОПФ активна
+								a(href="#").profile-state__button.button.button_large Сделать активной
+							.profile__caption
+								p.profile__text
+									strong Личная информация
+								p.profile__text.profile__text_full.profile__text_mb-small
+									| Полное ФИО:
+									strong Иванов Иван Иванович
+								p.profile__text.profile__text_full.profile__text_mb-small
+									| Серия паспорта:
+									strong 0205
+								p.profile__text.profile__text_full.profile__text_mb-small
+									| Номер паспорта:
+									strong 025965
+								p.profile__text.profile__text_full.profile__text_mb-small
+									| Кем выдан:
+									strong Выдан Отделом УФМС России по Санкт-Петербургу и Ленинградской обл. в Фрунзенском р-не гор.Санкт-Петербурга
+								p.profile__text.profile__text_full.profile__text_mb-small
+									| Когда выдан:
+									strong 25 июня 1998
+								p.profile__text.profile__text_full.profile__text_mb-small
+									| Адрес прописки:
+									strong г. Москва
+								p.profile__text.profile__text_full.profile__text_mb-small
+									| ИНН (12 цифр):
+									strong 781122760843
+								p.profile__text.profile__text_full.profile__text_mb-small
+									| Скан ИНН:
+									a(href="#").row__link
+										strong посмотреть
+								p.profile__text.profile__text_full.profile__text_mb-small
+									| Скан первой страницы паспорта:
+									a(href="#").row__link
+										strong посмотреть
+								p.profile__text.profile__text_full.profile__text_mb-small
+									| Скан страницы с пропиской:
+									a(href="#").row__link
+										strong посмотреть
+								p.profile__text.profile__text_full.profile__text_mb-small
+									| Скан справки о постановке на учет физлица как плательщика профессионального налога:
+									a(href="#").row__link
+										strong посмотреть
+							.profile__caption
+								p.profile__text
+									strong Банковские реквизиты
+								p.profile__text.profile__text_full.profile__text_mb-small
+									| Наименование получателя:
+									strong Иванов Иван Иванович
+								p.profile__text.profile__text_full.profile__text_mb-small
+									| ИНН получателя:
+									strong 781122760843
+								p.profile__text.profile__text_full.profile__text_mb-small
+									| Счет получателя (20 цифр):
+									strong 01256395847852639865
+								p.profile__text.profile__text_full.profile__text_mb-small
+									| БИК банка получателя (9 цифр):
+									strong 589632145

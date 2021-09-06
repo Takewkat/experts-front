@@ -1,0 +1,101 @@
+.popover.popover_shadow.popover_modal(data-popover)
+	.popover__items
+		.popover__close(data-close)
+			include ../../../public/images/popover-close.svg
+		.popover__item(data-target="remove-file")
+			.popover__alert(data-alert)
+			.popover__header Удалить файл
+			.popover__text.popover__text_small Вы уверены, что хотите удалить файл?
+			.popover__action.action
+				.action__button.button.button_large.button_theme-gray(data-trigger="remove-file:cancel") Нет
+				.action__button.button.button_large(data-trigger="remove-file:submit") Удалить
+		.popover__item(data-target="remove-files")
+			.popover__alert(data-alert)
+			.popover__header Удалить файлы
+			.popover__text.popover__text_small Вы уверены, что хотите удалить выбранные файлы?
+			.popover__action.action
+				.action__button.button.button_large.button_theme-gray(data-trigger="remove-files:cancel") Нет
+				.action__button.button.button_large(data-trigger="remove-files:submit") Удалить
+
+.module.module_page(data-route="service")
+	.module__content
+		.module.module_regular.content
+			.content__link.content__link_selected.content__link_backward
+				include ../../../public/images/calendar/arrow.svg
+				a(href="expert.html") Назад на страницу эксперта
+		.module.module_regular.module_shrink.content
+			h1.content__title Как негативные мысли влияют на нас
+			p.content__text Дипломированный экстрасенс, Таролог, Прогрессор Космоэнергетики, Мастер свечной магии, Мастер Рейки Иггдрасиль, Маг. Имею посвящения в Зороастризм, нео-шаманизм. Оказываю профессиональную помощь в решении непростых жизненных ситуаций.
+			p.content__text Дистанционно и по фото провожу сеансы диагностики и снятия негативных воздействий. Также диагностика энергетического и физического здоровья, внутренних блоков человека. Избавление от негативных и некротических привязок. Успешно помогаю в коррекции различных ситуаций, взаимоотношений. Открываю жизненные дороги. Восстанавливаю и активирую денежный поток. Дам подсказку, совет от Ангелов Света и Духов природы.
+		.module.module_regular.module_shrink.content.profile
+			h2.content__header Информация для эксперта
+			.profile__data.data
+				.profile__body.body
+					.body__row.body__row_section.row
+						.row__title Описание
+					.body__row.row
+						.row__content
+							.field.field_wide
+								textarea(name="description", placeholder="Опишите свою проблему подробно").field__textarea.field__textarea_full
+					.body__row.body__row_section.row
+						.row__title Графическая информация
+					.body__row.row.files
+						.row__content
+							.files__actions
+								.files__checkbox.field.field_checkbox.checkbox(data-select-all)
+									label.checkbox__label
+										input(type="checkbox").checkbox__input
+										.checkbox__field
+										| Выбрать все
+								a(href="#", data-remove, data-url="https://dev.22e.ru/users/delete-objects?type=file").files__remove Удалить выбранное
+							.files__list
+								.files__item.file(data-model)
+									.row__error.row__error_line(data-error)
+										span Ошибка при загрузке
+										a(href="#", data-action="change") Повторить
+										a(href="#", data-action="remove", data-url="https://dev.22e.ru/users/delete-objects?type=file&id=") Удалить
+									.files__controls
+										.files__select.field.field_checkbox.checkbox(data-select)
+											label.checkbox__label
+												input(type="checkbox").checkbox__input
+												.checkbox__field
+										.files__orders
+											.files__order(data-order="up", data-url="https://dev.22e.ru/users/change-positions?type=file")
+												include ../../../public/images/order-up-icon.svg
+											.files__order(data-order="down", data-url="https://dev.22e.ru/users/change-positions?type=file")
+												include ../../../public/images/order-down-icon.svg
+									.files__image
+										.file__field
+											input(type="file", data-type="1", data-url="https://dev.22e.ru/users/upload-file", accept=".png, .jpeg, .jpg, .gif")
+											input(type="hidden", name="image-state-$name" value="model")
+										.file__image.state-active
+											.file__cover
+												img(data-src="$src")
+											.file__source
+												img(data-src="$src")
+											.file__action(data-action="change")
+												include ../../../public/images/avatar-change-icon.svg
+											.file__action(data-action="remove", data-url="https://dev.22e.ru/users/delete-objects?type=file&id=")
+												include ../../../public/images/avatar-remove-icon.svg
+									.files__fields
+										.field.field_wide
+											textarea(data-name="image-title-$name", placeholder="Название фото").field__textarea
+										.field.field_wide
+											textarea(data-name="image-description-$name", placeholder="Описание фото").field__textarea.field__textarea_full
+							.files__button.button.button_large(data-add) Добавить файлы
+							input(type="file", data-type="1", data-upload, multiple, data-url="https://dev.22e.ru/users/upload-file", accept=".png, .jpeg, .jpg, .gif").files__upload
+
+		.module.module_regular.content
+			a(href="#").content__button.button.button_large Купить услугу
+		.module.module_regular.content
+			.content__nav.nav
+				.nav__control.nav__control_prev
+					.nav__icon
+						include ../../../public/images/carret-icon.svg
+					.nav__wrapper
+						a(href="#").nav__link.content__link.content__link_selected Предыдущая услуга
+				.nav__control.nav__control_next
+					.nav__wrapper
+						a(href="#").nav__link.content__link.content__link_selected Следующая услуга
+					.nav__icon
+						include ../../../public/images/carret-icon.svg

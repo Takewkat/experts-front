@@ -1,0 +1,34 @@
+.footer
+	margin-top: auto
+	background-color: var(--color-fill-secondary)
+	padding: 32px 0
+	text-align: center
+	&__menu
+		margin-bottom: 42px
+	&__meta
+		margin-bottom: 11px
+		.footer__link
+			margin: 0 26px
+	&__link
+		margin: 0 21px
+		color: var(--color-text-secondary)
+		transition: color linear .5s
+		&:hover, &:active
+			color: var(--color-text-primary)
+	&__info
+		color: var(--color-footer-secondary)
+
+// Mobile
+
+@media screen and (max-width: 767px)
+	.footer
+		padding: 16px 16px 20px
+		&__menu
+			margin-bottom: 8px
+		&__menu,
+		&__meta
+			display: flex
+			flex-direction: column
+		&__link
+			&:not(:last-child)
+				margin-bottom: 8px

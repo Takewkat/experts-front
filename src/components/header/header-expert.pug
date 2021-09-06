@@ -1,0 +1,72 @@
+.dev-preview
+	.nav-preview
+		a(href="index.html") главная
+		a(href="expert.html") эксперты
+		a(href="content.html") контент
+		a(href="profile.html") пользователь
+		a(href="profile-expert.html") эксперт
+		a(href="profile-partner.html") партнер
+		a(href="login.html") вход
+		a(href="calendar.html") расписание
+		a(href="database.html") база знаний
+		a(href="not-found.html") 404
+	.theme-toggle
+		label
+			input(type="checkbox")
+			| переключить тему
+
+header.header
+	aside.header-meta
+		.logo
+			a(href="/").logo__picture
+				include ../../public/images/logo-lk.svg
+		.online.hide-mobile 13 909 online
+	section.header-info
+		.notification-alert(data-notification="alert")
+			.notification(data-model)
+				.notification__content(data-model-key="content")
+				.notification__trigger(data-model-key="trigger")
+					include ../../public/images/clear-icon.svg
+		.balance.hide-mobile
+			.balance__prepend Баланс
+			.coin
+				.coin__prepend 1200
+				.coin__picture
+					include ../../public/images/coin-icon.svg
+			.balance__append
+				a(href="/").button.hide-mobile Вывести
+		.control-group
+			.control-group__item.control
+				a(href="/", data-dropdown-trigger).control__header
+					.control__picture.control__picture_round(data-avatar)
+						img(src="images/userpic.jpg")
+					.control__append.hide-mobile Drew Sher.
+
+			.control-group__item.control(data-dropdown="control")
+				.control__header(data-dropdown-trigger)
+					.control__picture.control__picture_round.control__picture_fill
+						svg(width="20", height="20")
+							use(xlink:href="images/control-notification-icon.svg#close")
+				.control-list.notification-list.state-empty(data-dropdown-target, data-notification="list")
+					.notification(data-model)
+						.notification__content(data-model-key="content")
+						.notification__trigger(data-model-key="trigger")
+							include ../../public/images/clear-icon.svg
+
+			.control-group__item.control(data-dropdown="control")
+				.control__header(data-dropdown-trigger)
+					.control__picture.control__picture_round.control__picture_fill
+						svg(width="10", height="6")
+							use(xlink:href="images/control-carret-icon.svg#close")
+				.control-list.menu.user-menu(data-dropdown-target)
+					.control-list__prepend.show-mobile
+						.balance
+							.balance__prepend Баланс
+							.coin
+								.coin__prepend 1200
+								.coin__picture
+									include ../../public/images/coin-icon.svg
+						a(href="/").button Вывести
+					a(href="/").menu__item Профиль Эксперта
+					a(href="/").menu__item Профиль Партнера
+					a(href="/").menu__item Выход

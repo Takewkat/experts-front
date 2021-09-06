@@ -1,0 +1,21 @@
+.module.module_page
+	.module.modal.modal-alert.modal_fake
+		.modal__wrapper
+			.modal-alert__header Готово! Перевод получен
+			.modal-alert__content
+				.modal-alert__icon
+					include ../../public/images/error.svg
+				.modal-alert__text Произошла техническая ошибка, попробуйте заплатить еще раз
+				a(href="./profile-checkout.html").modal-alert__button.button.button_large Повторить оплату
+
+.module.module_page
+	.module.modal.modal-alert.modal_fake
+		.modal__wrapper
+			.modal-alert__header Не получилось!
+			.modal-alert__content
+				.modal-alert__icon
+					include ../../public/images/approved.svg
+				.modal-alert__text
+					| Спасибо! Перевод получен. Сумма перевода 750 ₽ Чек придет на вашу электронную почту
+					strong admin@yandex.ru
+				a(href="./profile-checkout.html").modal-alert__button.button.button_large Пополнить счет повторно
