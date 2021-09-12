@@ -100,7 +100,8 @@
 		align-items: center
 		bottom: 8px
 		left: 8px
-		.cost
+		flex-wrap: nowrap 
+		/*.cost
 			&__title
 				margin-right: 4px
 				font-family: 'Museo'
@@ -156,7 +157,49 @@
 			order: 1
 		&:nth-child(n+5)
 			order: 2
+		.info
+			&__avatar
+				position: relative
+				flex-shrink: 0
+				margin-right: 18px
+				width: 75px
+				height: 75px
+				border-radius: 50%
+				img
+					width: 100%
+					height: 100%
+					object-fit: cover
+					border-radius: 50%
+				&[data-status]::after
+					content: ''
 
+					position: absolute
+					right: 2px
+					bottom: 2px
+
+					width: 17px
+					height: 17px
+
+					border-radius: 50%
+					border: 2px solid var(--color-fill-primary)
+				&[data-status="online"]::after
+					background-color: var(--color-green)
+				&[data-status="offline"]::after
+					background-color: var(--color-tomato)
+			&__title
+				//font-size: 34px
+				//margin-bottom: 5px
+				font-weight: inherit
+			&__cost
+				display: flex
+				align-items: baseline
+				font-family: 'Museo'
+				font-weight: 500
+				&_price
+					margin-right: 4px
+				&_coin
+				&_time
+					color: var(--color-gold)
 // Tablet
 
 @media screen and (min-width: 768px) and (max-width: 1024px)
