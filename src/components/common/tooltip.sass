@@ -1,0 +1,43 @@
+//Как добавить тултип ??    в pug нужно ввести: .tooltip-holder Hover me!
+//										     		.tooltip I'm  small tooltip. Don't kill me! 
+//в HTML: <div class="tooltip-holder">Hover me!
+//           <div class="tooltip">I'm  small tooltip. Don't kill me! </div>
+//       </div>
+//	тултип появляется только снизу текста - прямо как в календаре*
+	
+.tooltip-holder
+	position: relative
+	&:hover .tooltip
+		opacity: 1 
+		pointer-events: auto
+
+.tooltip
+	position: absolute
+	z-index: 1
+	top: calc(100% + 12px)
+	font-size: 14px
+	text-align: center
+	background-color: var(--calendar-fill)
+	color: var(--color-profile-primary)
+	padding: 3px 12px
+	border-radius: var(--border-radius)
+	white-space: nowrap
+	opacity: 0
+	pointer-events: none
+	left: 50%;
+	transform: translateX(-50%);
+	&::after
+		content: ''
+		position: absolute
+		top: -14px
+		left: 0
+		right: 0
+		width: 5px
+		height: 5px
+		margin: auto
+		border: 7px solid
+		border-color: transparent transparent var(--calendar-fill) transparent
+   
+/*@media screen and (max-width: 600px)
+	.tooltip
+///
