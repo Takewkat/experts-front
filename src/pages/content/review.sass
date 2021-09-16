@@ -1,13 +1,20 @@
 .review
+	width: 98%
+	flex-wrap: wrap
+	padding: 1rem
+	justify-content: space-between
 	font-size: 18px
 	display: flex
+	flex: 0 1 100%
 	flex-direction: column
-	align-items: flex-end
+	align-items: stretch
 	position: relative
 	overflow: hidden
+	gap: 20px 
+	box-sizing: content-box
 	&::after
 		content: ''
-		position: absolute
+		position: absolute		
 		top: 0
 		left: 0
 		right: 0
@@ -28,24 +35,31 @@
 		justify-content: space-between
 		align-items: center
 		margin-bottom: 32px
+		padding-left: 2rem
+		padding-right: 3rem
 	&__title
 		margin-bottom: unset
 	&__items
-		width: 100%
+		width: 98%
 		display: flex
 		flex-wrap: wrap
-		align-items: flex-start
+		flex-direction: column
+		padding: 1rem
+		justify-content: space-between
+		align-items: stretch
+		gap: 15px 	
 	&__item
 		&[data-model]
 			display: block
-		flex-basis: 49.1181657848%
+		//flex-basis: 49.1181657848%
 		background-color: var(--color-fill-secondary)
 		padding: 24px 32px 32px
 		border-radius: var(--border-radius)
+		//margin-top: -10px
 		&:nth-child(odd)
-			margin-right: 1.7636684304%
+			//margin-right: 1.7636684304%
 		&:nth-last-child(n+3)
-			margin-bottom: 1.7636684304%
+		//	margin-bottom: 1.7636684304%
 	&__meta
 		display: flex
 		justify-content: space-between
@@ -69,11 +83,12 @@
 	&__pagination
 		font-size: 14px
 		margin-top: 40px
+		justify-content: center
 
-@media screen and (max-width: 600px)
-	.review__item
-		flex-basis: 100%
-		&:nth-child(n)
-			margin: 0
-		&:nth-last-child(n+2)
-			margin-bottom: 1.7636684304%
+// @media screen and (max-width: 600px)
+// 	.review__item
+// 		flex-basis: 100%
+// 		&:nth-child(n)
+// 			//margin: 0
+// 		&:nth-last-child(n+2)
+// 			//margin-bottom: 1.7636684304%
