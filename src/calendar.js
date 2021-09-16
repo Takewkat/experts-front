@@ -694,8 +694,8 @@ window.monthShort = date => monthListShort[date.getMonth()];
 window.hours = date => ('0' + date.getHours()).slice(-2);
 window.minutes = date => ('0' + date.getMinutes()).slice(-2);
 const dateString = (date, format = false) => {
-  const offset = new Date((new Date().getDate() - 1)).getHours();
-  date = (new DateManager(date)).subtract({ hour: offset });
+  //const offset = new Date((new Date().getDate() - 1)).getHours();
+  //date = (new DateManager(date)).subtract({ hour: offset });
   if (format !== false) {
     const data = {
       WD: 'dayWeek', D: 'day', M: 'month',
