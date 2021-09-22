@@ -1,79 +1,79 @@
-.review
-	font-size: 18px
-	display: flex
-	flex-direction: column
-	align-items: flex-end
-	position: relative
-	overflow: hidden
-	&::after
-		content: ''
-		position: absolute
-		top: 0
-		left: 0
-		right: 0
-		bottom: 0
-		margin: auto
-		width: 24px
-		height: 24px
-		background-image: url('./../images/load-icon.gif')
-		background-repeat: no-repeat
-		background-size: cover
-		opacity: 0
-	&.state-load
-		&::after
-			opacity: 1
-	&__header
-		width: 100%
-		display: flex
-		justify-content: space-between
-		align-items: center
-		margin-bottom: 32px
-	&__title
-		margin-bottom: unset
-	&__items
-		width: 100%
-		display: flex
-		flex-wrap: wrap
-		align-items: flex-start
-	&__item
-		&[data-model]
-			display: block
-		flex-basis: 49.1181657848%
-		background-color: var(--color-fill-secondary)
-		padding: 24px 32px 32px
-		border-radius: var(--border-radius)
-		&:nth-child(odd)
-			margin-right: 1.7636684304%
-		&:nth-last-child(n+3)
-			margin-bottom: 1.7636684304%
-	&__meta
-		display: flex
-		justify-content: space-between
-		margin-bottom: 8px
-		color: var(--color-review-silver)
-	&__link
-		color: var(--color-link)
-		position: relative
-		&::after
-			content: ''
-			position: absolute
-			left: 0
-			right: 0
-			bottom: 1px
-			border: var(--color-link) dashed
-			border-width: 0 0 1px 0
-			opacity: 1
-		&:hover
-			&::after
-				opacity: 0
-	&__pagination
-		font-size: 14px
-		margin-top: 40px
+// .review
+// 	font-size: 18px
+// 	display: flex
+// 	flex-direction: column
+// 	align-items: flex-end
+// 	position: relative
+// 	overflow: hidden
+// 	&::after
+// 		content: ''
+// 		position: absolute
+// 		top: 0
+// 		left: 0
+// 		right: 0
+// 		bottom: 0
+// 		margin: auto
+// 		width: 24px
+// 		height: 24px
+// 		background-image: url('./../images/load-icon.gif')
+// 		background-repeat: no-repeat
+// 		background-size: cover
+// 		opacity: 0
+// 	&.state-load
+// 		&::after
+// 			opacity: 1
+// 	&__header
+// 		width: 100%
+// 		display: flex
+// 		justify-content: space-between
+// 		align-items: center
+// 		margin-bottom: 32px
+// 	&__title
+// 		margin-bottom: unset
+// 	&__items
+// 		width: 100%
+// 		display: flex
+// 		flex-wrap: wrap
+// 		align-items: flex-start
+// 	&__item
+// 		&[data-model]
+// 			display: block
+// 		flex-basis: 49.1181657848%
+// 		background-color: var(--color-fill-secondary)
+// 		padding: 24px 32px 32px
+// 		border-radius: var(--border-radius)
+// 		&:nth-child(odd)
+// 			margin-right: 1.7636684304%
+// 		&:nth-last-child(n+3)
+// 			margin-bottom: 1.7636684304%
+// 	&__meta
+// 		display: flex
+// 		justify-content: space-between
+// 		margin-bottom: 8px
+// 		color: var(--color-review-silver)
+// 	&__link
+// 		color: var(--color-link)
+// 		position: relative
+// 		&::after
+// 			content: ''
+// 			position: absolute
+// 			left: 0
+// 			right: 0
+// 			bottom: 1px
+// 			border: var(--color-link) dashed
+// 			border-width: 0 0 1px 0
+// 			opacity: 1
+// 		&:hover
+// 			&::after
+// 				opacity: 0
+// 	&__pagination
+// 		font-size: 14px
+// 		margin-top: 40px
 
-@media screen and (max-width: 600px)
-	.review__item
-		flex-basis: 100%
-		&:nth-child(n)
-			margin: 0
-		&:nth-last-child(n+2)
-			margin-bottom: 1.7636684304%
+// @media screen and (max-width: 600px)
+// 	.review__item
+// 		flex-basis: 100%
+// 		&:nth-child(n)
+// 			margin: 0
+// 		&:nth-last-child(n+2)
+// 			margin-bottom: 1.7636684304%
