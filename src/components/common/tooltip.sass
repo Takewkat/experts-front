@@ -12,7 +12,7 @@
 		pointer-events: auto
 
 .tooltip
-	position: relative
+	position: absolute
 	z-index: 1
 	top: calc(100% + 12px)
 	font-size: 14px
@@ -24,12 +24,12 @@
 	white-space: nowrap
 	opacity: 0
 	pointer-events: none
-	left: 12%;  
+	left: 50%;  
 	transform: translateX(-50%);
 	&::after
 		content: ''
 		position: absolute
-		top: -14px
+		top: -12px
 		left: 0
 		right: 0
 		width: 5px
