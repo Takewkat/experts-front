@@ -27,7 +27,7 @@ header.header
 			nav.control-list.menu.humburger-menu(data-dropdown-target)
 				.control(data-dropdown="menu")
 					.menu__item.control__header(data-dropdown-trigger)
-						.control__prepend Астрологи
+						a.control__prepend(href="/") Астрологи
 						.control__picture
 							svg(width="10", height="6")
 								use(xlink:href="images/control-carret-icon.svg#close")
@@ -39,7 +39,7 @@ header.header
 						a(href="/").menu__item Все астрологи
 				.control(data-dropdown="menu")
 					.menu__item.control__header(data-dropdown-trigger)
-						.control__prepend Экстрасенсы
+						a.control__prepend(href="/") Экстрасенсы
 						.control__picture
 							svg(width="10", height="6")
 								use(xlink:href="images/control-carret-icon.svg#close")
@@ -51,7 +51,7 @@ header.header
 						a(href="/").menu__item Все экстрасенсы
 				.control(data-dropdown="menu")
 					.menu__item.control__header(data-dropdown-trigger)
-						.control__prepend Ясновидящие
+						a.control__prepend(href="/") Ясновидящие
 						.control__picture
 							svg(width="10", height="6")
 								use(xlink:href="images/control-carret-icon.svg#close")
@@ -63,7 +63,7 @@ header.header
 						a(href="/").menu__item Все ясновидящие
 				.control(data-dropdown="menu")
 					.menu__item.control__header(data-dropdown-trigger)
-						.control__prepend Гадалки
+						a.control__prepend(href="/") Гадалки
 						.control__picture
 							svg(width="10", height="6")
 								use(xlink:href="images/control-carret-icon.svg#close")
@@ -75,7 +75,7 @@ header.header
 						a(href="/").menu__item Все гадалки
 				.control(data-dropdown="menu")
 					.menu__item.control__header(data-dropdown-trigger)
-						.control__prepend Тарологи
+						a.control__prepend(href="/") Тарологи
 						.control__picture
 							svg(width="10", height="6")
 								use(xlink:href="images/control-carret-icon.svg#close")
@@ -87,7 +87,7 @@ header.header
 						a(href="/").menu__item Все тарологи
 				.control(data-dropdown="menu")
 					.menu__item.control__header(data-dropdown-trigger)
-						.control__prepend Другие
+						a.control__prepend(href="/") Другие
 						.control__picture
 							svg(width="10", height="6")
 								use(xlink:href="images/control-carret-icon.svg#close")
@@ -154,46 +154,46 @@ header.header
 	.header-title 44Астролога - онлайн видео-консультации с ясновидищими, предстазателями и гадалками
 
 nav.menu.main-menu
-	.menu__item.control
+	.menu__item.control(data-dropdown="control")
 		.control__header
-			.control__prepend Астрологи
-			.control__picture
+			a.control__prepend(href="/") Астрологи
+			.control__picture(data-dropdown-trigger)
 				svg(width="10", height="6")
 					use(xlink:href="images/control-carret-icon.svg#close")
-		.control-list
+		.control-list(data-dropdown-target)
 			a(href="/").menu__item Космоэнергеты
 			a(href="/").menu__item Экстрасенсорика
 			a(href="/").menu__item Медиумы
 			a(href="/").menu__item Эзотерики
 			a(href="/").menu__item Все астрологи
-	.menu__item.control
+	.menu__item.control(data-dropdown="control")
 		.control__header
-			.control__prepend Экстрасенсы
-			.control__picture
+			a.control__prepend(href="/") Экстрасенсы   
+			.control__picture(data-dropdown-trigger)
 				svg(width="10", height="6")
 					use(xlink:href="images/control-carret-icon.svg#close")
-		.control-list
+		.control-list(data-dropdown-target)
 			a(href="/").menu__item Космоэнергеты
 			a(href="/").menu__item Экстрасенсорика
 			a(href="/").menu__item Медиумы
 			a(href="/").menu__item Эзотерики
 			a(href="/").menu__item Все экстрасенсы
-	.menu__item.control
+	.menu__item.control(data-dropdown="control")
 		.control__header
-			.control__prepend Ясновидящие
-			.control__picture
+			a.control__prepend(href="/") Ясновидящие
+			.control__picture(data-dropdown-trigger)
 				svg(width="10", height="6")
 					use(xlink:href="images/control-carret-icon.svg#close")
-		.control-list
+		.control-list(data-dropdown-target)
 			a(href="/").menu__item Космоэнергеты
 			a(href="/").menu__item Экстрасенсорика
 			a(href="/").menu__item Медиумы
 			a(href="/").menu__item Эзотерики
 			a(href="/").menu__item Все ясновидящие
-	.menu__item.control
+	.menu__item.control(data-dropdown="control")
 		.control__header
-			.control__prepend Гадалки
-			.control__picture
+			a.control__prepend(href="/") Гадалки
+			.control__picture(data-dropdown-trigger)
 				svg(width="10", height="6")
 					use(xlink:href="images/control-carret-icon.svg#close")
 		.control-list(data-dropdown-target)
@@ -202,25 +202,25 @@ nav.menu.main-menu
 			a(href="/").menu__item Медиумы
 			a(href="/").menu__item Эзотерики
 			a(href="/").menu__item Все гадалки
-	.menu__item.control
+	.menu__item.control(data-dropdown="control")
 		.control__header
-			.control__prepend Тарологи
-			.control__picture
+			a.control__prepend(href="/") Тарологи
+			.control__picture(data-dropdown-trigger)
 				svg(width="10", height="6")
 					use(xlink:href="images/control-carret-icon.svg#close")
-		.control-list
+		.control-list(data-dropdown-target)
 			a(href="/").menu__item Космоэнергеты
 			a(href="/").menu__item Экстрасенсорика
 			a(href="/").menu__item Медиумы
 			a(href="/").menu__item Эзотерики
 			a(href="/").menu__item Все тарологи
-	.menu__item.control
+	.menu__item.control(data-dropdown="control")
 		.control__header
-			.control__prepend Другие
-			.control__picture
+			a.control__prepend(href="/") Другие
+			.control__picture(data-dropdown-trigger)
 				svg(width="10", height="6")
 					use(xlink:href="images/control-carret-icon.svg#close")
-		.control-list
+		.control-list(data-dropdown-target)
 			a(href="/").menu__item Космоэнергеты
 			a(href="/").menu__item Экстрасенсорика
 			a(href="/").menu__item Медиумы
