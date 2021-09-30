@@ -66,7 +66,7 @@
 						svg
 							use(xlink:href="images/rate.svg#empty")
 				.rating__average (4.5)
-			a(href="./calendar.html").expert__button.button.button_large Посмотреть расписание эксперта
+			a(href="./calendar.html").expert__button.button.button_large.hide-mobile Посмотреть расписание эксперта
 		.module.module_regular.content
 			.content__header Кратко об эксперте
 			.content__text Опыт успешной практики 20 лет. В своей работе я использую различные колоды карт Таро, Большую колоду Ленорман, Симболон, Манара, 78 дверей.
@@ -164,6 +164,7 @@
 							.browser-expire-list__item
 								img(src="images/browsers/opera.jpg", alt="скачать оперу").browser-expire-list__icon
 								a(href="#").browser-expire-list__link Opera
+			a(href="./calendar.html").expert__button.button.button_large.show-mobile Посмотреть расписание эксперта
 
 		.module.module_regular.chat
 			.widget-expert
@@ -175,6 +176,7 @@
 					.widget-popup__body
 						.widget-popup__text После авторизации вы получите все возможности для общения с экспертом. Сможете узнать свое будущее, прошлое и настоящее. Нажимайте на кнопку ниже и открывайте глаза на реальность
 						a(href="/").widget-popup__button.button Авторизоваться
+			a(href="./calendar.html").expert__button.button.button_large.show-mobile Посмотреть расписание эксперта
 
 		.module.module_regular.chat
 			.widget-expert
@@ -187,6 +189,7 @@
 						.widget-popup__text После авторизации вы получите все возможности для общения с экспертом. Сможете узнать свое будущее, прошлое и настоящее. Нажимайте на кнопку ниже и открывайте глаза на реальность
 						a(href="/").widget-popup__button.button Авторизоваться
 						a(href="#", onclick="(function(event){event.preventDefault();event.target.closest('.state-active').classList.remove('state-active')})(event)").widget-popup__link.content__link.content__link_selected Пропустить
+			a(href="./calendar.html").expert__button.button.button_large.show-mobile Посмотреть расписание эксперта
 
 		.module.module_regular.content
 			.content__header Видео
