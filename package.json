@@ -9,14 +9,7 @@
   "scripts": {
     "serve": "cross-env NODE_ENV=development gulp",
     "build": "cross-env NODE_ENV=production gulp build",
-    "letters": "node src/emails/index.js",
-    "upload": "rsync -r --exclude=.DS_Store dist/css dist/js drewsher.ru:drewsher.ru/public_html/preview/44",
-    "deploy": "yarn build && yarn upload"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn upload"
-    }
+    "letters": "node src/emails/index.js"
   },
   "dependencies": {
     "@fancyapps/fancybox": "^3.5.7",
