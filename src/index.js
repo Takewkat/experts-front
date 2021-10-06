@@ -4036,6 +4036,7 @@ router.get('user:payout', () => {
   fieldMoney();
   fieldTax();
   fieldCancel();
+  tableSortable();
 });
 
 router.get('user:ads', () => {
