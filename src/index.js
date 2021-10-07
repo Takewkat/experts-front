@@ -715,6 +715,12 @@ const reInitModal = modalType => {
 
 window.reInitModal = reInitModal;
 
+const reInitCourses = () => {
+  courseState('data-course', true);
+}
+
+window.reInitCourses = reInitCourses;
+
 const contentLoaded = (wrapper, delay) => {
   const wrappers = document.querySelectorAll(wrapper);
   wrappers.forEach(wrapper => {
@@ -2383,28 +2389,29 @@ const avatarChange = (file, images) => {
 //   });
 // };
 
-const courseState = (ns = 'data-course') => {
+const courseState = (ns = 'data-course', reInit = false) => {
   const courses = document.querySelectorAll(`[${ns}]`);
   courses.forEach((course) => {
-    const courseTitle = course.querySelector(`[${ns}-title]`);
-    const courseCost = course.querySelector(`[${ns}-cost]`);
-    const trigger = course.querySelector('[data-target]');
-    const target = trigger?.getAttribute('data-target');
-    const handler = (event) => {
-      event.preventDefault();
-      popover.open(target, (modal) => {
-        const title = modal.querySelector('[data-title]');
-        const cost = modal.querySelector('[data-cost]');
-        const cancel = modal.querySelector(`[data-trigger="${target}:cancel"]`);
-        const submit = modal.querySelector('a');
-        const cancelHandler = (event) => popover.close();
+    if(!reInit || (reInit && course.classList.contains('state-wait'))) {
+      const courseTitle = course.querySelector(`[${ns}-title]`);
+      const courseCost = course.querySelector(`[${ns}-cost]`);
+      const trigger = course.querySelector('[data-target]');
+      const target = trigger?.getAttribute('data-target');
+      const handler = (event) => {
+        event.preventDefault();
+        popover.open(target, (modal) => {
+          const title = modal.querySelector('[data-title]');
+          const cost = modal.querySelector('[data-cost]');
+          const cancel = modal.querySelector(`[data-trigger="${target}:cancel"]`);
+          const submit = modal.querySelector('a');
+          const cancelHandler = (event) => popover.close();
 
-        cancel.addEventListener('click', cancelHandler);
+          cancel.addEventListener('click', cancelHandler);
 
-        title.textContent = courseTitle.textContent;
+          title.textContent = courseTitle.textContent;
 
-        if (cost) {
-          cost.innerHTML = `
+          if (cost) {
+            cost.innerHTML = `
             <div class="coin">
               <div class="coin__prepend">${courseCost.textContent}</div>
               <div class="coin__picture">
@@ -2414,13 +2421,15 @@ const courseState = (ns = 'data-course') => {
               </div>
             </div>,
           `;
-        }
-        submit.href = params(submit.href, { id: course.getAttribute('data-course') });
-      });
+          }
+          submit.href = params(submit.href, {id: course.getAttribute('data-course')});
+        });
+      }
+      trigger?.addEventListener('click', handler);
     }
-    trigger?.addEventListener('click', handler);
   });
 }
+
 
 courseState();
 
