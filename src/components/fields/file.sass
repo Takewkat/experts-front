@@ -109,3 +109,15 @@
 			&:not(.file__image_small)
 				width: 75vw
 				height: 42vw
+
+.files
+	.file
+		&__image
+			&.state-load
+				&::after
+					background-color: var(--color-load)
+					animation: loadFile 1.5s infinite ease
+					background-image: urL('/images/load-icon.gif')
+					background-repeat: no-repeat
+					background-position-x: 130px
+					background-position-y: 50px

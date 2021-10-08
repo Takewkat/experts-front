@@ -2132,10 +2132,23 @@ const uploadFile = (ref = '.file', callback = false) => {
       });
       file.addEventListener('change', e => {
         if (option !== 'static') {
-          fileLoading(file, image);
+          fileLoading(file, image).then(data => {
+            console.log(data);
+            if (data) {
+              const img = document.createElement('img');
+              img.setAttribute('src', data.source);
+              source.lastElementChild.remove();
+              source.appendChild(img.cloneNode());
+              while (cover.firstElementChild) cover.firstElementChild.remove();
+              cover.appendChild(img);
+              if (uploadFire === true) {
+                swap(field, image);
+              }
+            }
+          });
         }
 
-        fileName && fileName.dispatchEvent(customChangeEvent);
+        /*fileName && fileName.dispatchEvent(customChangeEvent);
 
         const reader = new FileReader();
         reader.readAsDataURL(file.files[0]);
@@ -2149,7 +2162,7 @@ const uploadFile = (ref = '.file', callback = false) => {
           if (uploadFire === true) {
             swap(field, image);
           }
-        });
+        });*/
       });
     }
   });
