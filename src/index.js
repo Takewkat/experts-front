@@ -278,7 +278,9 @@ class Dropdown extends ToggleList {
 }
 
 window.dropdown = new Dropdown;
-
+/*
+Модел это абстракция для создания новых элементов в темплейтах / в поведении - например notification  и др.
+*/
 class Model {
   constructor(node, ns = 'model') {
     this.ns = ns;
@@ -435,7 +437,8 @@ class Notification {
         id = data.$node.getAttribute('data-id');
         this.remove(data.index, area, id);
       });
-    }
+    } //индекс всегда 0. он идет из prepend в handler, а потом в remove. и поэтому удаляется криво
+    //вешается callback при создании с фиксированным индексом, но он в реальности не фиксирован
 
     if (area === 'alert') {
       this.areas.alert.model.prepend({ content }, handler);
@@ -443,7 +446,7 @@ class Notification {
         this.add(content, { area: 'list', type, status, id, send });
       }
     }
-    else {
+    else if (area === 'list') {
       this.areas.list.model.prepend({ content }, handler);
       if (this.areas.list.$node.className.indexOf('state-empty') !== -1) {
         this.areas.list.$node.classList.remove('state-empty');
@@ -4016,6 +4019,7 @@ router.get('user:ads', () => {
 
 router.get('user:subjects', () => {
   choice();
+  selectChoice();
 });
 
 router.get('user:stat', () => {
