@@ -718,6 +718,12 @@ const reInitModal = modalType => {
 
 window.reInitModal = reInitModal;
 
+const reInitCourses = () => {
+  courseState('data-course', true);
+}
+
+window.reInitCourses = reInitCourses;
+
 const contentLoaded = (wrapper, delay) => {
   const wrappers = document.querySelectorAll(wrapper);
   wrappers.forEach(wrapper => {
@@ -2129,10 +2135,23 @@ const uploadFile = (ref = '.file', callback = false) => {
       });
       file.addEventListener('change', e => {
         if (option !== 'static') {
-          fileLoading(file, image);
+          fileLoading(file, image).then(data => {
+            console.log(data);
+            if (data) {
+              const img = document.createElement('img');
+              img.setAttribute('src', data.source);
+              source.lastElementChild.remove();
+              source.appendChild(img.cloneNode());
+              while (cover.firstElementChild) cover.firstElementChild.remove();
+              cover.appendChild(img);
+              if (uploadFire === true) {
+                swap(field, image);
+              }
+            }
+          });
         }
 
-        fileName && fileName.dispatchEvent(customChangeEvent);
+        /*fileName && fileName.dispatchEvent(customChangeEvent);
 
         const reader = new FileReader();
         reader.readAsDataURL(file.files[0]);
@@ -2146,7 +2165,7 @@ const uploadFile = (ref = '.file', callback = false) => {
           if (uploadFire === true) {
             swap(field, image);
           }
-        });
+        });*/
       });
     }
   });
@@ -2386,28 +2405,29 @@ const avatarChange = (file, images) => {
 //   });
 // };
 
-const courseState = (ns = 'data-course') => {
+const courseState = (ns = 'data-course', reInit = false) => {
   const courses = document.querySelectorAll(`[${ns}]`);
   courses.forEach((course) => {
-    const courseTitle = course.querySelector(`[${ns}-title]`);
-    const courseCost = course.querySelector(`[${ns}-cost]`);
-    const trigger = course.querySelector('[data-target]');
-    const target = trigger?.getAttribute('data-target');
-    const handler = (event) => {
-      event.preventDefault();
-      popover.open(target, (modal) => {
-        const title = modal.querySelector('[data-title]');
-        const cost = modal.querySelector('[data-cost]');
-        const cancel = modal.querySelector(`[data-trigger="${target}:cancel"]`);
-        const submit = modal.querySelector('a');
-        const cancelHandler = (event) => popover.close();
+    if(!reInit || (reInit && course.classList.contains('state-wait'))) {
+      const courseTitle = course.querySelector(`[${ns}-title]`);
+      const courseCost = course.querySelector(`[${ns}-cost]`);
+      const trigger = course.querySelector('[data-target]');
+      const target = trigger?.getAttribute('data-target');
+      const handler = (event) => {
+        event.preventDefault();
+        popover.open(target, (modal) => {
+          const title = modal.querySelector('[data-title]');
+          const cost = modal.querySelector('[data-cost]');
+          const cancel = modal.querySelector(`[data-trigger="${target}:cancel"]`);
+          const submit = modal.querySelector('a');
+          const cancelHandler = (event) => popover.close();
 
-        cancel.addEventListener('click', cancelHandler);
+          cancel.addEventListener('click', cancelHandler);
 
-        title.textContent = courseTitle.textContent;
+          title.textContent = courseTitle.textContent;
 
-        if (cost) {
-          cost.innerHTML = `
+          if (cost) {
+            cost.innerHTML = `
             <div class="coin">
               <div class="coin__prepend">${courseCost.textContent}</div>
               <div class="coin__picture">
@@ -2417,13 +2437,15 @@ const courseState = (ns = 'data-course') => {
               </div>
             </div>,
           `;
-        }
-        submit.href = params(submit.href, { id: course.getAttribute('data-course') });
-      });
+          }
+          submit.href = params(submit.href, {id: course.getAttribute('data-course')});
+        });
+      }
+      trigger?.addEventListener('click', handler);
     }
-    trigger?.addEventListener('click', handler);
   });
 }
+
 
 courseState();
 
@@ -2467,6 +2489,35 @@ const serviceState = (ns = 'data-service') => {
 }
 
 serviceState();
+
+const servicePopup = (dataTitle, dataCost, dataId) => {
+  const target = 'service-buy';
+  popover.open(target, (modal) => {
+    const title = modal.querySelector('[data-title]');
+    const cost = modal.querySelector('[data-cost]');
+    const cancel = modal.querySelector(`[data-trigger="${target}:cancel"]`);
+    const submit = modal.querySelector('a');
+    const cancelHandler = (event) => popover.close();
+
+    cancel.addEventListener('click', cancelHandler);
+
+    title.textContent = dataTitle;
+
+    if (cost) {
+      cost.innerHTML = `
+            <div class="coin">
+              <div class="coin__prepend">`+dataCost+`</div>
+              <div class="coin__picture">
+                <svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M5.67723 0.555664C6.29689 0.555664 6.88039 0.61611 7.42775 0.737003C6.88126 0.620131 6.29657 0.555664 5.67723 0.555664ZM7.18962 3.33722C6.77462 3.20359 6.31353 3.1303 5.85546 3.12928C6.30612 3.12738 6.76635 3.20093 7.18962 3.33722ZM7.15715 7.61143C5.39715 7.99129 3.03568 7.75417 3.03568 5.38241C3.03568 3.24405 5.248 2.50921 6.99999 3.0156C7.2133 2.33434 7.52516 1.70092 7.94862 1.13008C7.24366 0.91944 6.503 0.805664 5.67723 0.805664C4.68234 0.805664 3.80428 0.972956 3.03734 1.30149L3.03568 1.30221C2.29183 1.61532 1.70216 2.10484 1.26376 2.77824L1.26279 2.77973C0.830917 3.43274 0.603882 4.29991 0.603882 5.39917C0.603882 7.01527 1.05284 8.14004 1.8921 8.83403C2.74895 9.54257 3.9087 9.90889 5.40159 9.90889C6.07862 9.90889 6.6625 9.83852 7.15715 9.70246C7.24588 9.6761 7.4265 9.60847 7.59441 9.5456L7.59453 9.54556L7.59454 9.54555C7.71929 9.49884 7.83701 9.45477 7.9048 9.4322C7.55962 8.86874 7.31903 8.25582 7.15715 7.61143ZM14.6548 1.32942C15.3027 1.67429 15.81 2.18034 16.1786 2.85436L16.1809 2.85844C16.5565 3.51573 16.7513 4.33627 16.7513 5.33214C16.7513 6.8408 16.3507 7.96481 15.5837 8.74251C14.8142 9.51161 13.7499 9.90889 12.3589 9.90889C11.5009 9.90889 10.7494 9.73231 10.0979 9.38586C9.44901 9.02971 8.93551 8.51738 8.55563 7.84284C8.18916 7.1613 8.00002 6.32772 8.00002 5.33214C8.00002 3.84642 8.40026 2.73939 9.167 1.97265C9.93613 1.20352 11.006 0.805665 12.4092 0.805665C13.2679 0.805665 14.0136 0.982517 14.6533 1.32862L14.6548 1.32942ZM11.0962 7.27073C10.8586 6.79558 10.7514 6.14141 10.7514 5.33214C10.7514 4.52432 10.8581 3.87797 11.0987 3.42218C11.0987 3.42218 11.4484 2.98683 11.6515 2.8693C11.8546 2.75176 12.3757 2.68552 12.3757 2.68552C12.6602 2.68552 12.9189 2.74254 13.1407 2.8693C13.3634 2.99655 13.5338 3.18553 13.6539 3.42461C13.8935 3.88027 13.9999 4.52575 13.9999 5.33214C13.9999 6.14072 13.8929 6.79447 13.6557 7.26952C13.537 7.51312 13.3692 7.70725 13.149 7.83868C12.9294 7.96973 12.6735 8.02903 12.3924 8.02903C12.1066 8.02903 11.8463 7.9701 11.622 7.84044C11.3966 7.71013 11.2227 7.51702 11.0974 7.27313L11.0962 7.27073Z" fill="#EB922A"></path>
+                </svg>
+              </div>
+            </div>,
+          `;
+    }
+    submit.href = params(submit.href, { id: dataId });
+  });
+}
 
 const universalCancelState = (ns = 'data-universal-cancel') => {
   const items = document.querySelectorAll(`[${ns}]`);
@@ -4010,6 +4061,7 @@ router.get('user:payout', () => {
   fieldMoney();
   fieldTax();
   fieldCancel();
+  tableSortable();
 });
 
 router.get('user:ads', () => {
@@ -4018,6 +4070,7 @@ router.get('user:ads', () => {
 });
 
 router.get('user:subjects', () => {
+  selectChoice();
   choice();
   selectChoice();
 });
