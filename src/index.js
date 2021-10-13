@@ -2519,6 +2519,9 @@ const servicePopup = (dataTitle, dataCost, dataId) => {
   });
 }
 
+
+window.servicePopup = servicePopup;
+
 const universalCancelState = (ns = 'data-universal-cancel') => {
   const items = document.querySelectorAll(`[${ns}]`);
   items.forEach((item) => {
