@@ -139,9 +139,11 @@ const viewDate = (element, calendar) => {
           const events = eventsHasOrder[date.getTime()];
           const hasOpen = events.indexOf('state-open') !== -1;
           const hasWebinar = events.indexOf('state-webinar') !== -1;
+          const hasLivestream = events.indexOf('state-livestream') !== -1;
           const hasBoth = hasOpen && hasWebinar;
           const openElement = '<div class="datepicker-notify__item" data-type="open"></div>';
           const webinarElement = '<div class="datepicker-notify__item" data-type="webinar"></div>';
+          const livestreamElement = '<div class="datepicker-notify__item" data-type="livestream"></div>';
           const notify = document.createElement('div');
           notify.className = 'datepicker-notify';
           if (hasBoth) {
@@ -153,6 +155,9 @@ const viewDate = (element, calendar) => {
           }
           else if (hasWebinar) {
             notify.insertAdjacentHTML('beforeend', webinarElement);
+          }
+          else if (hasLivestream) {
+            notify.insertAdjacentHTML('beforeend', livestreamElement);
           }
           return {
             html: date.getDate() + notify.outerHTML
@@ -228,8 +233,8 @@ const viewDate = (element, calendar) => {
         'data-picker',
         mdy(
           viewType === 'timeGridWeek'
-          ? dm.subtract({ day: (dm.getDay() === 0 ? 7 : dm.getDay()) - 1 })
-          : dm
+            ? dm.subtract({ day: (dm.getDay() === 0 ? 7 : dm.getDay()) - 1 })
+            : dm
         )
       );
     });
@@ -447,7 +452,7 @@ const weekViewUpdate = (element, direction) => {
     if (calendar.view.type === 'timeGridWeek') {
       updateTime = direction === 'prev'
         ? new DateManager(Number(weekTime)).subtract('day', 7).getTime()
-      : new DateManager(Number(weekTime)).add('day', 7).getTime();
+        : new DateManager(Number(weekTime)).add('day', 7).getTime();
     }
     else {
       const date = calendar.getDate();
@@ -583,6 +588,11 @@ window.cData = typeof calendarData === 'undefined' ? {
       next: "вебинар запланирован",
       expire: "вебинар закончился",
       live: "вебинар идет"
+    },
+    livestream: {
+      next: "трансляция запланирована",
+      expire: "трансляция закончилась",
+      live: "трансляция идет"
     }
   },
   config: { updateTime: 3000, updateForceTime: 5000 }
@@ -1132,6 +1142,9 @@ const openState = (calendar, event) => {
 // Order
 
 const eventState = (ref, event, data) => {
+  console.log(ref);
+  console.log(event);
+  console.log(data);
   const now = (new Date()).getTime();
   const states = {
     next: event.start.getTime() > now,
@@ -1326,8 +1339,8 @@ const orderState = (calendar, event) => {
 
 const webinarOrderCheck = event => {
   return role.has('expert')
-  ? !!event.extendedProps.users.length
-  : event.extendedProps.users.some(item => item.id === cData.user.id);
+    ? !!event.extendedProps.users.length
+    : event.extendedProps.users.some(item => item.id === cData.user.id);
 };
 
 const webinarOpen = (target, event) => {
@@ -1552,6 +1565,47 @@ const webinarInfo = (target, event) => {
   });
 };
 
+const livestreamInfo = (target, event) => {
+  popover.open(target, modal => {
+
+    const start = modal.querySelector('[data-start]');
+    const end = modal.querySelector('[data-end]');
+    const range = modal.querySelector('[data-time]');
+    const expert = modal.querySelector('[data-expert]');
+    const livestream = modal.querySelector('[data-livestream]');
+    const status = modal.querySelector('[data-status]');
+    const time = setTime(event.start, event.end);
+
+    start.textContent = dateString(event.start);
+    end.textContent = dateString(event.end);
+    range.textContent = time.string;
+    livestream.textContent = event.title;
+    expert.textContent = (cData.expert || event.extendedProps.expert).name;
+    if (role.has('user')) {
+      expert.parentElement.href = event.extendedProps.expert.url;
+    }
+    status.textContent = eventState('livestream', event, cData).value;
+
+    const errorElement = modal.querySelector('[data-alert]');
+    const buttons = modal.querySelectorAll('[data-trigger]');
+
+    buttons.forEach(button => {
+      if (button.hasAttribute('disabled')) {
+        button.removeAttribute('disabled');
+      }
+      if (button.className.indexOf('state-load') !== -1) {
+        button.classList.remove('state-load');
+      }
+    });
+
+    if (modal.className.indexOf('state-error') !== -1) {
+      modal.classList.remove('state-error');
+    }
+
+    visibillityModule(eventState('livestream', event, cData).prop, modal);
+  });
+};
+
 const webinarState = (calendar, event) => {
 
   if (webinarOrderCheck(event) === false) {
@@ -1571,6 +1625,16 @@ const webinarState = (calendar, event) => {
 
   triggers.get('webinar-info').click((ev, el, target) => {
     webinarInfo(target, event);
+  });
+}
+
+const livestreamState = (calendar, event) => {
+
+  triggers.show('unselect', 'livestream-info');
+
+
+  triggers.get('livestream-info').click((ev, el, target) => {
+    livestreamInfo(target, event);
   });
 }
 
@@ -1604,7 +1668,7 @@ const selectable = (calendar, range) => {
     triggers.show('unselect', rangeData.copy);
   }
   else if (range.start.getDate() === range.end.getDate()) {
-    triggers.show('unselect', 'open-create', 'webinar-create')
+    triggers.show('unselect', 'open-create', 'webinar-create', 'livestream-create')
   }
   state.event = null;
 }
@@ -1950,7 +2014,7 @@ const expertWebinarCreate = (trigger, event) => {
           tz: getTimeZone()
         }
         setTime(eventData.start, eventData.end).number === 15
-          && eventData.classNames.push('state-short');
+        && eventData.classNames.push('state-short');
         expertWebinarInit(calendar, eventData)
           .then(data => {
             expertWebinarInfo('webinar-success', eventData, () => {
@@ -1974,6 +2038,123 @@ const expertWebinarCreate = (trigger, event) => {
           });
       });
     });
+  });
+};
+
+
+// LiveStream Expert
+
+const expertLivestreamCreate = (trigger, event) => {
+  triggers.get(trigger).click((ev, el, target) => {
+    popover.open(target, modal => {
+      const startHolder = modal.querySelector('[data-start]');
+      const endHolder = modal.querySelector('[data-end]');
+      const startSelect = startHolder.parentElement.querySelector('.select__items');
+      const endSelect = endHolder.parentElement.querySelector('.select__items');
+      const selectItems = modal.querySelectorAll('.select');
+      const range = modal.querySelector('[data-time]');
+      const rangeItems = rangeTime(event, 15);
+      const field = modal.querySelector('[data-field]');
+      const errorElement = modal.querySelector('[data-alert]');
+      const buttons = modal.querySelectorAll('[data-trigger]');
+
+      field.value = '';
+
+      buttons.forEach(button => {
+        if (button.hasAttribute('disabled')) {
+          button.removeAttribute('disabled');
+        }
+        if (button.className.indexOf('state-load') !== -1) {
+          button.classList.remove('state-load');
+        }
+      });
+
+      if (modal.className.indexOf('state-error') !== -1) {
+        modal.classList.remove('state-error');
+      }
+
+      let time = setTime(event.start, event.end);
+
+      startHolder.textContent = dateString(event.start);
+      startHolder.setAttribute('data-select-output', time.date.start);
+      endHolder.textContent = dateString(event.end);
+      endHolder.setAttribute('data-select-output', time.date.end);
+
+      range.textContent = time.string;
+
+      rangeInit(startSelect, endSelect);
+      rangeSet(rangeItems, startSelect, endSelect);
+
+      select(selectItems, (instance, trigger) => {
+        const outputAttr = 'data-select-output';
+        const selectData = Number(trigger.getAttribute('data-select'));
+        instance.setAttribute(outputAttr, selectData);
+        let start = new Date(Number(startHolder.getAttribute(outputAttr)));
+        let end = new Date(Number(endHolder.getAttribute(outputAttr)));
+        if (end.getTime() <= start.getTime()) {
+          end = new Date(start.getTime() + ((1000 * 60) * 15));
+          const updateDate = end.getTime();
+          endHolder.setAttribute(outputAttr, updateDate);
+          endHolder.textContent = dateString(new Date(updateDate));
+        }
+        time = setTime(start, end);
+        setRange(time, range);
+      });
+
+      triggers.get('livestream-success').click((ev, el, target) => {
+        el.classList.add('state-load');
+        const eventData = {
+          start: new Date(Number(startHolder.getAttribute('data-select-output'))),
+          end: new Date(Number(endHolder.getAttribute('data-select-output'))),
+          title: field.value,
+          classNames: ['state-livestream'],
+          id: Math.floor(Math.random() * (new Date()).getTime()),
+          tz: getTimeZone()
+        }
+        setTime(eventData.start, eventData.end).number === 15
+        && eventData.classNames.push('state-short');
+        expertLivestreamInit(calendar, eventData)
+          .then(data => {
+            expertLivestreamInfo('livestream-success', eventData, () => {
+              el.setAttribute('disabled', '');
+              triggers.clear();
+              calendar.unselect();
+              calendar.addEvent(eventData);
+              event = calendar.getEventById(eventData.id);
+              popover.open('livestream-success');
+            });
+          })
+          .catch(err => {
+            el.removeAttribute('disabled');
+            el.classList.remove('state-load');
+            modal.classList.add('state-error');
+            errorElement.innerHTML = err.message;
+            if (err.closed) {
+              const linkPay = errorElement.querySelector('a');
+              linkPay.href = params(location.href, snapshot().params);
+            }
+          });
+      });
+    });
+  });
+};
+
+const expertLivestreamInit = (calendar, eventData) => {
+  const data = JSON.stringify(eventData);
+  return query(action.expert.save, data);
+};
+
+const expertLivestreamInfo = (target, eventData, callback = false) => {
+  popover.get(target, modal => {
+    const start = modal.querySelector('[data-start]');
+    const end = modal.querySelector('[data-end]');
+    const range = modal.querySelector('[data-time]');
+    const title = modal.querySelector('[data-title]');
+    start.textContent = dateString(eventData.start);
+    end.textContent = dateString(eventData.end);
+    range.textContent = setTime(eventData.start, eventData.end).string;
+    title.textContent = eventData.title;
+    callback && callback(modal);
   });
 };
 
@@ -2045,7 +2226,67 @@ const expertWebinarCancel = (target, event) => {
   })
 };
 
+const expertLivestreamCancel = (target, event) => {
+  triggers.get(target).click((ev, el, target) => {
+    popover.open(target, modal => {
+
+      const errorElement = modal.querySelector('[data-alert]');
+      const buttons = modal.querySelectorAll('[data-trigger]');
+
+      buttons.forEach(button => {
+        if (button.hasAttribute('disabled')) {
+          button.removeAttribute('disabled');
+        }
+        if (button.className.indexOf('state-load') !== -1) {
+          button.classList.remove('state-load');
+        }
+      });
+
+      if (modal.className.indexOf('state-error') !== -1) {
+        modal.classList.remove('state-error');
+      }
+
+      triggers.get(`${target}:cancel`).click((ev, el, target) => {
+        popover.close();
+      });
+
+      triggers.get(`${target}:submit`).click((ev, el, target) => {
+        el.classList.add('state-load');
+        const data = JSON.stringify({ id: event.id });
+        query(action.expert.remove, data)
+          .then(data => {
+            el.setAttribute('disabled', '');
+            event.remove();
+            popover.open('livestream-cancel');
+            triggers.clear();
+          })
+          .catch(err => {
+            el.removeAttribute('disabled');
+            el.classList.remove('state-load');
+            modal.classList.add('state-error');
+            errorElement.innerHTML = err.message;
+          })
+      });
+    });
+  })
+};
+
 const expertWebinarUpdate = (calendar, oldEvent, updateEvent) => {
+  const data = JSON.stringify({
+    oldEvent: {
+      start: oldEvent.start,
+      end: oldEvent.end,
+      id: oldEvent.id
+    },
+    updateEvent: {
+      start: updateEvent.start,
+      end: updateEvent.end,
+      id: updateEvent.id
+    }
+  });
+  query(action.expert.update, data);
+};
+const expertLivestreamUpdate = (calendar, oldEvent, updateEvent) => {
   const data = JSON.stringify({
     oldEvent: {
       start: oldEvent.start,
@@ -2108,6 +2349,64 @@ const expertWebinarState = (calendar, event) => {
           el.setAttribute('disabled', '');
           event.remove();
           popover.open('webinar-cancel');
+          triggers.clear();
+        })
+        .catch(err => {
+          el.removeAttribute('disabled');
+          el.classList.remove('state-load');
+          modal.classList.add('state-error');
+          errorElement.innerHTML = err.message;
+        })
+    });
+  });
+};
+const expertLivestreamState = (calendar, event) => {
+  triggers.show(
+    'unselect',
+    'livestream-delete',
+    'livestream-info'
+  );
+
+  expertLivestreamCancel('livestream-delete', event);
+
+  expertLivestreamInfo('livestream-info', event, (modal) => {
+
+    const errorElement = modal.querySelector('[data-alert]');
+    const buttons = modal.querySelectorAll('[data-trigger]');
+
+    const modules = modal.querySelectorAll('[data-order]');
+
+    /*modules.forEach(moduleItem => {
+      const attr = moduleItem.getAttribute('data-order');
+      if (attr === webinarOrderCheck(event).toString()) {
+        moduleItem.classList.add('state-active');
+      }
+      else {
+        moduleItem.classList.remove('state-active');
+      }
+    });*/
+
+    buttons.forEach(button => {
+      if (button.hasAttribute('disabled')) {
+        button.removeAttribute('disabled');
+      }
+      if (button.className.indexOf('state-load') !== -1) {
+        button.classList.remove('state-load');
+      }
+    });
+
+    if (modal.className.indexOf('state-error') !== -1) {
+      modal.classList.remove('state-error');
+    }
+
+    triggers.get('livestream-info:submit').click((ev, el, target) => {
+      el.classList.add('state-load');
+      const data = JSON.stringify({ id: event.id });
+      query(action.expert.remove, data)
+        .then(data => {
+          el.setAttribute('disabled', '');
+          event.remove();
+          popover.open('livestream-cancel');
           triggers.clear();
         })
         .catch(err => {
@@ -2497,7 +2796,8 @@ const loadSnapshot = (state) => {
 const setSnapshot = (events) => {
   if (events.length) {
     const index = events.findIndex((event) => {
-      return event.classNames.indexOf('state-webinar') !== -1
+      return event.classNames.indexOf('state-livestream') !== -1
+        || event.classNames.indexOf('state-webinar') !== -1
         || event.classNames.indexOf('state-range') !== -1;
     });
     if (index >= 0) {
@@ -2618,7 +2918,7 @@ const calendarInit = element => {
 
       rawEvents = events.filter((event) => {
         return event.classNames.indexOf('state-range') !== -1
-          || event.classNames.indexOf('state-webinar') !== -1;
+          || event.classNames.indexOf('state-webinar') !== -1 || event.classNames.indexOf('state-livestream') !== -1;
       });
     },
     allDaySlot: false,
@@ -2667,6 +2967,10 @@ const calendarInit = element => {
           selected(calendar, event);
           webinarState(calendar, event);
         });
+        state.has('livestream', event => {
+          selected(calendar, event);
+          livestreamState(calendar, event);
+        });
       });
 
       // expert
@@ -2683,6 +2987,10 @@ const calendarInit = element => {
         state.has('webinar', event => {
           selected(calendar, event);
           expertWebinarState(calendar, event);
+        });
+        state.has('livestream', event => {
+          selected(calendar, event);
+          expertLivestreamState(calendar, event);
         });
       });
 
@@ -2795,6 +3103,7 @@ const calendarInit = element => {
       unselectableHandler('unselect', calendar);
       expertOpenCreate('open-create', info);
       expertWebinarCreate('webinar-create', info);
+      expertLivestreamCreate('livestream-create', info);
       copyDayState(calendar, info);
       copyWeekState(calendar, info);
 

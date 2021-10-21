@@ -803,18 +803,53 @@ const dateMask = elements => {
   });
 }
 
+
 const phoneMask = elements => {
+
+
   document.querySelectorAll(elements).forEach(element => {
-    IMask(element, {
-      mask: '+{7}(000)000-00-00',
-      prepare: (appended, masked) => {
-        if (['8', '7'].indexOf(appended) !== -1 && masked._value.length === 3) {
-          return '';
+    var dispatchMask = IMask(element, {
+        mask: [
+          {
+            mask: '+000 000 000-00',
+            startsWith: '374',
+            lazy: false,
+            country: 'Armenia'
+          },
+          {
+            mask: '+000 0-000-00-00',
+            startsWith: '993',
+            lazy: false,
+            country: 'Turkmenistan'
+          },
+          {
+            mask: '+000 00-00-00-00',
+            startsWith: '373',
+            lazy: false,
+            country: 'Moldova'
+          },
+          {
+            mask: '+0 000 000-00-00',
+            startsWith: '7',
+            lazy: false,
+            country: 'Russia'
+          },
+          {
+            mask: '+000 000-00-00-00',
+            startsWith: '',
+            lazy: false,
+            country: 'other'
+          },
+        ],
+        dispatch: function (appended, dynamicMasked) {
+          var number = (dynamicMasked.value + appended).replace(/\D/g,'');
+
+          return dynamicMasked.compiledMasks.find(function (m) {
+            return number.indexOf(m.startsWith) === 0;
+          });
         }
-        return appended;
-      },
-      lazy: false
-    });
+      }
+    )
   });
 }
 

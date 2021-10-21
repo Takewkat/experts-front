@@ -178,6 +178,57 @@
 				.popover__action.action
 					.action__button.button.button_large(data-trigger="webinar-success") Создать вебинар
 
+			.popover__item(data-target="livestream-create")
+				.popover__alert(data-alert)
+				.popover__header Создать трансляцию
+				textarea(placeholder="Напишите название трансляции", data-field).popover__field
+				.popover__table.table
+					.table__row
+						.table__cell.table__title Дата начала
+						.table__cell.table__info.info
+							.info__text.info__select.select
+								.select__header(data-select-output, data-start)
+								.info__icon.select__carret
+									include ../../../public/images/popover-carret.svg
+								.select__items
+					.table__row
+						.table__cell.table__title Дата окончания
+						.table__cell.table__info.info
+							.info__text.info__select.select
+								.select__header(data-select-output, data-end)
+								.info__icon.select__carret
+									include ../../../public/images/popover-carret.svg
+								.select__items
+					.table__row
+						.table__cell.table__title Продолжительность
+						.table__cell.table__info.info
+							.info__text(data-time)
+				.popover__action.action
+					.action__button.button.button_large(data-trigger="livestream-success") Создать трансляцию
+
+			.popover__item(data-target="livestream-success")
+				.popover__alert(data-alert)
+				.popover__icon
+					include ../../../public/images/popover-success.svg
+				.popover__header Трансляция создана
+				.popover__table.table
+					.table__row
+						.table__cell.table__title Трансляция
+						.table__cell.table__info.info
+							.info__text(data-title)
+					.table__row
+						.table__cell.table__title Дата начала
+						.table__cell.table__info.info
+							.info__text(data-start)
+					.table__row
+						.table__cell.table__title Дата окончания
+						.table__cell.table__info.info
+							.info__text(data-end)
+					.table__row
+						.table__cell.table__title Продолжительность
+						.table__cell.table__info.info
+							.info__text(data-time)
+
 			.popover__item(data-target="webinar-success")
 				.popover__alert(data-alert)
 				.popover__icon
@@ -241,6 +292,40 @@
 					.popover__action.action
 						.action__button.button.button_large(data-trigger="webinar-info:submit") Закрыть запись
 
+			.popover__item(data-target="livestream-info")
+				.popover__alert(data-alert)
+				.popover__header Информация о трансляции
+				.popover__table.table
+					.table__row
+						.table__cell.table__title Трансляция
+						.table__cell.table__info.info
+							.info__text(data-title)
+					.table__row
+						.table__cell.table__title Дата начала
+						.table__cell.table__info.info
+							.info__text(data-start)
+					.table__row
+						.table__cell.table__title Дата окончания
+						.table__cell.table__info.info
+							.info__text(data-end)
+					.table__row
+						.table__cell.table__title Продолжительность
+						.table__cell.table__info.info
+							.info__text(data-time)
+				.popover__module(data-order="true")
+					.popover__text.popover__text_small Вы не можете отменить вебинар, потому что на него уже записались
+				.popover__module(data-order="false")
+					.popover__action.action
+						.action__button.button.button_large(data-trigger="livestream-info:submit") Закрыть запись
+
+			.popover__item(data-target="livestream-delete")
+				.popover__alert(data-alert)
+				.popover__header Отменить трансляцию
+				.popover__text Вы точно хотите отменить трансляцию?
+				.popover__action.action
+					.action__button.button.button_large.button_theme-gray(data-trigger="livestream-delete:cancel") Нет
+					.action__button.button.button_large(data-trigger="livestream-delete:submit") Отменить трансляцию
+
 			.popover__item(data-target="webinar-delete")
 				.popover__alert(data-alert)
 				.popover__header Отменить вебинар
@@ -254,6 +339,12 @@
 				.popover__icon
 					include ../../../public/images/popover-success.svg
 				.popover__header Успешно, вебинар отменен
+
+			.popover__item(data-target="livestream-cancel")
+				.popover__alert(data-alert)
+				.popover__icon
+					include ../../../public/images/popover-success.svg
+				.popover__header Успешно, трансляция отменена
 
 			.popover__item(data-target="copy-day")
 				.popover__alert(data-alert)
@@ -396,12 +487,24 @@
 						.action__tooltip создать вебинар
 						include ../../../public/images/calendar/webinar-create.svg
 
+					.action__button(data-trigger="livestream-create")
+						.action__tooltip создать трансляцию
+						include ../../../public/images/calendar/livestream-create.svg
+
 					.action__button(data-trigger="webinar-info")
+						.action__tooltip посмотреть информацию
+						include ../../../public/images/calendar/info.svg
+
+					.action__button(data-trigger="livestream-info")
 						.action__tooltip посмотреть информацию
 						include ../../../public/images/calendar/info.svg
 
 					.action__button(data-trigger="webinar-delete")
 						.action__tooltip отменить вебинар
+						include ../../../public/images/calendar/webinar-delete.svg
+
+					.action__button(data-trigger="livestream-delete")
+						.action__tooltip отменить трансляцию
 						include ../../../public/images/calendar/webinar-delete.svg
 			.calendar__wrapper
 				#calendar(data-role="expert")
@@ -409,6 +512,7 @@
 			.calendar__legend.legend
 				.legend__item.legend__item_order(data-count="1") Консультация
 				.legend__item.legend__item_webinar(data-count="3") Вебинара
+				.legend__item.legend__item_livestream(data-count="3") Трансляции
 				.legend__item.legend__item_open Открыто <br> для записи
 				.legend__item.legend__item_close Нет записи
 				.legend__item.legend__item_late Поздняя отмена <br> консультации

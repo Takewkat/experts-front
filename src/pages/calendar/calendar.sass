@@ -316,6 +316,12 @@
 							background-color: var(--calendar-webinar-cell-hover)
 						&.state-select
 							background-color: var(--calendar-webinar-cell-select)
+					&-livestream
+						background-color: var(--calendar-livestream-cell)
+						&:hover
+							background-color: var(--calendar-livestream-cell-hover)
+						&.state-select
+							background-color: var(--calendar-livestream-cell-select)
 					&-open
 						background-color: var(--calendar-open-cell)
 						&:hover
@@ -420,6 +426,11 @@
 				&[data-count]
 					&::before
 						background-color: var(--calendar-webinar-label)
+			&_livestream
+				background-color: var(--calendar-livestream)
+				&[data-count]
+					&::before
+						background-color: var(--calendar-livestream-label)
 			&_open
 				background-color: var(--calendar-open)
 			&_close

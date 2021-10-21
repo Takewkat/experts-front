@@ -255,6 +255,34 @@
 				.action__button.button.button_large.button_theme-gray(data-trigger="webinar-delete:cancel") Нет
 				.action__button.button.button_large(data-trigger="webinar-delete:delete") Отменить бронирование
 
+		.popover__item(data-target="livestream-info")
+			.popover__alert(data-alert)
+			.popover__header Информация о трансляции
+			.popover__table.table
+				.table__row
+					.table__cell.table__title Трансляция
+					.table__cell.table__info.info
+						.info__text(data-livestream)
+				.table__row
+					.table__cell.table__title Эксперт
+					.table__cell.table__info.info(data-expert)
+				.table__row
+					.table__cell.table__title Дата начала
+					.table__cell.table__info.info
+						.info__text(data-start)
+				.table__row
+					.table__cell.table__title Дата окончания
+					.table__cell.table__info.info
+						.info__text(data-end)
+				.table__row
+					.table__cell.table__title Продолжительность
+					.table__cell.table__info.info
+						.info__text(data-time)
+				.table__row
+					.table__cell.table__title Статус
+					.table__cell.table__info.info
+						.info__text(data-status)
+
 		.popover__item(data-target="webinar-info")
 			.popover__alert(data-alert)
 			.popover__header Информация о вебинаре
@@ -400,6 +428,10 @@
 						include ../../public/images/calendar/unorder.svg
 
 					.action__button(data-trigger="webinar-info")
+						.action__tooltip посмотреть информацию
+						include ../../public/images/calendar/info.svg
+
+					.action__button(data-trigger="livestream-info")
 						.action__tooltip посмотреть информацию
 						include ../../public/images/calendar/info.svg
 

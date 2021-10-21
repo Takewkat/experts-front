@@ -1,7 +1,6 @@
 .review
 	width: 98%
 	flex-wrap: wrap
-	padding: 1rem
 	justify-content: space-between
 	font-size: 18px
 	display: flex
@@ -10,11 +9,11 @@
 	align-items: stretch
 	position: relative
 	overflow: hidden
-	gap: 20px 
+	gap: 20px
 	box-sizing: content-box
 	&::after
 		content: ''
-		position: absolute		
+		position: absolute
 		top: 0
 		left: 0
 		right: 0
@@ -35,7 +34,6 @@
 		justify-content: space-between
 		align-items: center
 		margin-bottom: 32px
-		padding-left: 2rem
 		padding-right: 3rem
 	&__title
 		margin-bottom: unset
@@ -44,10 +42,9 @@
 		display: flex
 		flex-wrap: wrap
 		flex-direction: column
-		padding: 1rem
 		justify-content: space-between
 		align-items: stretch
-		gap: 15px 	
+		gap: 15px
 	&__item
 		&[data-model]
 			display: block
@@ -102,4 +99,3 @@
 @media screen and (max-width: 400px)
 	.review__item
 		font-size: 12px
-	
