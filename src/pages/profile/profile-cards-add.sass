@@ -21,7 +21,10 @@
 	&__code
 		margin-right: 16px
 		.field
-			width: 80px
+			width: 110px
+			display: flex
+			&__input
+				width: 50px
 		span
 			margin: 0 8px
 			align-self: center
@@ -66,6 +69,8 @@
 // Mobile
 
 @media screen and (max-width: 600px)
+	.core-service-button
+		margin-bottom: 5px
 	.new-card
 		flex-direction: column
 		&__main, &__side
@@ -87,3 +92,71 @@
 				flex-basis: 100%
 				margin-bottom: 16px
 				margin-right: 0
+
+.core-service-button
+	font-family: 'Root UI'
+
+
+.core-service-container
+	margin-top: -1rem
+	margin-bottom: 1rem
+	.coin__prepend
+		font-size: 11px
+
+.content__wrapper_buttons
+	.state-hidden
+		display: none
+
+.popup-pay
+	.button_theme-brand
+		min-width: 90px
+	.field
+		width: auto
+	.checkbox__label
+		color: var(--color-default)
+		font-size: 12px
+	.profile
+		&__body
+			padding-top: 0
+	.new-card
+		flex-direction: column
+		&__main, &__side
+			flex-basis: auto
+		&__main
+			margin-top: 10px
+			padding-top: 5px
+			padding-bottom: 5px
+			border-radius: var(--border-radius) var(--border-radius) 0 0
+		&__number, &__code
+			margin-bottom: 8px
+		&__side
+			transform: unset
+
+			border-radius: 0 0 var(--border-radius) var(--border-radius)
+			&::after
+				content: unset
+		&__text
+			color: var(--color-default)
+			font-size: 12px
+		&__wrapper
+			flex-wrap: wrap
+			.field
+				flex-basis: 100%
+				margin-right: unset
+				flex-grow: 1
+				width: auto
+			.new-card__code
+				flex-basis: 100%
+				margin-bottom: 5px
+				margin-right: 0
+		&__side
+			padding-top: 5px
+			padding-bottom: 5px
+			&__field
+				flex-basis: 100%
+				margin-right: unset
+				flex-grow: 1
+				width: auto
+
+
+

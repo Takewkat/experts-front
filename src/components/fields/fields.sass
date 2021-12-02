@@ -48,8 +48,10 @@
 			-webkit-text-fill-color: var(--color-fill-primary)
 	&.state-error
 		position: relative
-		.field__input
+		.field__input, .field__textarea
 			border: 2px solid var(--color-error)
+		[data-counter-container].state-error
+			color: var(--color-error)
 	&__icon
 		position: absolute
 		top: 0

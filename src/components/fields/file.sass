@@ -116,8 +116,25 @@
 			&.state-load
 				&::after
 					background-color: var(--color-load)
-					animation: loadFile 1.5s infinite ease
-					background-image: urL('/images/load-icon.gif')
-					background-repeat: no-repeat
-					background-position-x: 130px
-					background-position-y: 50px
+					width: 50px
+					height: 50px
+					top: 50%
+					left: 50%
+					margin-left: -25px
+					margin-top: -25px
+					border-radius: 50px
+					border: 6px solid rgba(114,114,114,0.4)
+					border-top-color: #fff
+					animation: spin 1s linear infinite
+
+
+
+
+@keyframes spin
+	0%
+		-webkit-transform: rotate(0deg)
+		transform: rotate(0deg)
+	100%
+		-webkit-transform: rotate(360deg)
+		transform: rotate(360deg)
+

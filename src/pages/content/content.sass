@@ -367,7 +367,7 @@
 	.state
 		&-load, &-loaded
 			display: flex
-			flex-direction: column
+			flex-direction: row
 		&-load
 			transition: opacity linear .5s
 		&-loaded
@@ -410,6 +410,12 @@
 // Mobile
 
 @media screen and (max-width: 600px)
+	[data-load]
+		.state
+			&-load, &-loaded
+				flex-direction: column
+	.course-link
+		flex-direction: column
 	.content
 		&__title
 			font-size: 34px
@@ -485,3 +491,6 @@
 							.rating__stars
 								margin-left: auto
 				&__row
+
+.content_reviews
+	padding: 22px 70px

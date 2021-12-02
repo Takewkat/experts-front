@@ -1024,6 +1024,12 @@ const orderCreate = (modal, calendar, event) => {
         if (eventData.start.getTime() >= event.start.getTime() && eventData.end.getTime() <= event.end.getTime()) {
 
           orderData.oldOpen = event.id;
+          if(state.has('livestream')) {
+            var classNamesStates = ['state-livestream', 'state-range'];
+            eventData.classNames.push('state-fromlivestream');
+          } else {
+            var classNamesStates = ['state-open', 'state-range'];
+          }
 
           if (!(eventData.start.getTime() === event.start.getTime() && eventData.end.getTime() === event.end.getTime())) {
 
@@ -1031,7 +1037,7 @@ const orderCreate = (modal, calendar, event) => {
               orderData.open.push({
                 start: eventData.end,
                 end: event.end,
-                classNames: ['state-open', 'state-range'],
+                classNames: classNamesStates,
                 display: 'background',
                 groupId: 0,
                 id: Math.floor(Math.random() * (new Date).getTime())
@@ -1041,7 +1047,7 @@ const orderCreate = (modal, calendar, event) => {
               orderData.open.push({
                 start: event.start,
                 end: eventData.start,
-                classNames: ['state-open', 'state-range'],
+                classNames: classNamesStates,
                 display: 'background',
                 groupId: 0,
                 id: Math.floor(Math.random() * (new Date).getTime())
@@ -1051,7 +1057,7 @@ const orderCreate = (modal, calendar, event) => {
               orderData.open.push({
                 start: event.start,
                 end: eventData.start,
-                classNames: ['state-open', 'state-range'],
+                classNames: classNamesStates,
                 display: 'background',
                 groupId: 0,
                 id: Math.floor(Math.random() * (new Date).getTime())
@@ -1059,7 +1065,7 @@ const orderCreate = (modal, calendar, event) => {
               orderData.open.push({
                 start: eventData.end,
                 end: event.end,
-                classNames: ['state-open', 'state-range'],
+                classNames: classNamesStates,
                 display: 'background',
                 groupId: 0,
                 id: Math.floor(Math.random() * (new Date).getTime())
@@ -2107,7 +2113,7 @@ const expertLivestreamCreate = (trigger, event) => {
           start: new Date(Number(startHolder.getAttribute('data-select-output'))),
           end: new Date(Number(endHolder.getAttribute('data-select-output'))),
           title: field.value,
-          classNames: ['state-livestream'],
+          classNames: ['state-livestream', 'state-range'],
           id: Math.floor(Math.random() * (new Date()).getTime()),
           tz: getTimeZone()
         }
@@ -2857,6 +2863,8 @@ let updateEvent = null;
 
 let rawEvents = [];
 
+let showNotExistsBooking = false;
+
 const getTimeZone = () => {
   const el = document.querySelector('[data-tz] input');
   const tz = el.getAttribute('data-tz-search');
@@ -2920,6 +2928,11 @@ const calendarInit = element => {
         return event.classNames.indexOf('state-range') !== -1
           || event.classNames.indexOf('state-webinar') !== -1 || event.classNames.indexOf('state-livestream') !== -1;
       });
+
+      if(calendarData.existsBooking !== undefined && calendarData.existsBooking == 0 && !showNotExistsBooking) {
+        popover.open('not-exists-booking');
+        showNotExistsBooking = true;
+      }
     },
     allDaySlot: false,
     eventResizableFromStart: true,

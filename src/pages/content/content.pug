@@ -3,6 +3,20 @@
 		.popover__close(data-close)
 			include ../../public/images/popover-close.svg
 
+		.popover__item(data-target="core-service-create")
+			.popover__alert(data-alert)
+			.popover__header Купить услугу
+			textarea(placeholder="Напишите текст", data-field).popover__field
+			.popover__action.action
+				.action__button.button.button_large(data-trigger="core-service-success") Купить услугу
+
+		.popover__item(data-target="core-service-success")
+			.popover__alert(data-alert)
+			.popover__icon
+				include ../../public/images/popover-success.svg
+			.popover__header Услуга оплачена
+			.popover__text Спасибо за оплату услуги! Можете закрыть это окно, эксперт Вам ответит!
+
 		.popover__item(data-target="review-create", data-url="https://dev.44a.ru/expert/save-review")
 			.popover__alert(data-alert)
 			.popover__header Оставить отзыв
@@ -355,7 +369,7 @@
 				.info__meta
 					.info__title Софья Геннадьевна
 					.info__cost
-						span.info__cost_price 
+						span.info__cost_price
 						span.info__cost_coin
 							include ../../public/images/coin-icon.svg
 						span.info__cost_time /мин

@@ -12,6 +12,12 @@
 	pointer-events: none
 	opacity: 0
 	cursor: pointer
+	.price__sale
+		font-family: 'Root UI'
+	.coin
+		font-family: 'Museo'
+		font-size: 14px
+		font-weight: 500
 	&_shadow
 		.popover__items
 			box-shadow: var(--shadow-popover)
@@ -54,6 +60,8 @@
 					pointer-events: auto
 		div:last-child
 			margin-bottom: 0
+		.button.state-hidden
+			display: none
 	&__alert
 		position: absolute
 		bottom: calc(100% - 1px)
@@ -150,6 +158,8 @@
 					.rating
 						font-size: 0
 				.info
+					&__cost
+						word-break: keep-all
 					&__text
 						width: 100%
 						display: inline-flex
@@ -179,6 +189,10 @@
 						font-weight: bold
 						.info__icon
 							margin-left: 2px
+						.info__description
+							font-weight: normal
+							padding-left: 5px
+
 	&__action
 		.action
 			&__button
@@ -254,11 +268,3 @@
 		&-next
 			right: 0
 			padding: 0 24px 0 17px
-
-.popover__items
-	&_wide
-		.popover-photo__image
-			cursor: zoom-in
-	&_full
-		.popover-photo__image
-			cursor: zoom-out

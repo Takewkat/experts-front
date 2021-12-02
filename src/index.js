@@ -15,13 +15,13 @@ window.query = (url, data) => {
     credentials: isDev() ? 'omit' : 'include',
     headers: {'X-Requested-With': 'XMLHttpRequest'}
   })
-  .then(res => res.json())
-  .then(data => {
-    if (data.status === 'error') {
-      throw data;
-    }
-    return data;
-  });
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === 'error') {
+        throw data;
+      }
+      return data;
+    });
 };
 
 window.params = (url, params = false) => {
@@ -99,7 +99,7 @@ window.windowState = () => {
 
 const activeTab = windowState();
 
-activeTab.watch((state) => console.log(state));
+//activeTab.watch((state) => console.log(state));
 
 // Theme function
 
@@ -165,24 +165,24 @@ class Router {
   has(route) {
     let path = this.mode === 'location'
       ? location.pathname : this.mode === 'data'
-      ? document.querySelector('[data-route]') : null;
+        ? document.querySelector('[data-route]') : null;
     if (path !== null) {
       path = this.mode === 'location'
         ? path.replace('/', '') : this.mode === 'data'
-        ? path.getAttribute('data-route') : null;
+          ? path.getAttribute('data-route') : null;
     }
     return route === path;
   }
   get(route, callback, rel = false) {
     let path = this.mode === 'location'
       ? location.pathname : this.mode === 'data'
-      ? document.querySelector('[data-route]') : null;
+        ? document.querySelector('[data-route]') : null;
     if (path !== null) {
       path = this.mode === 'location'
         ? path.replace('/', '') : this.mode === 'data'
-        ? path.getAttribute('data-route') : null;
+          ? path.getAttribute('data-route') : null;
       rel === 'like' ? (path.indexOf(route) !== -1 && callback(route, path))
-      : (path === route && callback(route, path));
+        : (path === route && callback(route, path));
     }
   }
 }
@@ -345,7 +345,7 @@ class Model {
       callback = arguments[1];
     }
     index = index === undefined || !this.$ref.children.length
-    ? (this.$ref.children.length - 1) : index;
+      ? (this.$ref.children.length - 1) : index;
     this.render(data, 'append', index, callback);
   }
   replace(data, index = 0, callback = false) {
@@ -419,11 +419,11 @@ class Notification {
           params('/users/notification-create'),
           JSON.stringify({ text: content, status, area, type, id })
         )
-        .then((response) => {
-          const count = this.areas.list.$node.getAttribute('data-count');
-          this.areas.list.$node.setAttribute('data-count', Number(count) + 1);
-          data.$node.setAttribute('data-id', response.id);
-        });
+          .then((response) => {
+            const count = this.areas.list.$node.getAttribute('data-count');
+            this.areas.list.$node.setAttribute('data-count', Number(count) + 1);
+            data.$node.setAttribute('data-id', response.id);
+          });
       }
 
       data.$node.setAttribute('data-status', status);
@@ -468,10 +468,10 @@ class Notification {
           params('/users/notification-remove'),
           JSON.stringify({ id, area })
         )
-        .then(() => {
-          const count = this.areas.list.$node.getAttribute('data-count');
-          this.areas.list.$node.setAttribute('data-count', Number(count) - 1);
-        });
+          .then(() => {
+            const count = this.areas.list.$node.getAttribute('data-count');
+            this.areas.list.$node.setAttribute('data-count', Number(count) - 1);
+          });
       }
       if (this.areas.alert.model.$ref.children[index]) {
         this.areas.alert.model.destroy(index);
@@ -606,7 +606,7 @@ const photoModal = () => {
         .on('beforeChange', (e, s, c, n) => {
           imageHandler(s.$slides[n], n);
         });
-        imageHandler($slide, index);
+      imageHandler($slide, index);
     });
   }
 
@@ -794,7 +794,7 @@ const dateMask = elements => {
         yy: {
           mask: IMask.MaskedRange,
           from: 1950,
-          to: 2010,
+          to: new Date().getFullYear(),
           placeholderChar: 'г'
         }
       },
@@ -904,7 +904,7 @@ const focusField = (elements = '.field__input') => {
       element.addEventListener(event, e => {
         e.currentTarget.parentElement.classList[
           event === 'blur' ? 'remove' : 'add'
-        ]('state-focus');
+          ]('state-focus');
       });
     });
   });
@@ -1002,7 +1002,9 @@ const userCard = (...ids) => {
     data[item] = { el: document.querySelector(`#${item}`) }
   });
   data['card-number'].mask = '0000 0000 0000 0000';
-  data['card-expire'].mask = '00/00';
+  // data['card-expire'].mask = '00/00';
+  data['card-month'].mask = '00';
+  data['card-year'].mask = '00';
   data['card-code'].mask = '000';
   for (let key in data) {
     if (key !== 'card-holder') {
@@ -1139,13 +1141,10 @@ const validatePhoneMail = (field, message, {error, errorPhone, errorMail, errorE
   field.value = field.value.trim();
   let messageText = '';
   if (field.value.length > 0) {
-    if (field.value.substring(0, 2) === '+7' || ['7', '8'].indexOf(field.value[0]) !== -1) {
+    if (field.value.substring(0, 1) === '+') {
       let telValue = field.value.replace(/[+, (, ), -]/g, '');
-      if (telValue.length < 11 || telValue.length > 11) {
+      if (!telValue.match(/^((7((9[0-9]{2})|(7[0-9]{2}))[0-9]{7})|((994|375|995|996|992|998|380)[0-9]{9})|((373|374|993)[0-9]{8}))$/)) {
         messageText = errorPhone;
-      }
-      else if (telValue.length === 12) {
-        field.value = field.value.slice(0, -1);
       }
     }
     else if (field.value.indexOf('@') !== -1) {
@@ -1162,152 +1161,6 @@ const validatePhoneMail = (field, message, {error, errorPhone, errorMail, errorE
   }
   message.innerText = messageText;
 };
-
-class VerifyCode {
-  constructor(options = {}) {
-    this.ns = options.ns || 'data-verifyCode';
-    this.$instance = options.$instance || document.querySelector(`[${this.ns}]`);
-    this.$fields = null;
-    this.code = '';
-    this.size = options.size || 5;
-    this.callbacks = options.callbacks || {
-      beforeRender: null,
-      afterRender: null,
-      afterType: null
-    };
-    this.classes = options.classes || {
-      instance: 'code',
-      fields: 'code__fields',
-      field: 'code__field'
-    };
-    this.init();
-  }
-  init() {
-    this.render();
-
-    this.$fields.forEach((item, index, list) => {
-      const onInput = (event) => {
-        event.preventDefault();
-        if (event.target.value.length >= this.size) {
-          const data = event.target.value.trim().slice(0, this.size);
-          this.set(data);
-          this.$fields[
-            data.length < this.size
-              ? data.length
-              : data.length - 1
-          ].focus();
-          this.callbacks.afterType && this.callbacks.afterType(this);
-        }
-      };
-
-      const onKeyDown = (event) => {
-        const node = event.target;
-        const key = event.key;
-
-        if (['c', 'v', 'x', 'Insert'].indexOf(key) !== -1 && (event.metaKey || event.ctrlKey || event.shiftKey)) {
-          return;
-        }
-
-        event.preventDefault();
-
-        if (parseInt(key) >= 0 && key !== ' ') {
-          node.value = key;
-          if (this.code.length <= this.size) {
-            this.code = this.code.slice(0, index) + key + this.code.slice(index + 1, this.size);
-          }
-          if (index < list.length - 1) {
-            list[index + 1].select();
-          }
-          this.callbacks.afterType && this.callbacks.afterType(this);
-        }
-
-        if (['ArrowLeft', 'ArrowDown'].indexOf(key) !== -1 || key === 'Tab' && event.shiftKey) {
-          if (index > 0) {
-            list[index - 1].select();
-          }
-          else {
-            list[list.length - 1].select();
-          }
-        }
-
-        if (['ArrowRight', 'ArrowUp'].indexOf(key) !== -1 || key === 'Tab' && !event.shiftKey) {
-          if (index < list.length - 1) {
-            list[index + 1].select();
-          }
-          else {
-            list[0].select();
-          }
-        }
-
-        if (key === 'Backspace') {
-          if (!event.metaKey && !event.ctrlKey) {
-            if (node.value.length !== 0) {
-              node.value = '';
-            }
-            else if (index > 0) {
-              list[index - 1].focus();
-              list[index - 1].value = '';
-            }
-            this.code = this.code.slice(0, -1);
-          }
-          else {
-            this.clear();
-            list[0].focus();
-          }
-          this.callbacks.afterType && this.callbacks.afterType(this);
-        }
-      };
-
-      const onPaste = (event) => {
-        const data = event.clipboardData.getData('text');
-        if (isNaN(data)) {
-          event.preventDefault();
-        }
-      }
-
-      item.addEventListener('input', onInput);
-      item.addEventListener('keydown', onKeyDown);
-      item.addEventListener('paste', onPaste);
-    });
-  }
-  render() {
-    this.callbacks.beforeRender && this.callbacks.beforeRender(this);
-    if (this.$instance.className.length === 0) {
-      this.$instance.className = this.classes.instance;
-    }
-    for (let i = 0; i < this.size; i++) {
-      const item = document.createElement('input');
-      i === 0 && item.setAttribute('autofocus', '');
-      item.setAttribute('type', 'text');
-      item.setAttribute('inputmode', 'numeric');
-      item.setAttribute('autocomplete', 'one-time-code');
-      item.classList.add(this.classes.field);
-      this.$instance.appendChild(item);
-    }
-    this.$fields = [].slice.call(this.$instance.children);
-    this.callbacks.afterRender && this.callbacks.afterRender(this);
-  }
-  set(code) {
-    code.split('').forEach((char, index) => {
-      if (index <= this.$fields.length - 1) {
-        this.$fields[index].value = char;
-      }
-    });
-    this.code = code;
-  }
-  get() {
-    return this.$fields.reduce((a, c) => a + c.value, '');
-  }
-  clear() {
-    this.$fields.forEach(field => (field.value = ''));
-    this.code = '';
-  }
-  destroy() {
-    while (this.$instance.firstElementChild) {
-      this.$instance.firstElementChild.remove();
-    }
-  }
-}
 
 const timerFunction = (trigger, timer, time) => {
   timer.innerHTML = `( ${String('0' + time).slice(-2)}c )`;
@@ -1400,6 +1253,7 @@ const login = (login, code, verify) => {
     e.preventDefault();
 
     const field = loginForm.querySelector('[name="username"]');
+    const fieldPassword = verifyForm.querySelector('.code__item');
     const error = loginForm.querySelector('.field__error');
     const submit = loginForm.querySelector('[type="submit"]');
 
@@ -1454,17 +1308,13 @@ const login = (login, code, verify) => {
               query.open(form.method, form.action);
               query.send(data);
             }
-            const verifyCode = new VerifyCode({
-              size: res.type === 'email' ? 5 : 4,
-              classes: { field: 'code__item' },
-              callbacks: {
-                afterType: (context) => {
-                  if (context.code.length === context.size) {
-                    verifyQuery(context.code);
-                  }
-                }
-              }
-            });
+
+            if(res.type === 'email') {
+              fieldPassword.setAttribute('data-type', 'email');
+            } else {
+              fieldPassword.setAttribute('data-type', 'phone');
+            }
+
             let interval;
             interval = timerFunction(resend, timer, 60);
             resend.addEventListener('click', e => {
@@ -1483,7 +1333,7 @@ const login = (login, code, verify) => {
               field.removeAttribute('readonly');
               verifyContainer.classList.remove('state-active');
               loginContainer.classList.add('state-active');
-              verifyCode.destroy();
+              //verifyCode.destroy();
             });
             const verifyQuery = (code) => {
               resend.parentElement.classList.remove('state-resend');
@@ -1508,11 +1358,30 @@ const login = (login, code, verify) => {
               });
               query.send(data);
             };
+
+            const onChange = () => {
+              const value = fieldPassword.value.trim();
+              if(fieldPassword.getAttribute('data-type') == 'phone' && value.length == 4) {
+                verifyQuery(value);
+              }
+
+              if(fieldPassword.getAttribute('data-type') && value.length == 5) {
+                verifyQuery(value);
+              }
+            }
+            fieldPassword.addEventListener('input', onChange);
+            fieldPassword.addEventListener('paste', onChange);
+            verifyForm.addEventListener('submit', function(e) {
+              e.preventDefault();
+            });
           }
         });
         query.send(data);
       }
     }
+
+
+
     if (error.textContent.length === 0) {
       recaptcha.click();
     }
@@ -1994,33 +1863,36 @@ class ManageItems extends ManageList {
             }
           });
 
-        file.addEventListener('change', e => {
+          file.addEventListener('change', e => {
 
-          if ([].slice.call(list.children).length + 1 === +element.getAttribute('data-limit')) {
-            add.setAttribute('disabled', '');
-          }
+            if ([].slice.call(list.children).length + 1 === +element.getAttribute('data-limit')) {
+              add.setAttribute('disabled', '');
+            }
 
-          [...file.files].forEach((item, index) => {
+            [...file.files].forEach((item, index) => {
 
-            const fileInstance = model.cloneNode(true);
+              const fileInstance = model.cloneNode(true);
 
-            fileInstance.removeAttribute('data-model');
+              fileInstance.removeAttribute('data-model');
 
-            list.appendChild(fileInstance);
+              list.appendChild(fileInstance);
 
-            const appendElement = list.lastElementChild;
+              const appendElement = list.lastElementChild;
 
-            const image = appendElement.querySelector('.file__image');
+              const image = appendElement.querySelector('.file__image');
 
-            fileLoading(file, image, index).then(data => {
-              if (data) {
-                this.template(appendElement, { name: data.id, src: data.source });
-                appendElement.setAttribute('id', data.id);
-              }
-              appendElement.setAttribute('data-sort', [...list.children].indexOf(appendElement));
-              this.setOrders(list);
-              this.uploadState([...list.children], list, element, remove, actions);
-            });
+              fileLoading(file, image, index).then(data => {
+                if (data) {
+                  this.template(appendElement, { name: data.id, src: data.source });
+                  appendElement.setAttribute('id', data.id);
+                  appendElement.setAttribute('data-sort', [...list.children].indexOf(appendElement));
+                  this.setOrders(list);
+                } else {
+                  data = {id: -Math.floor(Math.random() * 999999)};
+                }
+                uploadFile('.file', false, document.querySelectorAll('[id="'+data.id+'"].file'));
+                this.uploadState([...list.children], list, element, remove, actions);
+              });
 
             });
             list.classList.add('state-active');
@@ -2098,8 +1970,12 @@ const fileLoading = (file, container, index = 0) => {
     .finally(() => container.classList.remove('state-load'));
 };
 
-const uploadFile = (ref = '.file', callback = false) => {
-  const elements = document.querySelectorAll(ref);
+const uploadFile = (ref = '.file', callback = false, elementsNew = false) => {
+  if(!elementsNew) {
+    elements = document.querySelectorAll(ref);
+  } else {
+    elements = elementsNew;
+  }
   elements.forEach(element => {
     if (element.className.indexOf(`${ref.slice(1)}_static`) === -1) {
       const file = element.querySelector('[type="file"]');
@@ -2171,7 +2047,6 @@ const uploadFile = (ref = '.file', callback = false) => {
       file.addEventListener('change', e => {
         if (option !== 'static') {
           fileLoading(file, image).then(data => {
-            console.log(data);
             if (data) {
               const img = document.createElement('img');
               img.setAttribute('src', data.source);
@@ -2502,7 +2377,7 @@ const serviceState = (ns = 'data-service') => {
 
         cancel.addEventListener('click', cancelHandler);
 
-        title.textContent = courseTitle.textContent;
+        title.textContent = courseTitle.getAttribute(`${ns}-title`);
 
         if (cost) {
           cost.innerHTML = `
@@ -3395,7 +3270,7 @@ class Range {
       const info = instance.querySelector(`.${this.ns}__info`);
       item.field = item.type === 'between'
         ? { start: fields[0], end: fields[1] }
-      : fields[0];
+        : fields[0];
       item.bg = bg; item.info = info;
       const size = field => 100 / ((field.max - field.min) / (field.value - field.min));
       const fill = (element, data) => {
@@ -3785,6 +3660,72 @@ const updateExperts = (ref = '.cards') => {
   const dataUpdate = { ids: null };
 
   // update meta
+  var videoTimeoutId;
+
+  const mouseOverVideo = (e) => {
+    if(e.target.getAttribute('data-video') == 'exists') {
+      if (videoTimeoutId) {
+        clearTimeout(videoTimeoutId);
+      }
+      videoTimeoutId = setTimeout(function () {
+        console.log('test');
+        if (e.target.paused) {
+          e.target.load();
+          e.target.play();
+        }
+      }, 500);
+    }
+  }
+  const mouseOutVideo = (e) => {
+    if(e.target.getAttribute('data-video') == 'exists') {
+      if (videoTimeoutId) {
+        clearTimeout(videoTimeoutId);
+      }
+      if (!e.target.paused) {
+        e.target.pause();
+      }
+    }
+  }
+
+  videoElements = instanceList.querySelectorAll('.cards__video video');
+
+  const checkVideoPosition = () => {
+    if(window.screen.width <= 500) {
+      videoElements.forEach(item => {
+        if (item.getAttribute('data-video') == 'exists') {
+          const isInView = isElementInViewport(item);
+          if (isInView && item.paused) {
+            console.log('mobile play');
+            item.load();
+            item.play();
+          } else if (!isInView && !item.paused) {
+            console.log('mobile stop');
+            item.pause();
+          }
+        }
+      });
+    }
+  }
+
+  if(videoElements.length) {
+    videoElements.forEach(item => {
+      if(window.screen.width <= 500) {
+        //videoElements.push(item);
+      } else {
+        item.addEventListener('mouseover', mouseOverVideo);
+        item.addEventListener('mouseout', mouseOutVideo);
+      }
+
+    });
+
+    if(window.screen.width <= 500) {
+      addEventListener('DOMContentLoaded', checkVideoPosition, false);
+      addEventListener('load', checkVideoPosition, false);
+      addEventListener('scroll', checkVideoPosition, false);
+      addEventListener('resize', checkVideoPosition, false);
+    }
+
+  }
 
   const updateMeta = (data) => {
     if (data.length) {
@@ -3794,6 +3735,8 @@ const updateExperts = (ref = '.cards') => {
         const id = Number(card.getAttribute('data-card'));
         const status = card.querySelector('[data-status]');
         const visitors = card.querySelector('[data-visitors]');
+        const source = card.querySelector('[data-source]');
+        const video = card.querySelector('[data-video]');
         cardImage.src = item.avatarUrl;
         if (status) {
           status.setAttribute('data-status', item.status.type);
@@ -3801,6 +3744,18 @@ const updateExperts = (ref = '.cards') => {
         }
         if (visitors) {
           visitors.textContent = item.clients
+        }
+        if(video) {
+          if(video.paused) {
+            if(item['previewUrl'] !== undefined) {
+              source.src = item.previewUrl;
+              video.setAttribute('data-video', 'exists');
+            } else {
+              source.src = '';
+              video.setAttribute('data-video', 'none');
+            }
+          }
+          video.setAttribute('poster', item.avatarUrl);
         }
       });
     }
@@ -3822,6 +3777,8 @@ const updateExperts = (ref = '.cards') => {
 
   const fillCard = (card, data) => {
     const cardImage = card.querySelector('img');
+    const cardVideo = card.querySelector('video');
+    const cardSource = card.querySelector('video source');
     const cardStatus = card.querySelector('[data-status]');
     const cardCost = card.querySelector('[data-cost]');
     const cardVisitors = card.querySelector('[data-visitors]');
@@ -3830,6 +3787,18 @@ const updateExperts = (ref = '.cards') => {
     card.setAttribute('data-card', data.user_id);
     card.href = data.url;
     cardImage.src = data.avatarUrl;
+
+    if(cardVideo) {
+      if (data['previewUrl'] !== undefined) {
+        cardSource.src = data.previewUrl;
+        cardVideo.setAttribute('data-video', 'exists');
+      } else {
+        cardSource.src = '';
+        cardVideo.setAttribute('data-video', 'none');
+      }
+      cardVideo.setAttribute('poster', data.avatarUrl);
+    }
+
     if (cardStatus) {
       cardStatus.setAttribute('data-status', data.status.type);
       cardStatus.textContent = data.status.message;
@@ -3850,8 +3819,17 @@ const updateExperts = (ref = '.cards') => {
       else {
         const card = cardModelInstance.cloneNode(true);
         instanceList.appendChild(fillCard(card, item));
+
+        const video = card.querySelector('.cards__video video');
+        if(video) {
+          video.addEventListener('mouseover', mouseOverVideo);
+          video.addEventListener('mouseout', mouseOutVideo);
+        }
       }
     });
+
+    videoElements = instanceList.querySelectorAll('.cards__video video');
+    checkVideoPosition();
     return data;
   }
 
@@ -3904,7 +3882,7 @@ const moderationButton = () => {
     const requiredCheck = () => {
       return requiredData.every(item => item) ?
         button.removeAttribute('disabled')
-      : button.setAttribute('disabled', '');
+        : button.setAttribute('disabled', '');
     };
     requiredCheck();
     fields.forEach((field, index) => {
@@ -3924,15 +3902,14 @@ const updateExpertStatus = (ref = '[data-status][data-url]') => {
   if (node) {
     const url = node.getAttribute('data-url');
     const updateStatus = () => {
-      query(params(url))
-        .then(data => {
-          node.setAttribute(
-            'data-status',
-            data.status.type !== 'offline' ? 'online' : 'offline'
-          );
-        });
+      if (typeof EFON !== 'undefined') {
+        node.setAttribute(
+          'data-status',
+          EFON.core().platformData.stats.users >= 1 ? 'online' : 'offline'
+        );
+      }
     };
-    setInterval(updateStatus, 60000);
+    setInterval(updateStatus, 5000);
   }
 }
 
@@ -4044,6 +4021,264 @@ const adWidget = () => {
   }
 }
 
+const expressBooking = () => {
+  const buttonOpen = document.querySelector('[data-express-trigger]');
+  if(buttonOpen) {
+    buttonOpen.addEventListener('click', (e) => {
+      popover.open('express-booking', modal => {
+        const text = modal.querySelector('[data-text]');
+        const phone = modal.querySelector('[data-phone]');
+        const errorElement = modal.querySelector('[data-alert]');
+        const buttons = modal.querySelectorAll('[data-trigger]');
+
+        text.value = '';
+        phone.value = '';
+
+        buttons.forEach(button => {
+          if (button.hasAttribute('disabled')) {
+            button.removeAttribute('disabled');
+          }
+          if (button.className.indexOf('state-load') !== -1) {
+            button.classList.remove('state-load');
+          }
+        });
+
+        if (modal.className.indexOf('state-error') !== -1) {
+          modal.classList.remove('state-error');
+        }
+
+        triggers.get('express-booking-handler').click((ev, el, target) => {
+          el.classList.add('state-load');
+          const eventData = {
+            text: text.value,
+            phone: phone.value,
+            expert_id: buttonOpen.getAttribute('data-expert-id'),
+          }
+          const data = JSON.stringify(eventData);
+
+          query('/users/save-express-booking', data).then(data => {
+            el.setAttribute('disabled', '');
+            triggers.clear();
+            popover.open('express-booking-success');
+          })
+            .catch(err => {
+              el.removeAttribute('disabled');
+              el.classList.remove('state-load');
+              modal.classList.add('state-error');
+              errorElement.innerHTML = err.message;
+            });
+        });
+      });
+      return false;
+    })
+  }
+}
+
+
+const coreExpertServices = (trigger, event) => {
+  document.querySelectorAll('.core-service-button').forEach(target => {
+    target.onclick = event => {
+      const el = event.target.closest('.core-service-button');
+      const service_id = el.getAttribute('data-service-id');
+      const expert_id = el.getAttribute('data-expert-id');
+      const name_service = el.getAttribute('data-name');
+      const price_rur = el.getAttribute('data-price-rur');
+      const price_coins = el.getAttribute('data-price-coins');
+      const comment = el.getAttribute('data-comment');
+
+      popover.open('core-service-create', modal => {
+        const field = modal.querySelector('[data-field]');
+        const errorElement = modal.querySelector('[data-alert]');
+        const buttons = modal.querySelectorAll('[data-trigger]');
+
+        modal.querySelector('[data-cost]').innerHTML = price_rur;
+        modal.querySelector('[data-coins]').innerHTML = price_coins;
+        modal.querySelector('[data-service-name]').innerHTML = name_service;
+        modal.querySelector('[data-comment]').innerHTML = comment;
+
+        field.value = '';
+
+        buttons.forEach(button => {
+          if (button.hasAttribute('disabled')) {
+            button.removeAttribute('disabled');
+          }
+          if (button.className.indexOf('state-load') !== -1) {
+            button.classList.remove('state-load');
+          }
+        });
+
+        if (modal.className.indexOf('state-error') !== -1) {
+          modal.classList.remove('state-error');
+        }
+
+
+
+        triggers.get('core-service-handler').click((ev, el, target) => {
+          el.classList.add('state-load');
+          const eventData = {
+            text: field.value,
+            service_id: service_id,
+            expert_id: expert_id,
+          }
+          const data = JSON.stringify(eventData);
+
+          query('/users/core-service-buy', data).then(data => {
+            el.setAttribute('disabled', '');
+            triggers.clear();
+            popover.open('core-service-success');
+          })
+            .catch(err => {
+              el.removeAttribute('disabled');
+              el.classList.remove('state-load');
+              modal.classList.add('state-error');
+              if (err.balance) {
+                popover.open('popup-pay', modal => {
+                  const errorElement = modal.querySelector('[data-alert]');
+                  const buttons = modal.querySelectorAll('[data-trigger]');
+
+                  buttons.forEach(button => {
+                    if (button.hasAttribute('disabled')) {
+                      button.removeAttribute('disabled');
+                    }
+                    if (button.className.indexOf('state-load') !== -1) {
+                      button.classList.remove('state-load');
+                    }
+                  });
+                  modal.querySelector('#core_service_order_id').value = err.order_id;
+                  modal.querySelector('[data-cost]').innerHTML = err.cost;
+                  modal.querySelector('[data-coins]').innerHTML = err.coins;
+
+                  if (modal.className.indexOf('state-error') !== -1) {
+                    modal.classList.remove('state-error');
+                  }
+                });
+              } else {
+                errorElement.innerHTML = err.message;
+              }
+
+            });
+        });
+      });
+    }
+  });
+};
+
+const popupPay = (trigger, event) => {
+  triggers.get(trigger).click((ev, el, target) => {
+    popover.open(target, modal => {
+      const errorElement = modal.querySelector('[data-alert]');
+      const buttons = modal.querySelectorAll('[data-trigger]');
+
+
+      buttons.forEach(button => {
+        if (button.hasAttribute('disabled')) {
+          button.removeAttribute('disabled');
+        }
+        if (button.className.indexOf('state-load') !== -1) {
+          button.classList.remove('state-load');
+        }
+      });
+
+      if (modal.className.indexOf('state-error') !== -1) {
+        modal.classList.remove('state-error');
+      }
+
+
+
+      triggers.get('core-service-success').click((ev, el, target) => {
+        console.log('test');
+        return;
+        el.classList.add('state-load');
+        const eventData = {
+          text: field.value,
+          service_id: service_id,
+          expert_id: expert_id,
+        }
+        const data = JSON.stringify(eventData);
+        query('/users/core-service-buy', data).then(data => {
+          el.setAttribute('disabled', '');
+          triggers.clear();
+          popover.open('core-service-success');
+        })
+          .catch(err => {
+            el.removeAttribute('disabled');
+            el.classList.remove('state-load');
+            modal.classList.add('state-error');
+            errorElement.innerHTML = err.message;
+          });
+        /*expertLivestreamInit(calendar, eventData)
+            .then(data => {
+              expertLivestreamInfo('livestream-success', eventData, () => {
+                el.setAttribute('disabled', '');
+                triggers.clear();
+                calendar.unselect();
+                calendar.addEvent(eventData);
+                event = calendar.getEventById(eventData.id);
+                popover.open('livestream-success');
+              });
+            })
+            .catch(err => {
+              el.removeAttribute('disabled');
+              el.classList.remove('state-load');
+              modal.classList.add('state-error');
+              errorElement.innerHTML = err.message;
+              if (err.closed) {
+                const linkPay = errorElement.querySelector('a');
+                linkPay.href = params(location.href, snapshot().params);
+              }
+            });*/
+      });
+    });
+  });
+};
+
+const descriptionsCounter = () => {
+  document.querySelectorAll('[data-text-counter]').forEach(target => {
+    const handler = event => {
+      const maxlength = target.getAttribute('data-maxlength');
+      if(maxlength) {
+        const counterResult = target.closest('.field').querySelector('[data-counter-result]');
+        if(counterResult) {
+          const current = maxlength - target.value.length;
+          counterResult.innerHTML = current > 0 ? current : 0;
+          if(current < 0) {
+            target.closest('.field').classList.add('state-error');
+            counterResult.closest('[data-counter-container]').classList.add('state-error');
+          } else {
+            target.closest('.field').classList.remove('state-error');
+            counterResult.closest('[data-counter-container]').classList.remove('state-error');
+          }
+        }
+      }
+    }
+
+    target.oninput = handler;
+    target.onpaste = handler;
+  });
+};
+
+function isElementInViewport (el) {
+  var rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+function onVisibilityChange(el, callback) {
+  var old_visible;
+  return function () {
+    var visible = isElementInViewport(el);
+    if (visible != old_visible) {
+      old_visible = visible;
+      if (typeof callback == 'function') {
+        callback();
+      }
+    }
+  }
+}
+
 // routes
 
 router.get('cards', () => {
@@ -4059,6 +4294,15 @@ router.get('content', () => {
   videoModal('[data-fancybox*="video"]');
   review();
   updateExpertStatus();
+  phoneMask('[type="tel"]');
+
+  coreExpertServices('core-service-create');
+
+
+  userCard('card-number', 'card-month', 'card-year', 'card-holder', 'card-code');
+  select('.select', userCardSelect);
+
+  expressBooking();
 });
 
 router.get('calendar', () => {
@@ -4089,6 +4333,7 @@ router.get('user:profile', () => {
   uploadFile();
   new ManageItems({ ns: '.files', type: 'files' });
   moderationButton();
+  descriptionsCounter();
 });
 
 router.get('user:notifications', () => {
@@ -4144,7 +4389,7 @@ router.get('service', () => {
 
 
 router.get('user-card', () => {
-  userCard('card-number', 'card-expire', 'card-holder', 'card-code');
+  userCard('card-number', 'card-month', 'card-year', 'card-holder', 'card-code');
   select('.select', userCardSelect);
 });
 
@@ -4155,3 +4400,4 @@ router.get('user-cards', () => {
 router.get('login', () => {
   login('#login-form', '#code-form', '#verify-form');
 });
+

@@ -50,6 +50,12 @@
 	&__image,
 	&__image img
 		border-radius: var(--border-radius)
+	&__video
+		height: 11.796875vw
+		overflow: hidden
+		border-radius: var(--border-radius)
+		video
+			width: 100%
 	&__image
 		height: 11.796875vw
 		position: relative
@@ -87,6 +93,7 @@
 			background-color: var(--color-green)
 		&[data-status="offline"]
 			background-color: var(--color-red)
+			display: none
 		&[data-status="consultation"],
 		&[data-status="private"]
 			background-color: var(--color-purple)
@@ -100,7 +107,7 @@
 		align-items: center
 		bottom: 8px
 		left: 8px
-		flex-wrap: nowrap 
+		flex-wrap: nowrap
 		/*.cost
 			&__title
 				margin-right: 4px
@@ -242,7 +249,7 @@
 				order: 1
 			&:nth-child(n+5)
 				order: 2
-		&__image
+		&__image, &__video
 			height: 162px
 		&__button
 			margin: 36px auto 0
